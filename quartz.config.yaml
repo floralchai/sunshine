@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: Tawny Flor
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -21,15 +21,15 @@ configuration:
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#ffffff"
+        lightgray: "#e5e7eb"
+        gray: "#9fc7e9"
+        darkgray: "#54595d"
+        dark: "#202122"
+        secondary: "#aaa6df"
+        tertiary: "#c5a5dc"
+        highlight: rgba(170, 166, 223, 0.20)
+        textHighlight: "#f1d98b88"
       darkMode:
         light: "#161618"
         lightgray: "#393639"
