@@ -342,3 +342,89 @@ ul.tags a:hover {
   border-color: var(--wiki-violet);
   text-decoration: none;
 }
+
+/* Explicit collapsed states: hide the entire contents, not just clip their bottom. */
+.explorer.collapsed > .explorer-content {
+  display: none !important;
+}
+
+.explorer:not(.collapsed) > .explorer-content {
+  display: block;
+}
+
+.toc ul.toc-content.collapsed {
+  display: none !important;
+}
+
+.toc ul.toc-content:not(.collapsed) {
+  display: block;
+}
+
+/* Keep folder children fully hidden when a folder is closed, and visible when open. */
+.explorer .folder-outer:not(.open) {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: collapse;
+  overflow: hidden !important;
+}
+
+.explorer .folder-outer.open {
+  display: grid;
+  grid-template-rows: 1fr;
+  visibility: visible;
+  overflow: visible !important;
+}
+
+.explorer .folder-outer:not(.open) > ul {
+  overflow: hidden !important;
+}
+
+/* Search dialog, result list and preview use a solid white surface for contrast. */
+.search > .search-container {
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(4px);
+}
+
+.search > .search-container > .search-space > input,
+.search > .search-container > .search-space > .search-layout,
+.search > .search-container > .search-space > .search-layout > .results-container,
+.search > .search-container > .search-space > .search-layout > .preview-container,
+.search > .search-container > .search-space > .search-layout > .results-container .result-card,
+.search > .search-container > .search-space > .tag-suggestions {
+  background-color: #fff !important;
+  color: #202122 !important;
+}
+
+.search > .search-container > .search-space > input {
+  border: 1px solid #a2a9b1 !important;
+}
+
+.search > .search-container > .search-space > .search-layout {
+  border: 1px solid #a2a9b1 !important;
+  box-shadow: 0 12px 36px rgba(32, 33, 34, .12);
+}
+
+.search > .search-container > .search-space > .search-layout .result-card:hover,
+.search > .search-container > .search-space > .search-layout .result-card:focus,
+.search > .search-container > .search-space > .search-layout .result-card.focus,
+.search > .search-container > .search-space > .tag-suggestions > .tag-suggestion-item:hover,
+.search > .search-container > .search-space > .tag-suggestions > .tag-suggestion-item.active {
+  background-color: #f1eefb !important;
+  color: #202122 !important;
+}
+
+.search > .search-container > .search-space > .search-layout .result-card > h3,
+.search > .search-container > .search-space > .search-layout .result-card > p,
+.search > .search-container > .search-space > .search-layout .preview-container {
+  color: #202122 !important;
+}
+
+.search > .search-container > .search-space > .search-layout .result-card > ul > li > p {
+  background-color: #f3f1fa !important;
+  color: #51447d !important;
+}
+
+.search > .search-container > .search-space > .tag-suggestions {
+  border-color: #a2a9b1 !important;
+}
+
