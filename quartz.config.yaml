@@ -114,7 +114,7 @@ plugins:
     enabled: true
     options:
       theme: default
-      mode: both  
+      mode: light
   - source: "@quartz-community/remove-draft"
     enabled: true
   - source: "@quartz-community/explicit-publish"
