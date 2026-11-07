@@ -1,9 +1,25 @@
 ---
-title: Welcome to Quartz
+title: Tawny Flor — Home
+description: Personal portfolio, notes and projects.
 cssclasses:
   - wikipedia
-tags:
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+# Welcome to Tawny Flor
+
+Welcome to my personal website — a space for my portfolio, projects, notes and ideas.
+
+This website is built with **Obsidian and Quartz**, with a Wikipedia-inspired layout and pastel rainbow accents.
+
+## Explore the website
+
+- [Welcome](/Welcome) — introductory note and starting point.
+- [Notes](/README) — published notes and updates.
+
+## About this website
+
+The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically.
+
+---
+
+*Thanks for visiting!*
