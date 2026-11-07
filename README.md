@@ -18,4 +18,3 @@ Quartz is a set of tools that helps you publish your [digital garden](https://jz
 </p>
 =======
 # sunshine
->>>>>>> 1e40ac2 (Initial commit)
