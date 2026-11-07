@@ -1,4 +1,4 @@
-[⟵ back to cottage](../index.html)]
+[⟵ back to cottage](https://floralchai.github.io/24/index.html)
 
 # sunshine
 
