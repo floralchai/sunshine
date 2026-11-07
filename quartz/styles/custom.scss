@@ -44,3 +44,130 @@ code{border-radius:3px}hr{border:0;border-top:1px solid var(--wiki-border);margi
 img{max-width:100%;height:auto}.callout{border-radius:3px;border-left-width:4px}
 .infobox{float:right;max-width:20rem;margin:0 0 1rem 1rem;padding:.75rem;border:1px solid var(--wiki-border);background:var(--wiki-surface)}
 @media(max-width:800px){.infobox{float:none;max-width:100%;margin:1rem 0}table{display:block;overflow-x:auto}}
+
+/* Collapsible Explorer and Table of Contents controls.
+   Keep native <details>/<summary> and button toggles visible, accessible and clickable. */
+.explorer,
+.toc,
+.table-of-contents,
+[data-component="explorer"],
+[data-component="table-of-contents"] {
+  min-width: 0;
+}
+
+.explorer details,
+.toc details,
+.table-of-contents details {
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  margin: .25rem 0;
+  background: #fff;
+}
+
+.explorer summary,
+.toc summary,
+.table-of-contents summary,
+.explorer details > summary,
+.toc details > summary,
+.table-of-contents details > summary {
+  display: list-item;
+  cursor: pointer;
+  padding: .45rem .6rem;
+  color: var(--wiki-text);
+  font-weight: 600;
+  list-style-position: inside;
+  user-select: none;
+  outline-offset: 3px;
+}
+
+.explorer summary:hover,
+.toc summary:hover,
+.table-of-contents summary:hover,
+.explorer summary:focus-visible,
+.toc summary:focus-visible,
+.table-of-contents summary:focus-visible {
+  background: #f1eefb;
+  color: #5b4b91;
+}
+
+.explorer details[open] > summary,
+.toc details[open] > summary,
+.table-of-contents details[open] > summary {
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.explorer details > ul,
+.explorer details > ol,
+.toc details > ul,
+.toc details > ol,
+.table-of-contents details > ul,
+.table-of-contents details > ol {
+  margin: .35rem 0;
+  padding: 0 .6rem 0 1.8rem;
+}
+
+.explorer a,
+.toc a,
+.table-of-contents a {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: .12rem .15rem;
+  text-decoration: none;
+}
+
+.explorer a:hover,
+.toc a:hover,
+.table-of-contents a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--wiki-violet);
+  text-decoration-thickness: 2px;
+}
+
+.explorer button,
+.toc button,
+.table-of-contents button,
+.explorer [role="button"],
+.toc [role="button"],
+.table-of-contents [role="button"] {
+  cursor: pointer;
+}
+
+.explorer button:focus-visible,
+.toc button:focus-visible,
+.table-of-contents button:focus-visible,
+.explorer a:focus-visible,
+.toc a:focus-visible,
+.table-of-contents a:focus-visible {
+  outline: 2px solid var(--wiki-indigo);
+  outline-offset: 2px;
+}
+
+/* Preserve folder indentation and avoid clipping nested page links. */
+.explorer ul,
+.explorer ol {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.explorer .explorer-content,
+.explorer [class*="content"],
+.toc ul,
+.table-of-contents ul {
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .explorer details > summary,
+  .toc details > summary,
+  .table-of-contents details > summary {
+    padding: .6rem .65rem;
+  }
+
+  .explorer a,
+  .toc a,
+  .table-of-contents a {
+    padding-block: .2rem;
+  }
+}
+
