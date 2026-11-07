@@ -1,4 +1,3 @@
-
 name: Deploy Quartz to Neocities
 
 on:
@@ -9,9 +8,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
 
 concurrency:
   group: deploy-to-neocities
@@ -44,6 +40,9 @@ jobs:
           test -s public/index.html
           grep -q "Welcome to Tawny Flor" public/index.html
           grep -q "portfolio-top-nav" public/index.html
+          grep -q "portfolio-sidebar-nav" public/index.html
+          grep -q 'href="/Welcome"' public/index.html
+          grep -q 'href="/README"' public/index.html
           grep -R -q --include='*.css' -- '--wiki-red' public
 
       - name: Verify Neocities API token belongs to tawnyflor
@@ -65,3 +64,20 @@ jobs:
           cleanup: false
           neocities_supporter: false
           preview_before_deploy: true
+
+      - name: Verify live Neocities homepage
+        run: |
+          for attempt in $(seq 1 12); do
+            if curl -fsSL --max-time 15 https://tawnyflor.neocities.org/ -o /tmp/tawnyflor-home.html; then
+              if grep -q "Welcome to Tawny Flor" /tmp/tawnyflor-home.html &&
+                 grep -q "portfolio-top-nav" /tmp/tawnyflor-home.html &&
+                 grep -q "portfolio-sidebar-nav" /tmp/tawnyflor-home.html; then
+                echo "Verified live homepage, theme navigation and sidebar on tawnyflor.neocities.org."
+                exit 0
+              fi
+            fi
+            echo "Live site not updated yet (attempt $attempt/12); retrying..."
+            sleep 5
+          done
+          echo "::error::The deployed homepage could not be verified at https://tawnyflor.neocities.org/."
+          exit 1
