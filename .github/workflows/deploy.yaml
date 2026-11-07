@@ -39,6 +39,13 @@ jobs:
       - name: Build Quartz
         run: npm run build
 
+      - name: Verify generated homepage and theme
+        run: |
+          test -s public/index.html
+          grep -q "Welcome to Tawny Flor" public/index.html
+          grep -q "portfolio-top-nav" public/index.html
+          grep -R -q --include='*.css' -- '--wiki-red' public
+
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v3
         with:
