@@ -46,6 +46,17 @@ jobs:
           grep -q "portfolio-top-nav" public/index.html
           grep -R -q --include='*.css' -- '--wiki-red' public
 
+      - name: Verify Neocities API token belongs to tawnyflor
+        env:
+          NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
+        run: |
+          SITE_INFO="$(curl -fsS -H "Authorization: Bearer ${NEOCITIES_API_TOKEN}" https://neocities.org/api/info)"
+          echo "$SITE_INFO" | jq -e '.info.sitename == "tawnyflor"' >/dev/null || {
+            echo "::error::NEOCITIES_API_TOKEN is not the API key for tawnyflor.neocities.org. Update the repository secret from https://neocities.org/settings/tawnyflor#api_key."
+            exit 1
+          }
+          echo "Confirmed: deployment token belongs to tawnyflor.neocities.org."
+
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v3
         with:
