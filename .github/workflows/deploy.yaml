@@ -27,8 +27,10 @@ jobs:
       - name: Build Quartz
         run: npx quartz build
       - name: Deploy to neocities
-        uses: bcomnes/deploy-to-neocities@v2
+        uses: bcomnes/deploy-to-neocities@v3
         with:
-          api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
-          cleanup: false
-          dist_dir: content
+          api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
+    cleanup: false
+    neocities_supporter: false
+    preview_before_deploy: true
+    dist_dir: content
