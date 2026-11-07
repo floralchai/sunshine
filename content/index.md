@@ -1,5 +1,8 @@
 ---
 title: Welcome to Quartz
+cssclasses:
+  - wikipedia
+tags:
 ---
 
 This is a blank Quartz installation.
