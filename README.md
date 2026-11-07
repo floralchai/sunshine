@@ -1,4 +1,4 @@
-[Clickable Text](https://floralchai.github)
+[⟵ back to cottage](../index.html)]
 
 # sunshine
 
