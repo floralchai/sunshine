@@ -1,6 +1,9 @@
 ---
 title: Tawny Flor — Home
 description: Personal portfolio, notes and projects.
+tags:
+  - home
+  - portfolio
 cssclasses:
   - wikipedia
 ---

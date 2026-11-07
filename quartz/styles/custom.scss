@@ -171,3 +171,174 @@ img{max-width:100%;height:auto}.callout{border-radius:3px;border-left-width:4px}
   }
 }
 
+/* Fix clipped labels and links in Quartz Explorer and Table of Contents.
+   Preserve folder collapse animation while allowing expanded text to render fully. */
+.explorer {
+  overflow: visible !important;
+  min-width: 0;
+  min-height: max-content;
+  flex-shrink: 0;
+}
+
+.explorer .explorer-content {
+  overflow-x: visible !important;
+  overflow-y: auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: none;
+  height: auto;
+  scrollbar-gutter: stable;
+}
+
+.explorer .explorer-content a,
+.explorer .folder-container,
+.explorer .folder-container > div,
+.explorer .folder-container button,
+.explorer .folder-container button span,
+.explorer .folder-container div > a {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  max-height: none;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.5;
+}
+
+.explorer .folder-container {
+  align-items: flex-start;
+  gap: .2rem;
+}
+
+.explorer .folder-container > div {
+  flex: 1 1 auto;
+}
+
+.explorer .folder-container button {
+  display: block;
+  padding-block: .12rem;
+  text-align: left;
+}
+
+.explorer .folder-container button span {
+  display: inline;
+}
+
+.explorer .folder-outer.open {
+  overflow: visible;
+  min-width: 0;
+}
+
+.explorer .folder-outer.open > ul {
+  overflow: visible;
+  min-width: 0;
+}
+
+.explorer .folder-outer:not(.open) {
+  overflow: hidden;
+}
+
+.explorer .explorer-content li {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.toc {
+  overflow: visible !important;
+  min-width: 0;
+  min-height: max-content;
+  flex-shrink: 0;
+}
+
+.toc ul.toc-content,
+.toc ul.toc-content.overflow {
+  box-sizing: border-box;
+  overflow: visible !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: normal;
+  height: auto;
+  max-height: none !important;
+  min-width: 0;
+  padding: .15rem 0;
+}
+
+.toc ul.toc-content li,
+.toc ul.toc-content a {
+  box-sizing: border-box;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.5;
+  padding-block: .12rem;
+}
+
+.toc button.toc-header,
+.explorer button.explorer-toggle {
+  min-height: 2rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+@media (max-width: 800px) {
+  .explorer {
+    overflow: visible !important;
+  }
+
+  .explorer .explorer-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100dvh;
+  }
+
+  .toc ul.toc-content,
+  .toc ul.toc-content.overflow {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* Tags displayed beneath article metadata in the rainbow theme. */
+.tags,
+.tag-list,
+ul.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-block: .65rem 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tags a,
+.tag-list a,
+ul.tags a {
+  display: inline-block;
+  max-width: 100%;
+  padding: .2rem .6rem;
+  border: 1px solid var(--wiki-indigo);
+  border-radius: 999px;
+  background: #f7f5fc;
+  color: #51447d;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.tags a:hover,
+.tag-list a:hover,
+ul.tags a:hover {
+  background: #f1eefb;
+  border-color: var(--wiki-violet);
+  text-decoration: none;
+}
