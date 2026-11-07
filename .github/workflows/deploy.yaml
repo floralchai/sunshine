@@ -43,7 +43,7 @@ jobs:
         uses: bcomnes/deploy-to-neocities@v3
         with:
           api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
-          dist_dir: public
-          cleanup: false
+          dist_dir: content
+          cleanup: true
           neocities_supporter: false
           preview_before_deploy: true
