@@ -45,6 +45,10 @@ jobs:
             ${{ runner.os }}-plugins-
 
       - run: npm install
+      - name: Install deps and build
+        run: |
+          npm ci
+          npx quartz build
 
       - name: Install Quartz plugins
         run: npx quartz plugin install
