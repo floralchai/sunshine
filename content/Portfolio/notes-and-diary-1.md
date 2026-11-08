@@ -33,4 +33,4 @@ tags:
 ### `06/10/2026`
 - Doing my homework and cleaning up the dorm
 
-[⟵ back to week 1](./notes-and-diary)
+[⟵ back to week 1](../notes-and-diary)
