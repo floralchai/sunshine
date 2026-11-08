@@ -26,8 +26,16 @@ HAAAAA!!
 ### `22/09/2026`
 
 - People always have tough times!!
-- Morning is not my favourite time anymore, but the night does!!
+- Morning is not my favorite time anymore, but the night does!!
 
-***W
+***Week 3***
+### `30/09/2026`
+- The day like everyday I tried to study and achieve more goals than I thought it would be
+- This day, like every Wednesday, I got a free break yay!
+
+
+### `06/10/2026`
+
+- Doing my homework and cleaning up the dorm
 
 [⟵ back to week 1](sunshine/content/notes-and-diary)
