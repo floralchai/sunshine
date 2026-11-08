@@ -16,3 +16,5 @@ tags:
 ### Thoughts?
 
 11th Sept 2026
+
+I just got to in love with this hedgehog by 
