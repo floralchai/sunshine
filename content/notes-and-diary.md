@@ -44,3 +44,5 @@ tags:
 ### `15/09/2026`
 #### STUDYING!
 - So I’m not having much time to write this journal but this journal will be updated weekly now!!
+
+[](/Portfolio/notes-and-diary)
