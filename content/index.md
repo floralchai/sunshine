@@ -10,9 +10,9 @@ cssclasses:
 
 # Welcome to Tawny Flor
 
-Welcome to my personal website also known as Tawny Flor — a space for my portfolio, projects, notes and ideas. My main website is in 
+Welcome to my personal website also known as Tawny Flor — a space for my portfolio, projects, notes and ideas. My main website is in [here](https://floralchai.github.io/24/) named as Floralchai.
 
-This website is built with **Obsidian and Quartz**, with a Wikipedia-inspired layout and pastel rainbow accents.
+This website is built with **Obsidian and Quartz**, with a Wikipedia inspired layout and pastel rainbow accents. Love how I themed this way because it is like a rainbow gummy
 
 ## Explore the website
 
