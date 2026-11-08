@@ -641,3 +641,67 @@ ul.tags a:hover {
   border-radius: 0 !important;
 }
 
+/* Header banner stays inside the content column and never overlaps either sidebar. */
+.site-header,
+.site-header-banner,
+.site-header-title,
+.site-header .portfolio-top-nav {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.site-header-banner {
+  overflow: hidden;
+  border: 1px solid var(--wiki-border);
+}
+
+.site-header-banner img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    margin-inline: 0 !important;
+  }
+
+  .site-header-banner img {
+    max-height: 8rem;
+  }
+
+  /* Keep toolbar/search/reader icons tappable without pushing into the article. */
+  #quartz-body .sidebar.left .toolbar,
+  #quartz-body .sidebar.left [class*="toolbar"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem;
+    max-width: 100%;
+  }
+
+  #quartz-body .sidebar.left button,
+  #quartz-body .sidebar.left a,
+  #quartz-body .sidebar.left [role="button"] {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    box-sizing: border-box;
+    touch-action: manipulation;
+  }
+
+  #quartz-body .sidebar.left svg {
+    max-width: 1.35rem;
+    max-height: 1.35rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header-banner img {
+    max-height: 4.5rem;
+  }
+}
+
