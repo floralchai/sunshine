@@ -1,23 +1,68 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-const Header: QuartzComponent = ({ children }: QuartzComponentProps) => (
-  <header class="site-header">
-    <div class="site-header-banner">
-      <img
-        src="https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg"
-        alt="TawnyFlor decorative header banner"
-        loading="eager"
-        decoding="async"
-      />
-    </div>
-    <div class="site-header-title">{children}</div>
-    <nav class="portfolio-top-nav" aria-label="Main navigation">
-      <a href="/">Home</a>
-      <a href="/Welcome">Welcome</a>
-      <a href="/README">Notes</a>
-    </nav>
-  </header>
-)
+type HeaderNavigationItem = {
+  label?: string
+  link?: string
+}
+
+type HeaderSettings = {
+  banner?: string
+  navigation?: HeaderNavigationItem[]
+}
+
+const normalisePath = (value: string) => {
+  try {
+    return decodeURIComponent(value).replace(/^\/+|\/+$/g, "")
+  } catch {
+    return value.replace(/^\/+|\/+$/g, "")
+  }
+}
+
+const Header: QuartzComponent = ({ children, allFiles = [] }: QuartzComponentProps) => {
+  // The SiteHeader note is the editable source of truth for the banner and
+  // navigation. It is an ordinary Markdown note in the published vault.
+  const settingsFile = allFiles.find((file: any) =>
+    file.slug === "Portfolio/SiteHeader" || file.slug === "SiteHeader"
+  ) as any
+  const settings = (settingsFile?.frontmatter ?? {}) as HeaderSettings
+  const banner = settings.banner || "https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg"
+
+  const publishedPaths = new Set(
+    allFiles
+      .map((file: any) => normalisePath(String(file.slug ?? "")))
+      .filter(Boolean),
+  )
+
+  const navigation = (settings.navigation ?? [
+    { label: "Home", link: "/" },
+    { label: "Diary of Notes", link: "/README" },
+    { label: "Diary", link: "/Notes%20and%20Diary" },
+  ]).filter((item) => {
+    if (!item.label?.trim() || !item.link?.trim()) return false
+    if (/^https?:\/\//i.test(item.link)) return true
+    const target = normalisePath(item.link)
+    return target === "" || publishedPaths.has(target)
+  })
+
+  return (
+    <header class="site-header">
+      <div class="site-header-banner">
+        <img
+          src={banner}
+          alt="TawnyFlor decorative header banner"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <div class="site-header-title">{children}</div>
+      <nav class="portfolio-top-nav" aria-label="Main navigation">
+        {navigation.map((item) => (
+          <a href={item.link}>{item.label}</a>
+        ))}
+      </nav>
+    </header>
+  )
+}
 
 // Keep one functional Reader Mode button even when responsive layouts or
 // SPA navigation leave multiple plugin controls in the document.
@@ -27,8 +72,6 @@ Header.afterDOMLoaded = `
     const dedupeReaderMode = () => {
       const buttons = Array.from(document.querySelectorAll(selector))
 
-      // Undo only the hiding applied by this routine before recalculating which
-      // button is actually visible at the current breakpoint.
       buttons.forEach((button) => {
         if (button.dataset.readerModeDuplicate === "true") {
           button.style.removeProperty("display")
@@ -45,8 +88,6 @@ Header.afterDOMLoaded = `
           button.getClientRects().length > 0
       })
 
-      // Prefer the left-sidebar toolbar control, falling back to the first
-      // visible control if the toolbar is not present at this screen size.
       const keep = visible.find((button) =>
         button.closest("#quartz-body .sidebar.left")
       ) ?? visible[0]
