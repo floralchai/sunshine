@@ -7,7 +7,7 @@ tags:
 cssclasses:
   - wikipedia
 ---
-
+[⟵ back to floralchai](https://floralchai.github.io/24/index.html)
 # Welcome to Tawny Flor
 
 Welcome to my personal website also known as Tawny Flor — a space for my portfolio, projects, notes and ideas. My main website is in [here](https://floralchai.github.io/24/) named as Floralchai.
@@ -21,7 +21,7 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## About this website
 
-The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically. This website is like a little blog for me to express as free as I can. I would also share my 
+The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically. This website is like a little blog for me to express as free as I can. I would also share my tutorials here, just maybe?
 
 ## Link my button
 
