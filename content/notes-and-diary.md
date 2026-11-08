@@ -45,4 +45,4 @@ tags:
 #### STUDYING!
 - So I’m not having much time to write this journal but this journal will be updated weekly now!!
 
-[continue to diary ⟶](/Portfolio/notes-and-diary-1)
+[continue to diary ⟶](/Substitutes/notes-and-diary-1)
