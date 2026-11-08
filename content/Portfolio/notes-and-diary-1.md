@@ -20,18 +20,11 @@ HAAAAA!!
 ### `18/09/2026`
 
 - If the person hated me blabbing behind my back then that person is having free time? And that person has many relationships online? And I hear it? Sneeze. 
-    
 - God bless you, sneeze.
-    
 
   
 
-#22/09/2026
+### `22/09/2026`
 
 - People always have tough times!!
-    
 - Morning is not my favourite time anymore, but the night does!!
-    
-
-  
-**
