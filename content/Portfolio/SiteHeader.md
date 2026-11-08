@@ -5,9 +5,7 @@ navigation:
   - label: Home
     link: /
   - label: Diary of Notes
-    link: /Welcome
-  - label: Notes
     link: /README
   - label: Diary
-    link: /Diary
+    link: /Notes%20and%20Diary
 ---
