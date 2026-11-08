@@ -10,7 +10,7 @@ cssclasses:
 
 # Welcome to Tawny Flor
 
-Welcome to my personal website also known as Tawny Flor — a space for my portfolio, projects, notes and ideas.
+Welcome to my personal website also known as Tawny Flor — a space for my portfolio, projects, notes and ideas. My main website is in 
 
 This website is built with **Obsidian and Quartz**, with a Wikipedia-inspired layout and pastel rainbow accents.
 
