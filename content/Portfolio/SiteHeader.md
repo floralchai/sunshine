@@ -8,4 +8,6 @@ navigation:
     link: /README
   - label: Diary
     link: /Notes%20and%20Diary
+  - label: Source code
+    link: https://github.com/floralchai/sunshine
 ---
