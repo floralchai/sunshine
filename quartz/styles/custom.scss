@@ -8,7 +8,7 @@
 }
 html,body{background:#fff!important;color:#202122!important;color-scheme:light}
 html[saved-theme="dark"],html[saved-theme="dark"] body{background:#fff!important;color:#202122!important;color-scheme:light}
-body{font-family:"Source Sans Pro",Arial,sans-serif}
+body{font-family:"Source Serif 4",Georgia,serif}
 #quartz-body,.center,.left.sidebar,.right.sidebar{background:#fff;color:var(--wiki-text)}
 .center .page-header{border-top:5px solid transparent;border-image:linear-gradient(90deg,var(--wiki-red),var(--wiki-orange),var(--wiki-yellow),var(--wiki-green),var(--wiki-blue),var(--wiki-indigo),var(--wiki-violet)) 1;padding-top:.5rem}
 .center article,.center .popover-hint{color:var(--wiki-text)}
@@ -1107,4 +1107,19 @@ ul.tags a:hover {
     font-size: clamp(1.2rem, 5.5vw, 1.45rem);
     overflow-wrap: anywhere;
   }
+}
+
+
+/* Typography: Nunito headings and Source Serif 4 reading text. */
+body,
+#quartz-body .center article,
+#quartz-body .center .popover-hint {
+  font-family: "Source Serif 4", Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.site-header-title,
+.portfolio-top-nav,
+.sidebar .page-title {
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
 }
