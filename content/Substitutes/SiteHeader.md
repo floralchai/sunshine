@@ -17,4 +17,4 @@ tags:
 
 11th Sept 2026
 
-I just got to in love with this hedgehog by 
+I just got to in love with this hedgehog by the artist Nami Nashikawa. The hedgehog is named as
