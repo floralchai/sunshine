@@ -145,9 +145,11 @@ Header.css = `
   flex-wrap: wrap;
   align-items: center;
   gap: .35rem;
-  padding: .45rem .55rem;
-  border-block: 1px solid var(--lightgray);
-  background: #f3f0fa;
+  padding: .35rem 0 .45rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, #e7a0aa, #efbd91, #f1d98b, #a5cfb4, #9fc7e9, #aaa6df, #c5a5dc) 1;
+  background: transparent;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
@@ -158,12 +160,17 @@ Header.css = `
   justify-content: center;
   min-height: 44px;
   box-sizing: border-box;
-  padding: .55rem .8rem;
+  padding: .45rem .8rem .55rem;
   color: var(--secondary);
   font-weight: 600;
   text-decoration: none;
+  border-bottom: 3px solid transparent;
   touch-action: manipulation;
 }
+.portfolio-top-nav a:nth-child(4n + 1) { border-bottom-color: #e7a0aa; }
+.portfolio-top-nav a:nth-child(4n + 2) { border-bottom-color: #efbd91; }
+.portfolio-top-nav a:nth-child(4n + 3) { border-bottom-color: #a5cfb4; }
+.portfolio-top-nav a:nth-child(4n + 4) { border-bottom-color: #aaa6df; }
 .portfolio-top-nav a:hover,
 .portfolio-top-nav a:focus-visible {
   color: var(--dark);
