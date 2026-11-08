@@ -1,5 +1,5 @@
 ---
-title: Notes
+title: README
 description: Notes, updates and publishing experiments.
 tags:
   - notes
