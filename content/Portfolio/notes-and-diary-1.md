@@ -7,7 +7,7 @@ tags:
   - diary
   - notes
 ---
-
+***Week 2***
 ### `17/09/2026`
 
 HAAAAA!!
@@ -27,5 +27,7 @@ HAAAAA!!
 
 - People always have tough times!!
 - Morning is not my favourite time anymore, but the night does!!
+
+***W
 
 [⟵ back to week 1](sunshine/content/notes-and-diary)
