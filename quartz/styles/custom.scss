@@ -705,3 +705,77 @@ ul.tags a:hover {
   }
 }
 
+
+
+/* TawnyFlor header sizing: use the full ~300px banner on desktop/laptops,
+   while keeping a compact, non-overlapping banner on phones. */
+.site-header-banner {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+.site-header-banner img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 24vw, 300px);
+  min-height: 220px;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 801px) {
+  .site-header,
+  .site-header-banner {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .site-header-banner img {
+    height: clamp(250px, 23.5vw, 300px);
+    min-height: 250px;
+    max-height: 300px;
+  }
+}
+@media (max-width: 800px) {
+  .site-header-banner img {
+    height: clamp(112px, 22vw, 144px);
+    min-height: 0;
+    max-height: 144px;
+  }
+}
+@media (max-width: 420px) {
+  .site-header-banner img {
+    height: 104px;
+    min-height: 0;
+    max-height: 104px;
+  }
+}
+
+/* Reader Mode is a single control. Suppress accidental duplicate sibling
+   instances on narrow layouts without hiding the functional first button. */
+@media (max-width: 800px) {
+  .readermode ~ .readermode {
+    display: none !important;
+  }
+  .readermode {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    box-sizing: border-box;
+    flex: 0 0 44px;
+    touch-action: manipulation;
+  }
+  .readermode .readerIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    max-width: 24px;
+    max-height: 24px;
+  }
+}
