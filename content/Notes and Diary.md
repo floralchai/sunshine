@@ -8,11 +8,10 @@ tags:
   - notes
 ---
 
-**
 
 #9/09/2026
 
-Hello there!~
+#### Hello there!~
 
 - This is my diary!!
 - Talking to myself through this made me comfortable!
@@ -28,7 +27,7 @@ Hello there!~
 
 #11/09/2026
 
-### Lovely day??
+#### Lovely day??
 
 - Not fighting with anyone is fine right now yay!!
 - Nothing much today :0
@@ -37,7 +36,7 @@ Hello there!~
 
 #12/09/2026
 
-### Normie day!!
+#### Normie day!!
 - Mom gave me some food :p
 
 
@@ -50,24 +49,15 @@ Long and tough day!!    :”DDD
 
 #13/09/2026
 
-Long and tough day!!    :”DDD, repeated
+### Long and tough day!! 
 
+- :”DDD, repeated
 - What I need to learn: Mortgage, dismissals, redundancy, responsibility of employers.
-    
 - Previously learned: Legal system, civil law, common law, … etc
-    
 
-  
-  
 
 #15/09/2026
 
-STUDYING!!
+### STUDYING!
 
 - So I’m not having much time to write this journal but this journal will be updated weekly now!!
-    
-
-  
-  
-  
-**
