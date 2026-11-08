@@ -25,7 +25,9 @@ The left-hand explorer lists published pages. The navigation bar above provides 
 
 ## Link my button
 
-![[https://file.garden/ZTeNOnlIhS-zrdb1/images/tawnyflor-button.png]]
+Feel free to link my button to your site!
+
+![tawnyflor-button](sunshine/content/tawnyflor-button.png)
 
 ---
 
