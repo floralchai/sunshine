@@ -54,12 +54,12 @@ const Header: QuartzComponent = ({ children, allFiles = [] }: QuartzComponentPro
           decoding="async"
         />
       </div>
-      <div class="site-header-title">{children}</div>
       <nav class="portfolio-top-nav" aria-label="Main navigation">
         {navigation.map((item) => (
           <a href={item.link}>{item.label}</a>
         ))}
       </nav>
+      <div class="site-header-title">{children}</div>
     </header>
   )
 }
