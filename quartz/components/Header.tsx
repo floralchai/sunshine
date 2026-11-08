@@ -16,7 +16,7 @@ const Header: QuartzComponent = ({ children }: QuartzComponentProps) => {
       <nav class="portfolio-top-nav" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/README">Diary of Notes</a>
-        <a href="/Notes%20and%20Diary">Diary</a>
+        <a href="/notes-and-diary">Diary</a>
         <a href="https://github.com/floralchai/sunshine" target="_blank" rel="noopener noreferrer">Source Code</a>
       </nav>
       <div class="site-header-title">{children}</div>
