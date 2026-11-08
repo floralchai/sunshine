@@ -8,7 +8,7 @@ cssclasses:
   - wikipedia
 ---
 
-# Welcome to TawnyFlor
+# Welcome to Tawny Flor
 
 Welcome to my personal website — a space for my portfolio, projects, notes and ideas.
 
