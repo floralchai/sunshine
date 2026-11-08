@@ -20,7 +20,15 @@ export const DefaultFrame: PageFrame = {
         <div class="center">
           <div class="page-header">
             <Header {...componentData}>{header.map((HeaderComponent) => <HeaderComponent {...componentData} />)}</Header>
-            <div class="popover-hint">{beforeBody.map((BodyComponent) => <BodyComponent {...componentData} />)}</div>
+            <div class="page-header-actions-row">
+              <div class="popover-hint">{beforeBody.map((BodyComponent) => <BodyComponent {...componentData} />)}</div>
+              <nav class="page-header-actions" aria-label="Quick links">
+                <a href="/">Home</a>
+                <a href="/README">Diary of Notes</a>
+                <a href="/Notes%20and%20Diary">Diary</a>
+                <a href="https://github.com/floralchai/sunshine" target="_blank" rel="noopener noreferrer">Source code</a>
+              </nav>
+            </div>
           </div>
           <Content {...componentData} />
           <hr />
