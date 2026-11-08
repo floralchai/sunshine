@@ -19,24 +19,50 @@ const Header: QuartzComponent = ({ children }: QuartzComponentProps) => (
   </header>
 )
 
-// Keep exactly one Reader Mode control visible when responsive layout wrappers
-// produce multiple copies. The first currently visible control stays functional.
+// Keep one functional Reader Mode button even when responsive layouts or
+// SPA navigation leave multiple plugin controls in the document.
 Header.afterDOMLoaded = `
   (() => {
+    const selector = ".readermode"
     const dedupeReaderMode = () => {
-      const buttons = Array.from(document.querySelectorAll(".readermode"))
+      const buttons = Array.from(document.querySelectorAll(selector))
+
+      // Undo only the hiding applied by this routine before recalculating which
+      // button is actually visible at the current breakpoint.
+      buttons.forEach((button) => {
+        if (button.dataset.readerModeDuplicate === "true") {
+          button.style.removeProperty("display")
+          button.removeAttribute("data-reader-mode-duplicate")
+          button.removeAttribute("aria-hidden")
+          button.removeAttribute("tabindex")
+        }
+      })
+
       const visible = buttons.filter((button) => {
         const style = window.getComputedStyle(button)
-        return style.display !== "none" && style.visibility !== "hidden" && button.getClientRects().length > 0
+        return style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          button.getClientRects().length > 0
       })
-      visible.forEach((button, index) => {
-        button.style.display = index === 0 ? "" : "none"
-        if (index > 0) button.setAttribute("aria-hidden", "true")
-        else button.removeAttribute("aria-hidden")
+
+      // Prefer the left-sidebar toolbar control, falling back to the first
+      // visible control if the toolbar is not present at this screen size.
+      const keep = visible.find((button) =>
+        button.closest("#quartz-body .sidebar.left")
+      ) ?? visible[0]
+
+      visible.forEach((button) => {
+        if (button === keep) return
+        button.style.setProperty("display", "none", "important")
+        button.dataset.readerModeDuplicate = "true"
+        button.setAttribute("aria-hidden", "true")
+        button.setAttribute("tabindex", "-1")
       })
     }
+
     dedupeReaderMode()
     window.addEventListener("resize", dedupeReaderMode, { passive: true })
+    window.addEventListener("pageshow", dedupeReaderMode)
     const observer = new MutationObserver(dedupeReaderMode)
     observer.observe(document.body, { childList: true, subtree: true })
   })()
@@ -68,6 +94,8 @@ Header.css = `
   min-height: 180px;
   object-fit: cover;
   object-position: center;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 .site-header-title { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .site-header-title h1 { margin: 0; }
