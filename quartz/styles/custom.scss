@@ -826,3 +826,285 @@ ul.tags a:hover {
     justify-content: flex-start;
   }
 }
+
+
+/* ==========================================================
+   TawnyFlor mobile accessibility and consistent box alignment
+   Applies to content, folder, tag, canvas and other page types.
+   ========================================================== */
+@media (max-width: 800px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  .page,
+  .page > #quartz-body,
+  #quartz-body,
+  #quartz-body > .sidebar,
+  #quartz-body > .center,
+  #quartz-body .center,
+  #quartz-body .center article,
+  #quartz-body .center .page-header {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .page > #quartz-body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .75rem !important;
+    padding-inline: .75rem !important;
+  }
+
+  #quartz-body > .sidebar.left,
+  #quartz-body > .center,
+  #quartz-body > .sidebar.right {
+    align-self: stretch;
+    margin-inline: 0 !important;
+  }
+
+  /* Give every major mobile panel the same alignment and spacing. */
+  #quartz-body .sidebar.left,
+  #quartz-body .sidebar.right,
+  #quartz-body .center .page-header,
+  #quartz-body .center article > .callout,
+  #quartz-body .center article > blockquote,
+  #quartz-body .center article > .infobox,
+  #quartz-body .center article > .transclude,
+  #quartz-body .center article > .popover-hint,
+  #quartz-body .center article > .table-container,
+  #quartz-body .center article > .mermaid,
+  #quartz-body .center article > .excalidraw,
+  #quartz-body .center article > .canvas-container {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #quartz-body .sidebar.left,
+  #quartz-body .sidebar.right {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: .65rem !important;
+    padding: .7rem !important;
+  }
+
+  #quartz-body .sidebar.left > *,
+  #quartz-body .sidebar.right > * {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: 0 !important;
+  }
+
+  #quartz-body .sidebar.left .explorer,
+  #quartz-body .sidebar.left .search,
+  #quartz-body .sidebar.left .graph,
+  #quartz-body .sidebar.left .portfolio-sidebar-nav,
+  #quartz-body .sidebar.right .graph,
+  #quartz-body .sidebar.right .toc,
+  #quartz-body .sidebar.right .backlinks,
+  #quartz-body .sidebar.right > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    align-self: stretch;
+    margin-inline: 0 !important;
+  }
+
+  /* Standardise padding and prevent long labels from stretching a panel. */
+  #quartz-body .sidebar.left .explorer,
+  #quartz-body .sidebar.left .search,
+  #quartz-body .sidebar.left .graph,
+  #quartz-body .sidebar.left .portfolio-sidebar-nav,
+  #quartz-body .sidebar.right .graph,
+  #quartz-body .sidebar.right .toc,
+  #quartz-body .sidebar.right .backlinks {
+    padding: .7rem !important;
+    overflow-wrap: anywhere;
+  }
+
+  #quartz-body .center article {
+    padding-inline: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  #quartz-body .center article > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #quartz-body .center article img,
+  #quartz-body .center article video,
+  #quartz-body .center article iframe,
+  #quartz-body .center article canvas,
+  #quartz-body .center article svg {
+    max-width: 100%;
+  }
+
+  #quartz-body .center article img,
+  #quartz-body .center article video,
+  #quartz-body .center article iframe {
+    height: auto;
+  }
+
+  /* Embedded media and diagrams remain within the reading column. */
+  #quartz-body .center article iframe,
+  #quartz-body .center article video,
+  #quartz-body .center article .external-embed,
+  #quartz-body .center article .transclude,
+  #quartz-body .center article .excalidraw,
+  #quartz-body .center article .canvas-container,
+  #quartz-body .center article .mermaid {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #quartz-body .center article pre,
+  #quartz-body .center article .katex-display,
+  #quartz-body .center article .math {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+
+  #quartz-body .center article table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    border-collapse: collapse;
+  }
+
+  #quartz-body .center article th,
+  #quartz-body .center article td {
+    min-width: 7rem;
+    overflow-wrap: anywhere;
+  }
+
+  /* Uniform full-width cards/boxes without forcing inline text elements wide. */
+  #quartz-body .center article .callout,
+  #quartz-body .center article blockquote,
+  #quartz-body .center article .infobox,
+  #quartz-body .center article .transclude,
+  #quartz-body .center article .file-embed,
+  #quartz-body .center article .audio-embed,
+  #quartz-body .center article .video-embed,
+  #quartz-body .center article .image-embed {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: 0;
+    overflow-wrap: anywhere;
+  }
+
+  #quartz-body .center article .callout,
+  #quartz-body .center article blockquote,
+  #quartz-body .center article .infobox {
+    padding: .8rem;
+  }
+
+  /* Touch targets: links in navigation, controls and disclosure summaries. */
+  .portfolio-top-nav a,
+  #quartz-body .sidebar button,
+  #quartz-body .sidebar [role="button"],
+  #quartz-body .sidebar summary,
+  #quartz-body .sidebar input,
+  #quartz-body .sidebar select,
+  #quartz-body .sidebar textarea,
+  #quartz-body .center article button,
+  #quartz-body .center article summary,
+  #quartz-body .center article input,
+  #quartz-body .center article select,
+  #quartz-body .center article textarea {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  #quartz-body .sidebar a,
+  #quartz-body .center article a {
+    overflow-wrap: anywhere;
+    text-underline-offset: .18em;
+  }
+
+  #quartz-body .sidebar a:focus-visible,
+  #quartz-body .sidebar button:focus-visible,
+  #quartz-body .sidebar summary:focus-visible,
+  #quartz-body .center article a:focus-visible,
+  #quartz-body .center article button:focus-visible,
+  #quartz-body .center article summary:focus-visible {
+    outline: 2px solid #6756a8;
+    outline-offset: 3px;
+  }
+
+  /* Keep the mobile search trigger/input and its popover within the viewport. */
+  #quartz-body .sidebar.left .search,
+  #quartz-body .sidebar.left .search > *,
+  #quartz-body .sidebar.left .search input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .search > .search-container {
+    position: fixed;
+    inset-inline: .5rem;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100dvh - 1rem);
+    overflow: auto;
+  }
+
+  /* Prevent a wide graph or table from widening the entire page. */
+  #quartz-body .graph,
+  #quartz-body .graph-container,
+  #quartz-body .toc,
+  #quartz-body .backlinks,
+  #quartz-body .explorer {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #quartz-body .graph svg,
+  #quartz-body .graph-container svg {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .page > #quartz-body {
+    padding-inline: .55rem !important;
+    gap: .6rem !important;
+  }
+
+  #quartz-body .sidebar.left,
+  #quartz-body .sidebar.right {
+    padding: .55rem !important;
+  }
+
+  #quartz-body .center article > h1 {
+    font-size: clamp(1.45rem, 7vw, 1.7rem);
+    overflow-wrap: anywhere;
+  }
+
+  #quartz-body .center article h2 {
+    font-size: clamp(1.2rem, 5.5vw, 1.45rem);
+    overflow-wrap: anywhere;
+  }
+}
