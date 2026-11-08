@@ -1,9 +1,11 @@
 ---
 title: Diary
-description: My daily
+description: My little journal and notes keeping
 tags:
   - welcome
   - about
+  - diary
+  - notes
 ---
 
 **
@@ -21,34 +23,23 @@ Hello there!~
 #10/09/2026
 
 - Just went to the market to buy two bowls of rice stewy soup?
-    
 - There is a list of things I bought today as usual =)
-    
 
-  
 
 #11/09/2026
 
-Lovely day??
+### Lovely day??
 
 - Not fighting with anyone is fine right now yay!!
-    
 - Nothing much today :0
-    
 - Hmmmmmmm?
-    
-
   
 
 #12/09/2026
 
-Normie day!!
-
+### Normie day!!
 - Mom gave me some food :p
-    
 
-  
-  
 
 #14/09/2026
 
