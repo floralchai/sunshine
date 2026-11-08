@@ -1,4 +1,3 @@
-
 ---
 title: Site Header
 banner: https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg
@@ -9,4 +8,6 @@ navigation:
     link: /README
   - label: Diary
     link: /Notes%20and%20Diary
+  - label: Source code
+    link: https://github.com/floralchai/sunshine
 ---
