@@ -7,8 +7,6 @@ tags:
   - diary
   - notes
 ---
-
-
 ### `9/09/2026`
 #### Hello there!~
 - This is my diary!!
