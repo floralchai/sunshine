@@ -1,4 +1,3 @@
-
 ---
 title: Site Header
 banner: https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg
