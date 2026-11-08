@@ -12,7 +12,7 @@ export const DefaultFrame: PageFrame = {
             <h2>Navigation</h2>
             <a href="/">Home</a>
             <a href="/README">Diary of Notes</a>
-            <a href="/Notes%20and%20Diary">Diary</a>
+            <a href="/notes-and-diary">Diary</a>
             <a href="https://github.com/floralchai/sunshine" target="_blank" rel="noopener noreferrer">Source code</a>
           </nav>
           {left.map((BodyComponent) => <BodyComponent {...componentData} />)}
