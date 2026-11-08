@@ -16,8 +16,8 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## Explore the website
 
-- [Notes and Diary](sunshine/content/Notes and Diary) — journal and keeping notes.
-- [README](/README) — README because it is important to read.
+- [Notes and Diary](Notes and Diary) — journal and keeping notes.
+- [README](README) — README because it is important to read.
 
 ## About this website
 
@@ -27,7 +27,7 @@ The left-hand explorer lists published pages. The navigation bar above provides 
 
 Feel free to link my button to your site!
 
-![tawnyflor-button](sunshine/content/tawnyflor-button.png)
+![tawnyflor-button](tawnyflor-button.png)
 
 ---
 
