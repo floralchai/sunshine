@@ -1,5 +1,5 @@
 ---
-title: Diary Week 2
+title: Diary Week 2 and 3
 description: My little journal and notes keeping
 tags:
   - welcome
