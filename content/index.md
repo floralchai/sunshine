@@ -16,8 +16,8 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## Explore the website
 
-- [Welcome](/not) — introductory note and starting point.
-- [Notes](/README) — published notes and updates.
+- [Notes and Diary](sunshine/content/Notes and Diary) — introductory note and starting point.
+- [README](/README) — published notes and updates.
 
 ## About this website
 
