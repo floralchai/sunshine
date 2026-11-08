@@ -19,6 +19,29 @@ const Header: QuartzComponent = ({ children }: QuartzComponentProps) => (
   </header>
 )
 
+// Keep exactly one Reader Mode control visible when responsive layout wrappers
+// produce multiple copies. The first currently visible control stays functional.
+Header.afterDOMLoaded = `
+  (() => {
+    const dedupeReaderMode = () => {
+      const buttons = Array.from(document.querySelectorAll(".readermode"))
+      const visible = buttons.filter((button) => {
+        const style = window.getComputedStyle(button)
+        return style.display !== "none" && style.visibility !== "hidden" && button.getClientRects().length > 0
+      })
+      visible.forEach((button, index) => {
+        button.style.display = index === 0 ? "" : "none"
+        if (index > 0) button.setAttribute("aria-hidden", "true")
+        else button.removeAttribute("aria-hidden")
+      })
+    }
+    dedupeReaderMode()
+    window.addEventListener("resize", dedupeReaderMode, { passive: true })
+    const observer = new MutationObserver(dedupeReaderMode)
+    observer.observe(document.body, { childList: true, subtree: true })
+  })()
+`
+
 Header.css = `
 .site-header {
   display: flex;
