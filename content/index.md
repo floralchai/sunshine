@@ -19,6 +19,7 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 - [Home](/) — return to the homepage.
 - [Diary of Notes](/README) — README and site notes.
 - [Diary](/Notes%20and%20Diary) — personal journal and daily notes.
+- [Source code](https://github.com/floralchai/sunshine) — view the website repository.
 
 ## About this website
 
