@@ -21,7 +21,7 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## About this website
 
-The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically. This website is like a little blog for me to express as free as I can
+The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically. This website is like a little blog for me to express as free as I can. I would also share my 
 
 ## Link my button
 
