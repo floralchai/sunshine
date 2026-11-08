@@ -1,5 +1,5 @@
 ---
-title: Site Header
+title: I just wanna smile as the sun bright
 banner: https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg
 navigation:
   - label: Home
