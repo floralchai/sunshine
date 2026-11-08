@@ -16,6 +16,7 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## Explore the website
 
+- [Home](/) — return to the homepage.
 - [Diary of Notes](/README) — README and site notes.
 - [Diary](/Notes%20and%20Diary) — personal journal and daily notes.
 
