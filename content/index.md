@@ -12,7 +12,7 @@ cssclasses:
 
 Welcome to my personal website also known as Tawny Flor — a space for my portfolio, projects, notes and ideas. My main website is in [here](https://floralchai.github.io/24/) named as Floralchai.
 
-This website is built with **Obsidian and Quartz**, with a Wikipedia inspired layout and pastel rainbow accents. Love how I themed this way because it is like a rainbow gummy
+This website is built with **Obsidian and Quartz**, with a Wikipedia inspired layout and pastel rainbow accents. Love how I themed this way because it is like long rainbow gummies for me.
 
 ## Explore the website
 
@@ -21,7 +21,7 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## About this website
 
-The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically.
+The left-hand explorer lists published pages. The navigation bar above provides quick links to the main sections. As more notes are published from the Portfolio folder, they can appear in the explorer automatically. This website is like a little blog for me to express as free as I can
 
 ## Link my button
 
