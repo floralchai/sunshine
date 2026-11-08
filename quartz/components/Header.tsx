@@ -1,48 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-type HeaderNavigationItem = {
-  label?: string
-  link?: string
-}
-
-type HeaderSettings = {
-  banner?: string
-  navigation?: HeaderNavigationItem[]
-}
-
-const normalisePath = (value: string) => {
-  try {
-    return decodeURIComponent(value).replace(/^\/+|\/+$/g, "")
-  } catch {
-    return value.replace(/^\/+|\/+$/g, "")
-  }
-}
-
-const Header: QuartzComponent = ({ children, allFiles = [] }: QuartzComponentProps) => {
-  // The SiteHeader note is the editable source of truth for the banner and
-  // navigation. It is an ordinary Markdown note in the published vault.
-  const settingsFile = allFiles.find((file: any) =>
-    file.slug === "Portfolio/SiteHeader" || file.slug === "SiteHeader"
-  ) as any
-  const settings = (settingsFile?.frontmatter ?? {}) as HeaderSettings
-  const banner = settings.banner || "https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg"
-
-  const publishedPaths = new Set(
-    allFiles
-      .map((file: any) => normalisePath(String(file.slug ?? "")))
-      .filter(Boolean),
-  )
-
-  const navigation = (settings.navigation ?? [
-    { label: "Home", link: "/" },
-    { label: "Diary of Notes", link: "/README" },
-    { label: "Diary", link: "/Notes%20and%20Diary" },
-  ]).filter((item) => {
-    if (!item.label?.trim() || !item.link?.trim()) return false
-    if (/^https?:\/\//i.test(item.link)) return true
-    const target = normalisePath(item.link)
-    return target === "" || publishedPaths.has(target)
-  })
+const Header: QuartzComponent = ({ children }: QuartzComponentProps) => {
+  const banner = "https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg"
 
   return (
     <header class="site-header">
@@ -54,12 +13,13 @@ const Header: QuartzComponent = ({ children, allFiles = [] }: QuartzComponentPro
           decoding="async"
         />
       </div>
-      <div class="site-header-title">{children}</div>
       <nav class="portfolio-top-nav" aria-label="Main navigation">
-        {navigation.map((item) => (
-          <a href={item.link}>{item.label}</a>
-        ))}
+        <a href="/">Home</a>
+        <a href="/README">Diary of Notes</a>
+        <a href="/Notes%20and%20Diary">Diary</a>
+        <a href="https://github.com/floralchai/sunshine" target="_blank" rel="noopener noreferrer">Source Code</a>
       </nav>
+      <div class="site-header-title">{children}</div>
     </header>
   )
 }
@@ -145,9 +105,11 @@ Header.css = `
   flex-wrap: wrap;
   align-items: center;
   gap: .35rem;
-  padding: .45rem .55rem;
-  border-block: 1px solid var(--lightgray);
-  background: #f3f0fa;
+  padding: .35rem 0 .45rem;
+  border: 0;
+  border-bottom: 4px solid transparent;
+  border-image: none;
+  background: linear-gradient(90deg, #e7a0aa, #efbd91, #f1d98b, #a5cfb4, #9fc7e9, #aaa6df, #c5a5dc) left bottom / 100% 4px no-repeat;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
@@ -158,10 +120,11 @@ Header.css = `
   justify-content: center;
   min-height: 44px;
   box-sizing: border-box;
-  padding: .55rem .8rem;
+  padding: .45rem .8rem .55rem;
   color: var(--secondary);
   font-weight: 600;
   text-decoration: none;
+  border-bottom: 0;
   touch-action: manipulation;
 }
 .portfolio-top-nav a:hover,
