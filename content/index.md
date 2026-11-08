@@ -25,7 +25,7 @@ The left-hand explorer lists published pages. The navigation bar above provides 
 
 ## Link my button
 
-![](TawnyFlor-button.png)
+
 
 ---
 
