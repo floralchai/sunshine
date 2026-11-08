@@ -88,15 +88,10 @@ Header.css = `
   overflow: hidden;
 }
 .site-header-banner img {
-  display: block;
   width: 100%;
-  max-width: 100%;
-  height: min(300px, 24vw);
-  min-height: 180px;
+  height: 300px;
   object-fit: cover;
-  object-position: center;
   image-rendering: pixelated;
-  image-rendering: crisp-edges;
 }
 .site-header-title { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .site-header-title h1 { margin: 0; }
