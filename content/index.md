@@ -16,7 +16,7 @@ This website is built with **Obsidian and Quartz**, with a Wikipedia inspired la
 
 ## Explore the website
 
-- [Notes and Diary](/Notes and Diary) — journal and keeping notes.
+- [Notes and Diary](Notes%20and%20Diary) — journal and keeping notes.
 - [README](README) — README because it is important to read.
 
 ## About this website
