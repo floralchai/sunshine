@@ -9,7 +9,7 @@ tags:
 ---
 
 
-#9/09/2026
+### `9/09/2026`
 #### Hello there!~
 - This is my diary!!
 - Talking to myself through this made me comfortable!
