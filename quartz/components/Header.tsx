@@ -1,5 +1,8 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
+const Header: QuartzComponent = ({ children }: QuartzComponentProps) => {
+  const banner = "https://file.garden/ZTeNOnlIhS-zrdb1/images/clamp.jpg"
+
   return (
     <header class="site-header">
       <div class="site-header-banner">
