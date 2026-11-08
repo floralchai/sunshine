@@ -21,5 +21,6 @@ I just got to in love with this hedgehog by the artist Nami Nashikawa. The hedge
 ![hedgehog](hedgehog.jpg)
 
 #### Side story
-Having three row in walking this Sunday. It is such a free-blast hehe. I also used an app to track my walking too. This app is called "Walking Charlie", 
+
+Having three row in walking this Sunday. It is such a free-blast hehe. I also used an app to track my walking too. This app is called "Walking Charlie", with pixel customization and a bar every time you walk or run. 
 
