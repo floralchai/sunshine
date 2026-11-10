@@ -7,7 +7,7 @@ export const DefaultFrame: PageFrame = {
   render({ componentData, header, beforeBody, pageBody: Content, afterBody, left, right, footer }: PageFrameProps) {
     return (
       <>
-        <div class="left sidebar">
+        <aside class="left sidebar" aria-label="Left sidebar navigation and tools" tabindex="0">
           <nav class="portfolio-sidebar-nav" aria-label="Portfolio navigation">
             <h2>Navigation</h2>
             <a href="/">Home</a>
@@ -16,7 +16,7 @@ export const DefaultFrame: PageFrame = {
             <a href="https://github.com/floralchai/sunshine" target="_blank" rel="noopener noreferrer">Source code</a>
           </nav>
           {left.map((BodyComponent) => <BodyComponent {...componentData} />)}
-        </div>
+        </aside>
         <div class="center">
           <div class="page-header">
             <Header {...componentData}>{header.map((HeaderComponent) => <HeaderComponent {...componentData} />)}</Header>
