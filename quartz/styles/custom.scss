@@ -1168,3 +1168,72 @@ h1, h2, h3, h4, h5, h6,
     overflow: visible;
   }
 }
+
+
+/* Accessible desktop sidebar: fit the viewport and scroll as one region. */
+@media (min-width: 801px) {
+  #quartz-body > .sidebar.left {
+    position: sticky;
+    top: 0.75rem;
+    align-self: start;
+    box-sizing: border-box;
+    height: calc(100vh - 1.5rem);
+    height: calc(100dvh - 1.5rem);
+    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #9b83bd #f3f0fa;
+    scroll-padding-block: .75rem;
+  }
+
+  #quartz-body > .sidebar.left > * {
+    flex-shrink: 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #quartz-body > .sidebar.left:focus-visible {
+    outline: 3px solid #6756a8;
+    outline-offset: 3px;
+  }
+
+  #quartz-body > .sidebar.left:focus-within {
+    scroll-behavior: auto;
+  }
+
+  #quartz-body > .sidebar.left::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #quartz-body > .sidebar.left::-webkit-scrollbar-thumb {
+    background: #9b83bd;
+    border: 2px solid #f3f0fa;
+  }
+
+  #quartz-body > .sidebar.left::-webkit-scrollbar-track {
+    background: #f3f0fa;
+  }
+
+  #quartz-body > .sidebar.left a,
+  #quartz-body > .sidebar.left button,
+  #quartz-body > .sidebar.left summary,
+  #quartz-body > .sidebar.left input {
+    scroll-margin-block: .5rem;
+  }
+}
+
+/* Mobile/tablet: do not trap the sidebar in a fixed-height scroll region. */
+@media (max-width: 800px) {
+  #quartz-body > .sidebar.left {
+    position: static;
+    inset: auto;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    overscroll-behavior: auto;
+  }
+}
