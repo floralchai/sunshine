@@ -1123,3 +1123,48 @@ h1, h2, h3, h4, h5, h6,
 .sidebar .page-title {
   font-family: "Nunito", "Trebuchet MS", sans-serif;
 }
+
+
+/* Desktop: make the entire left sidebar independently vertically scrollable. */
+@media (min-width: 801px) {
+  #quartz-body > .sidebar.left {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+    height: calc(100vh - 2rem);
+    max-height: calc(100vh - 2rem);
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #c5a5dc transparent;
+  }
+
+  #quartz-body > .sidebar.left > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #quartz-body > .sidebar.left::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #quartz-body > .sidebar.left::-webkit-scrollbar-thumb {
+    background: #c5a5dc;
+  }
+
+  #quartz-body > .sidebar.left::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* On smaller screens, retain the existing natural page scrolling. */
+@media (max-width: 800px) {
+  #quartz-body > .sidebar.left {
+    position: static;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+}
