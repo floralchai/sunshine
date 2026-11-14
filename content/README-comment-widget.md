@@ -1,7 +1,8 @@
 # Obsidian Publish comment widget — installation
 
 ## To begin
-You might want to follow https://virtualobserver.moe/ayano/comment-widget aka Virtual Observer tutorial if you have obsidian publish and an old Neocities acco
+
+You might want to follow https://virtualobserver.moe/ayano/comment-widget aka Virtual Observer tutorial if you have Obsidian Publish and an old Neocities account before 2022. For me I made my comments using prompts and Waline. My whole site is more complicated than this.
 
 ## Required Publish files
 
