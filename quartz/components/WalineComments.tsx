@@ -104,14 +104,14 @@ const WalineComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => 
         A little corner to leave a note, share an idea, or say hello.
       </p>
       <div class="waline-feeling-prompt" aria-label="A few feelings to inspire your comment">
-        <p class="waline-feeling-title">What do you feel about this?</p>
+        <p class="waline-feeling-title">How do you feel about this?</p>
         <div class="waline-feeling-chips">
           <span class="waline-feeling-chip waline-feeling-pink">♡ Love it</span>
           <span class="waline-feeling-chip waline-feeling-peach">✿ Enjoyed it</span>
           <span class="waline-feeling-chip waline-feeling-lilac">✧ Interesting</span>
           <span class="waline-feeling-chip waline-feeling-mint">☁ Still thinking</span>
         </div>
-        <p class="waline-feeling-hint">Pick a feeling, then tell me what is on your mind.</p>
+        <p class="waline-feeling-hint">A little reaction is a lovely start — share a few words below.</p>
       </div>
       {WALINE_SERVER_URL ? (
         <>
@@ -270,14 +270,54 @@ WalineComments.css = `
   border-radius: 6px;
 }
 .waline-comments #waline-comments-mount .wl-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: 1rem;
   padding: 1rem;
   border: 2px solid #efdce9 !important;
-  border-radius: 12px;
+  border-radius: 12px !important;
   background: linear-gradient(145deg, #fffafc 0%, #fbf9ff 58%, #f6fcf8 100%);
 }
 .waline-comments #waline-comments-mount .wl-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem;
+  margin: 0;
+  padding: 0 0 .85rem;
   border-bottom: 1px dashed #e8d8e9;
+}
+.waline-comments #waline-comments-mount .wl-header-item {
+  flex: 1 1 12rem;
+  min-width: 0;
+  margin: 0 !important;
+}
+.waline-comments #waline-comments-mount .wl-editor {
+  margin: 0 !important;
+}
+.waline-comments #waline-comments-mount .wl-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin: 0 !important;
+  padding-top: .25rem;
+}
+.waline-comments #waline-comments-mount .wl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem;
+}
+.waline-comments #waline-comments-mount .wl-panel *,
+.waline-comments #waline-comments-mount .wl-card {
+  border-radius: 8px !important;
+}
+.waline-comments #waline-comments-mount .wl-panel .wl-btn,
+.waline-comments #waline-comments-mount .wl-panel .wl-btn.primary {
+  border-radius: 8px !important;
 }
 .waline-comments #waline-comments-mount .wl-input,
 .waline-comments #waline-comments-mount .wl-textarea,
