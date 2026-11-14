@@ -106,20 +106,22 @@ function setWalineStatus(target, message, visible = true) {
 
 function watchWalineReady(target) {
   state.loadingObserver?.disconnect();
+  state.loadingObserver = null;
   const markReady = () => {
     if (!target.isConnected) {
       state.loadingObserver?.disconnect();
       state.loadingObserver = null;
-      return;
+      return true;
     }
     if (target.querySelector(".wl-panel, .wl-cards, .wl-list")) {
       setWalineStatus(target, "", false);
       state.loadingObserver?.disconnect();
       state.loadingObserver = null;
+      return true;
     }
+    return false;
   };
-  markReady();
-  if (!state.loadingObserver && target.isConnected) {
+  if (!markReady()) {
     state.loadingObserver = new MutationObserver(markReady);
     state.loadingObserver.observe(target, { childList: true, subtree: true });
   }
