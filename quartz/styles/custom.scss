@@ -1368,3 +1368,43 @@ html {
     scroll-behavior: auto;
   }
 }
+
+
+/* Keep the TOC list vertically scrollable within the available viewport. */
+.toc ul.toc-content,
+.toc ul.toc-content.overflow {
+  scrollbar-gutter: stable;
+  scrollbar-color: #bda2d6 #f7f2fa;
+}
+
+.toc ul.toc-content::-webkit-scrollbar,
+.toc ul.toc-content.overflow::-webkit-scrollbar {
+  width: 8px;
+}
+
+.toc ul.toc-content::-webkit-scrollbar-thumb,
+.toc ul.toc-content.overflow::-webkit-scrollbar-thumb {
+  background: #bda2d6;
+  border: 2px solid #f7f2fa;
+}
+
+.toc ul.toc-content::-webkit-scrollbar-track,
+.toc ul.toc-content.overflow::-webkit-scrollbar-track {
+  background: #f7f2fa;
+}
+
+@supports (height: 100dvh) {
+  .toc ul.toc-content,
+  .toc ul.toc-content.overflow {
+    max-height: min(55vh, 26rem, calc(100dvh - 12rem)) !important;
+    overflow-y: auto !important;
+  }
+
+  @media (max-width: 800px) {
+    .toc ul.toc-content,
+    .toc ul.toc-content.overflow {
+      max-height: min(45vh, 20rem, calc(100dvh - 9rem)) !important;
+      overflow-y: auto !important;
+    }
+  }
+}
