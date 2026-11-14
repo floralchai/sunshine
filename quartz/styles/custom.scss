@@ -1464,3 +1464,42 @@ html {
     overscroll-behavior: auto;
   }
 }
+
+
+/* Mobile layout: center the page body and prevent viewport-level horizontal
+   overflow while keeping intentionally scrollable content inside its panels. */
+@media (max-width: 800px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  #quartz-body {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: auto;
+    align-items: center;
+    overflow-x: clip;
+  }
+
+  #quartz-body > .sidebar.left,
+  #quartz-body > .center,
+  #quartz-body > .sidebar.right {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: auto !important;
+  }
+
+  #quartz-body .center article,
+  #quartz-body .center .page-header {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: auto;
+  }
+}
