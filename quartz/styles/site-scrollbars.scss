@@ -1,0 +1,41 @@
+/*
+ * Site-wide scrollbar styling, retained from the former Google Sheets widget.
+ * Kept independent from the comment provider so it continues to apply globally.
+ */
+
+:root {
+  --site-scroll-track: #f3f0fa;
+  --site-scroll-thumb: #c5a5dc;
+  --site-scroll-thumb-hover: #aaa6df;
+}
+
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--site-scroll-thumb) var(--site-scroll-track);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--site-scroll-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--site-scroll-thumb);
+  border: 2px solid var(--site-scroll-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--site-scroll-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--site-scroll-track);
+}
