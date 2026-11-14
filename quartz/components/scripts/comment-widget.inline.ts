@@ -68,7 +68,7 @@
     const s_noCommentsText = 'No comments yet';
     const s_closedCommentsText = 'Comments are closed temporarily';
     const s_errorText = 'Could not load comments right now. Please try again later.';
-    const s_errorHelpText = 'Check that the Google response Sheet is shared as “Anyone with the link: Viewer” and that its first row contains Timestamp, Name, Website, Text, Page, and Reply.';
+    const s_errorHelpText = 'Check that the Google response spreadsheet is shared as “Anyone with the link: Viewer” and that its first row contains Timestamp, Name, Website, Text, Page, and Reply.';
     const s_websiteText = 'Website';
     const s_replyButtonText = 'Reply';
     const s_replyingText = 'Replying to';
@@ -211,7 +211,8 @@
                 const sheetData = parseVisualizationResponse(responseText);
                 const columns = sheetData.table && sheetData.table.cols;
                 const rows = sheetData.table && sheetData.table.rows;
-                if (!Array.isArray(columns) || columns[1]?.label !== 'Name' || !Array.isArray(rows)) {
+                const expectedHeaders = ['Timestamp', 'Name', 'Website', 'Text', 'Reply'];
+                if (!Array.isArray(columns) || !expectedHeaders.every((label, index) => columns[index]?.label === label) || !Array.isArray(rows)) {
                     throw new Error('Unexpected Google Sheet response. Check the response tab and column headers.');
                 }
 
