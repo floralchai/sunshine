@@ -219,7 +219,7 @@ plugins:
       priority: 5
       condition: not-index
   - source: "@quartz-community/comments"
-    # Enable after Discussions is switched on and the category ID is filled in.
+    # The prebuild script resolves the repository-specific category ID from Giscus.
     enabled: true
     options:
       provider: giscus
