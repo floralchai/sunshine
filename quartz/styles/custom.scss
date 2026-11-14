@@ -1283,3 +1283,41 @@ footer ul a[href$="/index.xml"]:focus-visible {
   outline: 2px solid #6756a8;
   outline-offset: 3px;
 }
+
+/* Keep long Table of Contents lists usable without letting them grow
+   indefinitely; the list itself scrolls while its header stays visible. */
+.toc ul.toc-content,
+.toc ul.toc-content.overflow {
+  box-sizing: border-box;
+  max-height: min(55vh, 26rem) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #c5a5dc transparent;
+}
+
+.toc ul.toc-content::-webkit-scrollbar,
+.toc ul.toc-content.overflow::-webkit-scrollbar {
+  width: 6px;
+}
+
+.toc ul.toc-content::-webkit-scrollbar-thumb,
+.toc ul.toc-content.overflow::-webkit-scrollbar-thumb {
+  background: #c5a5dc;
+}
+
+.toc ul.toc-content::-webkit-scrollbar-track,
+.toc ul.toc-content.overflow::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 800px) {
+  .toc ul.toc-content,
+  .toc ul.toc-content.overflow {
+    max-height: min(45vh, 20rem) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+}
+
