@@ -53,13 +53,17 @@ function applyChiikawaAvatars() {
   const root = document.getElementById("waline-comments-mount");
   if (!root) return;
 
-  root.querySelectorAll(".wl-card").forEach((card) => {
-    const avatar = card.querySelector(".wl-avatar img, img.wl-avatar, .wl-user img");
+  // Match Waline v3 avatar markup directly instead of relying on one
+  // particular comment-card wrapper. This includes older comments and replies.
+  root.querySelectorAll("img.wl-avatar, .wl-avatar img, .wl-user img").forEach((avatar) => {
     if (!(avatar instanceof HTMLImageElement) || avatar.dataset.chiikawaAvatar === "true") return;
 
-    const nickname = card.querySelector(".wl-nick")?.textContent?.trim()
-      || card.querySelector(".wl-user")?.textContent?.trim()
-      || card.textContent?.trim()
+    const comment = avatar.closest(".wl-card, .wl-card-item, .wl-item, .wl-comment")
+      || avatar.parentElement?.parentElement
+      || root;
+    const nickname = comment.querySelector(".wl-nick")?.textContent?.trim()
+      || comment.querySelector(".wl-user")?.textContent?.trim()
+      || avatar.getAttribute("alt")?.trim()
       || "little visitor";
 
     // Stable pseudo-random assignment: the same nickname keeps the same character.
@@ -71,17 +75,26 @@ function applyChiikawaAvatars() {
     const chosen = chiikawaAvatarFiles[(hash >>> 0) % chiikawaAvatarFiles.length];
     avatar.dataset.chiikawaAvatar = "true";
     avatar.src = "https://tawnyflor.neocities.org/static/waline-avatars/" + chosen;
-    avatar.alt = "Cute pixel character profile";
+    avatar.alt = nickname + " profile avatar";
     avatar.loading = "lazy";
   });
 }
 
 function watchChiikawaAvatars() {
   const root = document.getElementById("waline-comments-mount");
-  if (!root || state.avatarObserver) return;
+  if (!root) return;
+
+  // Reuse the observer while this comment mount remains active.
+  if (state.avatarObserver?.root === root) {
+    applyChiikawaAvatars();
+    return;
+  }
+  state.avatarObserver?.disconnect();
   applyChiikawaAvatars();
-  state.avatarObserver = new MutationObserver(() => applyChiikawaAvatars());
-  state.avatarObserver.observe(root, { childList: true, subtree: true });
+  const observer = new MutationObserver(() => applyChiikawaAvatars());
+  observer.observe(root, { childList: true, subtree: true });
+  state.avatarObserver = observer;
+  state.avatarObserver.root = root;
 }
 
 function mountWaline() {
@@ -437,9 +450,9 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-meta {
   color: #8b7c91;
 }
-.waline-comments #waline-comments-mount .wl-card .wl-avatar img,
-.waline-comments #waline-comments-mount .wl-card img.wl-avatar,
-.waline-comments #waline-comments-mount .wl-card .wl-user img {
+.waline-comments #waline-comments-mount img.wl-avatar,
+.waline-comments #waline-comments-mount .wl-avatar img,
+.waline-comments #waline-comments-mount .wl-user img {
   width: 2.7rem;
   height: 2.7rem;
   object-fit: contain;
