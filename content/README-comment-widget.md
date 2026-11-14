@@ -2,7 +2,7 @@
 
 ## To begin
 
-You might want to follow https://virtualobserver.moe/ayano/comment-widget aka Virtual Observer tutorial if you have Obsidian Publish and an old Neocities account before 2022. For me I made my comments using prompts and Waline. My whole site is more complicated than this.
+You might want to follow https://virtualobserver.moe/ayano/comment-widget a.k.a. Virtual Observer tutorial for a comment widget if you have Obsidian Publish and an old Neocities account before 2022. For me I made my comments using prompts and Waline. My whole site is more complicated than this. You might want to ask an AI for confused situ
 
 ## Required Publish files
 
