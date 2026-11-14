@@ -12,7 +12,7 @@
 
     REQUIREMENTS
     - The Google Form must have questions titled EXACTLY:
-      Name, Website, Text, Page, Reply
+      Name, Email, Website, Text, Page, Reply
     - The responses Sheet must be shared as "Anyone with the link: Viewer".
 */
 
@@ -25,8 +25,8 @@
     const s_emailId = '1171504669';
     const s_websiteId = '298311877';
     const s_textId = '1302608640';
-    const s_pageId = '655547644';
-    const s_replyId = '2137349924';
+    const s_pageId = '1321010839';
+    const s_replyId = '765136269';
     const s_sheetId = '1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag';
 
     // Timestamps
@@ -207,9 +207,10 @@
                 pageInput.value = pagePath;
             }
 
-            // Columns: A Timestamp, B Name, C Website, D Text, E Page, F Reply.
+            // Columns: A Timestamp, B Name, C Email, D Website, E Text, F Page, G Reply.
+            // Email is deliberately not displayed; it is included in the sheet but excluded from public comment output.
             const safePath = pagePath.replace(/'/g, "''");
-            const query = `SELECT A, B, C, D, F WHERE E = '${safePath}'`;
+            const query = `SELECT A, B, D, E, G WHERE F = '${safePath}'`;
             const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:csv&tq=${encodeURIComponent(query)}&headers=1&_=${Date.now()}`;
 
             return getSheet(url).then(function (csvText) {
