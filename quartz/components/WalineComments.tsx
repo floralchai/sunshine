@@ -103,6 +103,16 @@ const WalineComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => 
       <p class="waline-comments-intro">
         A little corner to leave a note, share an idea, or say hello.
       </p>
+      <div class="waline-feeling-prompt" aria-label="A few feelings to inspire your comment">
+        <p class="waline-feeling-title">What do you feel about this?</p>
+        <div class="waline-feeling-chips">
+          <span class="waline-feeling-chip waline-feeling-pink">♡ Love it</span>
+          <span class="waline-feeling-chip waline-feeling-peach">✿ Enjoyed it</span>
+          <span class="waline-feeling-chip waline-feeling-lilac">✧ Interesting</span>
+          <span class="waline-feeling-chip waline-feeling-mint">☁ Still thinking</span>
+        </div>
+        <p class="waline-feeling-hint">Pick a feeling, then tell me what is on your mind.</p>
+      </div>
       {WALINE_SERVER_URL ? (
         <>
           <link rel="stylesheet" href={WALINE_CLIENT_CSS} />
@@ -143,6 +153,62 @@ WalineComments.css = `
   margin: .25rem 0 1rem;
   color: #77717f;
   font-size: .95rem;
+}
+.waline-feeling-prompt {
+  margin: 1rem 0 1.15rem;
+  padding: 1rem 1.1rem;
+  border: 2px solid #f0dce9;
+  border-radius: 12px;
+  background: linear-gradient(125deg, #fff7fa 0%, #fbf8ff 55%, #f4fbf7 100%);
+}
+.waline-feeling-title {
+  margin: 0 0 .7rem;
+  color: #685276;
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.waline-feeling-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.waline-feeling-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .38rem .72rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.waline-feeling-pink {
+  color: #a95f7b;
+  background: #fff0f5;
+  border-color: #edc2d2;
+}
+.waline-feeling-peach {
+  color: #986b4d;
+  background: #fff5e9;
+  border-color: #efd4b5;
+}
+.waline-feeling-lilac {
+  color: #75629c;
+  background: #f4efff;
+  border-color: #d8c9ef;
+}
+.waline-feeling-mint {
+  color: #527d68;
+  background: #eff9f2;
+  border-color: #c5e2ce;
+}
+.waline-feeling-hint {
+  margin: .7rem 0 0;
+  color: #817589;
+  font-size: .82rem;
 }
 .waline-setup-notice {
   display: flex;
