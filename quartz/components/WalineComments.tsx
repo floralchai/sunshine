@@ -85,7 +85,7 @@ function watchChiikawaAvatars() {
   if (!root) return;
 
   // Reuse the observer while this comment mount remains active.
-  if (state.avatarObserver?.root === root) {
+  if (state.avatarObserverRoot === root) {
     applyChiikawaAvatars();
     return;
   }
@@ -94,7 +94,7 @@ function watchChiikawaAvatars() {
   const observer = new MutationObserver(() => applyChiikawaAvatars());
   observer.observe(root, { childList: true, subtree: true });
   state.avatarObserver = observer;
-  state.avatarObserver.root = root;
+  state.avatarObserverRoot = root;
 }
 
 function mountWaline() {
