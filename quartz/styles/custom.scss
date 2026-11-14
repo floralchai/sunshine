@@ -1321,3 +1321,50 @@ footer ul a[href$="/index.xml"]:focus-visible {
   }
 }
 
+
+/* Footer back-to-top link: compact pastel pixel-style control. */
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: .8rem 1rem 1.25rem;
+}
+
+.back-to-top a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: 2.75rem;
+  padding: .55rem 1rem;
+  border: 2px solid #c5a5dc;
+  background: #f7f1fc;
+  color: #514477 !important;
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  font-size: .95rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+.back-to-top a:hover {
+  background: #fdebf0;
+  border-color: #e7a0aa;
+  color: #75434f !important;
+  text-decoration: none;
+}
+
+.back-to-top a:focus-visible {
+  outline: 2px solid #6756a8;
+  outline-offset: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

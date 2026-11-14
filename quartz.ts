@@ -2,18 +2,21 @@ import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/conf
 import { PageTypeDispatcher } from "./quartz/plugins/pageTypes/dispatcher"
 import Header from "./quartz/components/Header"
 import WalineComments from "./quartz/components/WalineComments"
+import BackToTop from "./quartz/components/BackToTop"
 
 const config = await loadQuartzConfig()
 const baseLayout = await loadQuartzLayout()
 
 const header = Header()
 const walineComments = WalineComments()
+const backToTop = BackToTop()
 
 // Keep the custom banner/navigation in the shared page frame for every page type.
 const defaults = {
   ...baseLayout.defaults,
   header: [header, ...(baseLayout.defaults.header ?? [])],
   afterBody: [...(baseLayout.defaults.afterBody ?? []), walineComments],
+  footer: [...(baseLayout.defaults.footer ?? []), backToTop],
 }
 
 // Quartz 5 resolves explicit page-type layouts before shared defaults. Add the
@@ -26,6 +29,7 @@ const byPageType = Object.fromEntries(
       ...pageLayout,
       header: [header, ...(pageLayout.header ?? [])],
       afterBody: [...(pageLayout.afterBody ?? []), walineComments],
+      footer: [...(pageLayout.footer ?? []), backToTop],
     },
   ]),
 )
