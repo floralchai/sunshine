@@ -31,7 +31,7 @@ Do not include `https://` in `SECURE_DOMAINS`. Waline's documentation says to in
 
 Leave the server's `LOGIN` variable unset (do not set it to `force`). The website client also sets `login: "disable"`, makes only the nickname field available, and does not require an email address. Visitors can post without creating an account.
 
-**Instant publishing:** set `COMMENT_AUDIT=false` (or remove the variable, since Waline defaults to `false`). New comments can then appear immediately without manual approval. Keep the built-in spam safeguards enabled: leave `AKISMET_KEY` at its default active value, and keep `IPQPS=60` (one comment per IP per 60 seconds). Waline also rejects highly similar repeated comments to reduce flooding. For stronger bot protection, configure Cloudflare Turnstile by adding both `TURNSTILE_KEY` and `TURNSTILE_SECRET` on the server and the matching client key. Redeploy the Waline server after changing its environment variables. Automatic publishing means a spam comment that passes these checks can still appear, so periodically check the Waline dashboard.
+**Instant publishing:** set `COMMENT_AUDIT=false` (or remove the variable, since Waline defaults to `false`). New comments can then appear immediately without manual approval. Keep the built-in spam safeguards enabled: leave `AKISMET_KEY` at its default active value, and set `IPQPS=15` (one comment per IP per 15 seconds; the default is 60 seconds). Waline also rejects highly similar repeated comments to reduce flooding. For stronger bot protection, configure Cloudflare Turnstile by adding both `TURNSTILE_KEY` and `TURNSTILE_SECRET` on the server and the matching client key. Redeploy the Waline server after changing its environment variables. Automatic publishing means a spam comment that passes these checks can still appear, so periodically check the Waline dashboard.
 
 ## 3. Administrator dashboard
 
@@ -67,7 +67,7 @@ Do not put database credentials or Waline server secrets in the website reposito
 - Source Serif 4 body text and Nunito controls, matching Tawny Flor.
 - Original 8-bit style flower, heart, star, sparkle, rainbow and bunny emoji images are served from `/static/waline-emoji/`.
 - Guest posting: no visitor login required and no email field required.
-- New comments publish immediately when `COMMENT_AUDIT=false`; Akismet spam detection, IP rate limiting, and duplicate-comment detection remain enabled.
+- New comments publish immediately when `COMMENT_AUDIT=false`; Akismet spam detection, a gentler 15-second per-IP rate limit, and duplicate-comment detection remain enabled.
 - Each Quartz page has its own comment thread, using the current page path. Quartz SPA navigation updates the Waline instance without a full reload.
 - The 404 page does not display a comment box.
 
