@@ -26,6 +26,8 @@ jobs:
         run: npm ci
 
       - name: Build Quartz
+        env:
+          HYVOR_WEBSITE_ID: ${{ vars.HYVOR_WEBSITE_ID }}
         run: npm run build
 
       - name: Verify homepage, single header, and comment widget
@@ -34,11 +36,11 @@ jobs:
           grep -q "Welcome to Tawny Flor" public/index.html
           test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
-          grep -q 'class="giscus"' public/index.html
-          grep -q 'data-repo-id="R_kgDOVl2v_A"' public/index.html
-          grep -q 'data-category="Announcements"' public/index.html
-          grep -Eq 'data-category-id="DIC_[^"]+"' public/index.html
-          ! grep -q 'REPLACE_WITH_GISCUS_CATEGORY_ID' quartz.config.yaml
-          test -s public/static/giscus/pastel-light.css
-          test -s public/static/giscus/pastel-dark.css
+          ! grep -qi 'giscus' public/index.html
+          if [ -n "${HYVOR_WEBSITE_ID}" ]; then
+            grep -q '<hyvor-talk-comments' public/index.html
+            grep -q 'website-id="${HYVOR_WEBSITE_ID}"' public/index.html
+          else
+            grep -q 'data-hyvor-config-required="true"' public/index.html
+          fi
           grep -R -q --include='*.css' -- '--wiki-red' public
