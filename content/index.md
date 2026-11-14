@@ -34,3 +34,5 @@ Feel free to link my button to your site!
 ---
 
 *Thanks for visiting!*
+
+<div id="c_widget"></div>
