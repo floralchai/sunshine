@@ -136,8 +136,8 @@ function mountWaline() {
         lang: "en",
         dark: false,
         login: "disable",
-        meta: ["nick"],
-        requiredMeta: [],
+        meta: ["nick", "mail", "link"],
+        requiredMeta: ["nick"],
         commentSorting: "latest",
         pageSize: 10,
         placeholder: "Leave a kind little note. Be gentle and keep it friendly ♡",
@@ -442,6 +442,46 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-quote {
   margin-top: .6rem;
   padding-left: .25rem;
+}
+
+
+/* Make the nickname, optional email / website, and message fields fill
+   the available width of the Waline panel without overflowing it. */
+.waline-comments #waline-comments-mount .wl-panel,
+.waline-comments #waline-comments-mount .wl-header,
+.waline-comments #waline-comments-mount .wl-header-item,
+.waline-comments #waline-comments-mount .wl-editor,
+.waline-comments #waline-comments-mount .wl-textarea-wrapper {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.waline-comments #waline-comments-mount .wl-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  width: 100%;
+}
+.waline-comments #waline-comments-mount .wl-header-item {
+  flex: 1 1 14rem;
+  width: 100%;
+}
+.waline-comments #waline-comments-mount .wl-header-item input,
+.waline-comments #waline-comments-mount .wl-input,
+.waline-comments #waline-comments-mount input[type="text"],
+.waline-comments #waline-comments-mount input[type="email"],
+.waline-comments #waline-comments-mount input[type="url"],
+.waline-comments #waline-comments-mount textarea,
+.waline-comments #waline-comments-mount .wl-textarea {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+.waline-comments #waline-comments-mount .wl-editor,
+.waline-comments #waline-comments-mount textarea {
+  width: 100% !important;
 }
 
 .waline-comments #waline-comments-mount .wl-content {
