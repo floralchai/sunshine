@@ -1,5 +1,10 @@
-````
-```
+---
+tags:
+  - "#guide"
+  - "#readme"
+title:
+---
+
 # Obsidian Publish comment widget — installation
 > {{date}}
 ## To begin
