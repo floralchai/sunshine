@@ -2,66 +2,64 @@
 
 This repository integrates the Waline v3 comment client into Quartz 5. The widget is styled to match the site's pastel rainbow palette and uses a small set of original pixel-art emoji images hosted with the site.
 
-The site remains static on Neocities. Waline itself needs a separate server and database to store comments.
+The site remains static on Neocities. Waline itself runs as a separate server with a database. The current server is hosted at `https://waline-comment-cds2jczdz-floralchai.vercel.app`.
 
-## 1. Deploy the Waline server
+## 1. Waline server
 
-1. Open the official [Waline Get Started guide](https://waline.js.org/en/guide/get-started/).
-2. Use its Vercel deployment flow to create your own Waline server project.
-3. In Vercel, open **Storage** and attach a PostgreSQL database using the Neon marketplace integration, as described in the guide.
-4. Open the connected database in Neon, run the PostgreSQL schema SQL supplied by the Waline guide, then redeploy the Waline project.
-5. Open the deployed server's base URL. This is the value needed for the website's `WALINE_SERVER_URL`.
+The existing Waline server is deployed at:
 
-Waline is open-source software. Vercel and Neon have their own plans and usage quotas, so check their current free-tier limits before relying on a no-cost deployment.
+- Server: `https://waline-comment-cds2jczdz-floralchai.vercel.app`
+- Admin dashboard: [Waline admin](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui)
+- Registration: [First administrator registration](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui/register)
+
+The v0 project is the design/development reference; the deployed Vercel URL above is the Waline server endpoint used by the website. Keep the Vercel server deployment active.
+
+Waline is open-source software. Vercel and its connected database provider have their own plans and usage quotas, so check their current limits before relying on a no-cost deployment.
 
 ## 2. Configure moderation and anonymous comments
 
-In the Waline server project's **Settings → Environment Variables**, add:
+In the Waline server project's **Settings → Environment Variables**, make sure these values are configured:
 
 | Variable | Value |
 | --- | --- |
 | `SITE_NAME` | `Tawny Flor` |
 | `SITE_URL` | `https://tawnyflor.neocities.org` |
 | `COMMENT_AUDIT` | `true` |
-| `SECURE_DOMAINS` | `tawnyflor.neocities.org,<your-waline-server-hostname>` |
+| `SECURE_DOMAINS` | `tawnyflor.neocities.org,waline-comment-cds2jczdz-floralchai.vercel.app` |
 
-Replace `<your-waline-server-hostname>` with the server host only, for example `your-project.vercel.app`. Do not include `https://` in `SECURE_DOMAINS`. Waline's documentation says to include both the website and server hostnames in this allowlist.
+Do not include `https://` in `SECURE_DOMAINS`. Waline's documentation says to include both the website and server hostnames in this allowlist.
 
 Leave the server's `LOGIN` variable unset (do not set it to `force`). The website client also sets `login: "disable"`, makes only the nickname field available, and does not require an email address. Visitors can post without creating an account.
 
 **Moderation is enabled by `COMMENT_AUDIT=true`.** With this enabled, every new comment stays hidden until an administrator approves it. Redeploy the Waline server after changing its environment variables.
 
-## 3. Register yourself as the administrator
+## 3. Administrator dashboard
 
-1. As soon as your Waline server is ready, open `https://YOUR-WALINE-SERVER/ui/register`.
-2. Create your administrator account immediately. Waline assigns administrator privileges to the first person who registers.
-3. After registering, open `https://YOUR-WALINE-SERVER/ui` and sign in.
+1. Open [Waline registration](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui/register).
+2. Create your administrator account if you have not already done so. The first registered account is assigned administrator privileges.
+3. Open the [Waline admin dashboard](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui) and sign in.
 
-Do not publish the server URL to visitors until you have secured the first administrator account.
+Do not share administrator credentials with visitors.
 
 ## 4. Connect the Quartz website to Waline
 
-In the GitHub repository **floralchai/sunshine**:
+The GitHub Actions workflows in **floralchai/sunshine** now use this Waline server URL by default:
 
-1. Open **Settings → Secrets and variables → Actions → Variables**.
-2. Choose **New repository variable**.
-3. Set the name to `WALINE_SERVER_URL`.
-4. Set the value to your Waline server URL, for example `https://your-project.vercel.app` (no trailing slash is needed).
-5. Save the variable.
+```text
+https://waline-comment-cds2jczdz-floralchai.vercel.app
+```
 
-This URL is public and belongs in **Variables**, not **Secrets**. Do not put your database credentials or server secrets in this repository variable.
+No GitHub Actions variable is required for this configured server. The workflows still allow you to override the default later by setting the public repository variable `WALINE_SERVER_URL` under **Settings → Secrets and variables → Actions → Variables**.
 
-The pull-request build works without the variable and shows a setup placeholder. The Neocities deployment workflow deliberately refuses to deploy until `WALINE_SERVER_URL` is configured.
+Do not put database credentials or Waline server secrets in the website repository. Only the public server URL belongs in the client-side build.
 
-## 5. Moderate comments later
+## 5. Moderate comments
 
-1. Open your Waline admin dashboard at `https://YOUR-WALINE-SERVER/ui`.
-2. Sign in with the administrator account you registered in step 3.
+1. Open the [Waline admin dashboard](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui).
+2. Sign in with the administrator account.
 3. Open the comment management view. New comments submitted while audit mode is on appear as pending / unapproved.
 4. Read each pending comment and choose **Approve** to publish it. Reject or delete spam and unwanted comments.
 5. Return to the pending list regularly. Only approved comments are visible to website visitors while audit mode is enabled.
-
-You can also manage comments from the comment list on the relevant page, but the dashboard is the easiest place to review the whole queue.
 
 ## Theme and behavior
 
@@ -69,7 +67,7 @@ You can also manage comments from the comment list on the relevant page, but the
 - Source Serif 4 body text and Nunito controls, matching Tawny Flor.
 - Original 8-bit style flower, heart, star, sparkle, rainbow and bunny emoji images are served from `/static/waline-emoji/`.
 - Guest posting: no visitor login required and no email field required.
-- New comments require administrator approval.
+- New comments require administrator approval when `COMMENT_AUDIT=true` is active on the server.
 - Each Quartz page has its own comment thread, using the current page path. Quartz SPA navigation updates the Waline instance without a full reload.
 - The 404 page does not display a comment box.
 
