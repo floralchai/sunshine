@@ -4,13 +4,20 @@ const WALINE_SERVER_URL = (process.env.WALINE_SERVER_URL ?? "").trim().replace(/
 const WALINE_CLIENT_CSS = "https://unpkg.com/@waline/client@v3/dist/waline.css"
 
 const walineClientScript = WALINE_SERVER_URL
-  ? `import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
-
-const serverURL = ${JSON.stringify(WALINE_SERVER_URL)};
+  ? `const serverURL = ${JSON.stringify(WALINE_SERVER_URL)};
+const clientModuleURL = "https://unpkg.com/@waline/client@v3/dist/waline.js";
 const state = window.__tawnyFlorWaline ?? (window.__tawnyFlorWaline = {
   instance: null,
+  target: null,
   handler: null,
+  clientPromise: null,
+  pendingTarget: null,
 });
+
+// Keep compatibility with a previously initialized state object.
+state.target ??= null;
+state.clientPromise ??= null;
+state.pendingTarget ??= null;
 
 function mountWaline() {
   const target = document.getElementById("waline-comments-mount");
@@ -18,36 +25,61 @@ function mountWaline() {
   if (!target) {
     state.instance?.destroy();
     state.instance = null;
+    state.target = null;
+    state.pendingTarget = null;
     return;
   }
 
-  if (state.instance?.el === target) {
+  if (state.target === target && state.instance) {
     state.instance.update({ path: window.location.pathname });
     return;
   }
 
-  state.instance?.destroy();
-  state.instance = init({
-    el: target,
-    serverURL,
-    path: window.location.pathname,
-    lang: "en",
-    dark: false,
-    login: "disable",
-    meta: ["nick"],
-    requiredMeta: [],
-    commentSorting: "latest",
-    pageSize: 10,
-    placeholder: "Leave a kind little note. New comments appear after moderator approval.",
-    emoji: [{
-      name: "Tawny Flor Pixel",
-      folder: "https://tawnyflor.neocities.org/static/waline-emoji/",
-      prefix: "tf_",
-      type: "svg",
-      icon: "flower",
-      items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny"],
-    }],
-  });
+  if (state.pendingTarget === target) return;
+
+  state.clientPromise ??= import(clientModuleURL)
+    .then(({ init }) => init)
+    .catch((error) => {
+      state.clientPromise = null;
+      throw error;
+    });
+
+  state.pendingTarget = target;
+  state.clientPromise
+    .then((init) => {
+      // Ignore a stale page if navigation happened while Waline was loading.
+      if (document.getElementById("waline-comments-mount") !== target) return;
+
+      state.instance?.destroy();
+      state.instance = init({
+        el: target,
+        serverURL,
+        path: window.location.pathname,
+        lang: "en",
+        dark: false,
+        login: "disable",
+        meta: ["nick"],
+        requiredMeta: [],
+        commentSorting: "latest",
+        pageSize: 10,
+        placeholder: "Leave a kind little note. New comments appear after moderator approval.",
+        emoji: [{
+          name: "Tawny Flor Pixel",
+          folder: "https://tawnyflor.neocities.org/static/waline-emoji/",
+          prefix: "tf_",
+          type: "svg",
+          icon: "flower",
+          items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny"],
+        }],
+      });
+      state.target = target;
+    })
+    .catch((error) => {
+      console.error("[Waline] The comment form could not be initialized.", error);
+    })
+    .finally(() => {
+      if (state.pendingTarget === target) state.pendingTarget = null;
+    });
 }
 
 if (!state.handler) {
@@ -62,7 +94,7 @@ const WalineComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => 
   // Keep the navigation listener alive on the 404 layout, but do not show a
   // comment form on the 404 page itself.
   if (fileData.slug === "404") {
-    return WALINE_SERVER_URL ? <script type="module">{walineClientScript}</script> : null
+    return null
   }
 
   return (
@@ -75,7 +107,6 @@ const WalineComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => 
         <>
           <link rel="stylesheet" href={WALINE_CLIENT_CSS} />
           <div id="waline-comments-mount" />
-          <script type="module">{walineClientScript}</script>
         </>
       ) : (
         <div class="waline-setup-notice" role="status">
@@ -177,5 +208,7 @@ WalineComments.css = `
   }
 }
 `
+
+WalineComments.afterDOMLoaded = walineClientScript
 
 export default (() => WalineComments) satisfies QuartzComponentConstructor

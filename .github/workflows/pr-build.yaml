@@ -38,7 +38,8 @@ jobs:
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
           grep -q 'class="waline-comments"' public/index.html
           grep -q 'id="waline-comments-mount"' public/index.html
-          grep -Fq "${WALINE_SERVER_URL%/}" public/index.html
+          grep -R -Fq "${WALINE_SERVER_URL%/}" public/static/scripts
+          grep -R -q "https://unpkg.com/@waline/client@v3/dist/waline.js" public/static/scripts
           ! grep -qi 'hyvor-talk-comments\|giscus' public/index.html
           test -s public/static/waline-emoji/tf_flower.svg
           grep -R -q --include='*.css' -- '--wiki-red' public
