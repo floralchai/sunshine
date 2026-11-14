@@ -418,7 +418,6 @@ WalineComments.css = `
 }
 .waline-comments #waline-comments-mount textarea {
   min-height: 120px;
-  margin: .5rem 0 .9rem !important;
   padding: .8rem;
   line-height: 1.65;
 }
