@@ -68,6 +68,7 @@
     const s_noCommentsText = 'No comments yet';
     const s_closedCommentsText = 'Comments are closed temporarily';
     const s_errorText = 'Could not load comments right now. Please try again later.';
+    const s_errorHelpText = 'Check that the Google response spreadsheet is shared as “Anyone with the link: Viewer” and that its first row contains Timestamp, Name, Website, Text, Page, and Reply.';
     const s_websiteText = 'Website';
     const s_replyButtonText = 'Reply';
     const s_replyingText = 'Replying to';
@@ -204,27 +205,36 @@
             // Columns: A Timestamp, B Name, C Website, D Text, E Page, F Reply.
             const safePath = pagePath.replace(/'/g, "''");
             const query = `SELECT A, B, C, D, F WHERE E = '${safePath}'`;
-            const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:csv&tq=${encodeURIComponent(query)}&headers=1&_=${Date.now()}`;
+            const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:json&tq=${encodeURIComponent(query)}&headers=1&_=${Date.now()}`;
 
-            return getSheet(url).then(function (csvText) {
-                const rows = parseCSV(csvText.trim());
-                if (!rows.length || rows[0][1] !== 'Name') {
-                    throw new Error('Unexpected Google Sheet response. Check the response column order.');
+            return getSheet(url).then(function (responseText) {
+                const sheetData = parseVisualizationResponse(responseText);
+                const columns = sheetData.table && sheetData.table.cols;
+                const rows = sheetData.table && sheetData.table.rows;
+                const expectedHeaders = ['Timestamp', 'Name', 'Website', 'Text', 'Reply'];
+                if (!Array.isArray(columns) || !expectedHeaders.every((label, index) => columns[index]?.label === label) || !Array.isArray(rows)) {
+                    throw new Error('Unexpected Google Sheet response. Check the response tab and column headers.');
                 }
 
-                allComments = [];
-                for (let rowIndex = 1; rowIndex < rows.length; rowIndex++) {
-                    const row = rows[rowIndex];
+                allComments = rows.map(function (row) {
+                    const cells = row.c || [];
+                    const cellValue = function (index) {
+                        const cell = cells[index];
+                        if (!cell) { return ''; }
+                        return cell.f !== undefined && cell.f !== null ? cell.f : (cell.v ?? '');
+                    };
                     const comment = {
-                        Timestamp: row[0] || '',
-                        Name: row[1] || '',
-                        Website: row[2] || '',
-                        Text: row[3] || '',
-                        Reply: row[4] || ''
+                        Timestamp: cellValue(0),
+                        Name: cellValue(1),
+                        Website: cellValue(2),
+                        Text: cellValue(3),
+                        Reply: cellValue(4)
                     };
                     comment.Timestamp2 = comment.Timestamp;
-                    if (comment.Name && comment.Text) { allComments.push(comment); }
-                }
+                    return comment;
+                }).filter(function (comment) {
+                    return comment.Name && comment.Text;
+                });
 
                 commentCount = allComments.length;
                 renderComments();
@@ -234,7 +244,14 @@
                 return commentCount;
             }).catch(function (error) {
                 console.error('[Comment widget] Could not load comments:', error);
-                container.textContent = s_errorText;
+                container.replaceChildren();
+                const errorMessage = document.createElement('p');
+                errorMessage.className = 'c-errorState';
+                errorMessage.textContent = s_errorText;
+                const errorHelp = document.createElement('p');
+                errorHelp.className = 'c-errorHelp';
+                errorHelp.textContent = s_errorHelpText;
+                container.append(errorMessage, errorHelp);
                 container.setAttribute('aria-busy', 'false');
                 submitButton.disabled = false;
                 submitButton.value = s_submitButtonLabel;
@@ -242,46 +259,28 @@
             });
         }
 
-        // CSV parser supports commas, escaped quotes and line breaks inside cells.
-        function parseCSV(text) {
-            const rows = [];
-            let row = [];
-            let field = '';
-            let inQuotes = false;
-
-            for (let index = 0; index < text.length; index++) {
-                const character = text[index];
-                if (inQuotes) {
-                    if (character === '"' && text[index + 1] === '"') {
-                        field += '"';
-                        index++;
-                    } else if (character === '"') {
-                        inQuotes = false;
-                    } else {
-                        field += character;
-                    }
-                } else if (character === '"') {
-                    inQuotes = true;
-                } else if (character === ',') {
-                    row.push(field);
-                    field = '';
-                } else if (character === '\n') {
-                    row.push(field);
-                    rows.push(row);
-                    row = [];
-                    field = '';
-                } else if (character !== '\r') {
-                    field += character;
-                }
+        // Google returns the Visualization response wrapped in a callback.
+        // Extract the JSON payload so the browser can read the public sheet with CORS.
+        function parseVisualizationResponse(responseText) {
+            const start = responseText.indexOf('{');
+            const end = responseText.lastIndexOf('}');
+            if (start < 0 || end <= start) {
+                throw new Error('Google Sheets did not return a readable JSON response.');
             }
 
-            row.push(field);
-            if (row.length > 1 || row[0] !== '') { rows.push(row); }
-            return rows;
+            const payload = JSON.parse(responseText.slice(start, end + 1));
+            if (payload.status === 'error') {
+                const reason = payload.errors && payload.errors[0] && payload.errors[0].detailed_message;
+                throw new Error(reason || 'Google Sheets returned an error.');
+            }
+            if (!payload.table) {
+                throw new Error('Google Sheets returned no table. Check the sharing settings and selected tab.');
+            }
+            return payload;
         }
 
         function getSheet(url) {
-            return fetch(url, { cache: 'no-store' }).then(function (response) {
+            return fetch(url, { cache: 'no-store', credentials: 'omit' }).then(function (response) {
                 if (!response.ok) { throw new Error('Could not access the Google Sheet.'); }
                 return response.text();
             }).then(function (data) {

@@ -1,10 +1,15 @@
 import { PageFrame, PageFrameProps } from "./types"
 import HeaderConstructor from "../Header"
-const Header = HeaderConstructor()
+const SiteHeader = HeaderConstructor()
 
 export const DefaultFrame: PageFrame = {
   name: "default",
   render({ componentData, header, beforeBody, pageBody: Content, afterBody, left, right, footer }: PageFrameProps) {
+    // quartz.ts already places SiteHeader in the header slot. Use it as the wrapper
+    // instead of nesting a second SiteHeader inside itself.
+    const HeaderComponent = header.find((Component) => Component === SiteHeader) ?? SiteHeader
+    const headerChildren = header.filter((Component) => Component !== SiteHeader)
+
     return (
       <>
         <aside class="left sidebar" aria-label="Left sidebar navigation and tools" tabindex="0">
@@ -19,7 +24,7 @@ export const DefaultFrame: PageFrame = {
         </aside>
         <div class="center">
           <div class="page-header">
-            <Header {...componentData}>{header.map((HeaderComponent) => <HeaderComponent {...componentData} />)}</Header>
+            <HeaderComponent {...componentData}>{headerChildren.map((ChildComponent) => <ChildComponent {...componentData} />)}</HeaderComponent>
             <div class="popover-hint">{beforeBody.map((BodyComponent) => <BodyComponent {...componentData} />)}</div>
           </div>
           <Content {...componentData} />

@@ -44,6 +44,10 @@ jobs:
           test -s public/index.html
           grep -q "Welcome to Tawny Flor" public/index.html
           grep -q "portfolio-top-nav" public/index.html
+          test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
+          test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
+          grep -q 'id="c_widget"' public/index.html
+          grep -R -q --include='*.js' -- '1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ' public
           grep -R -q --include='*.css' -- '--wiki-red' public
 
       - name: Verify Neocities API token belongs to tawnyflor

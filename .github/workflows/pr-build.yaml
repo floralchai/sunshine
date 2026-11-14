@@ -1,0 +1,39 @@
+name: Verify Quartz pull requests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Quartz
+        run: npm run build
+
+      - name: Verify homepage, single header, and comment widget
+        run: |
+          test -s public/index.html
+          grep -q "Welcome to Tawny Flor" public/index.html
+          test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
+          test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
+          grep -q 'id="c_widget"' public/index.html
+          grep -R -q --include='*.js' -- '1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ' public
+          grep -R -q --include='*.css' -- '--wiki-red' public
