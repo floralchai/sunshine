@@ -24,14 +24,14 @@ In the Waline server project's **Settings → Environment Variables**, make sure
 | --- | --- |
 | `SITE_NAME` | `Tawny Flor` |
 | `SITE_URL` | `https://tawnyflor.neocities.org` |
-| `COMMENT_AUDIT` | `true` |
+| `COMMENT_AUDIT` | `false` |
 | `SECURE_DOMAINS` | `tawnyflor.neocities.org,waline-comment-cds2jczdz-floralchai.vercel.app` |
 
 Do not include `https://` in `SECURE_DOMAINS`. Waline's documentation says to include both the website and server hostnames in this allowlist.
 
 Leave the server's `LOGIN` variable unset (do not set it to `force`). The website client also sets `login: "disable"`, makes only the nickname field available, and does not require an email address. Visitors can post without creating an account.
 
-**Moderation is enabled by `COMMENT_AUDIT=true`.** With this enabled, every new comment stays hidden until an administrator approves it. Redeploy the Waline server after changing its environment variables.
+**Instant publishing:** set `COMMENT_AUDIT=false` (or remove the variable, since Waline defaults to `false`). New comments can then appear immediately without manual approval. Keep the built-in spam safeguards enabled: leave `AKISMET_KEY` at its default active value, and keep `IPQPS=60` (one comment per IP per 60 seconds). Waline also rejects highly similar repeated comments to reduce flooding. For stronger bot protection, configure Cloudflare Turnstile by adding both `TURNSTILE_KEY` and `TURNSTILE_SECRET` on the server and the matching client key. Redeploy the Waline server after changing its environment variables. Automatic publishing means a spam comment that passes these checks can still appear, so periodically check the Waline dashboard.
 
 ## 3. Administrator dashboard
 
@@ -57,9 +57,9 @@ Do not put database credentials or Waline server secrets in the website reposito
 
 1. Open the [Waline admin dashboard](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui).
 2. Sign in with the administrator account.
-3. Open the comment management view. New comments submitted while audit mode is on appear as pending / unapproved.
+3. Open the comment management view. With instant publishing (`COMMENT_AUDIT=false`), ordinary comments appear immediately; use the dashboard to remove any spam that gets through.
 4. Read each pending comment and choose **Approve** to publish it. Reject or delete spam and unwanted comments.
-5. Return to the pending list regularly. Only approved comments are visible to website visitors while audit mode is enabled.
+5. Return to the pending list regularly. If you temporarily turn audit mode back on (`COMMENT_AUDIT=true`), only approved comments are visible to visitors.
 
 ## Theme and behavior
 
@@ -67,7 +67,7 @@ Do not put database credentials or Waline server secrets in the website reposito
 - Source Serif 4 body text and Nunito controls, matching Tawny Flor.
 - Original 8-bit style flower, heart, star, sparkle, rainbow and bunny emoji images are served from `/static/waline-emoji/`.
 - Guest posting: no visitor login required and no email field required.
-- New comments require administrator approval when `COMMENT_AUDIT=true` is active on the server.
+- New comments publish immediately when `COMMENT_AUDIT=false`; Akismet spam detection, IP rate limiting, and duplicate-comment detection remain enabled.
 - Each Quartz page has its own comment thread, using the current page path. Quartz SPA navigation updates the Waline instance without a full reload.
 - The 404 page does not display a comment box.
 
