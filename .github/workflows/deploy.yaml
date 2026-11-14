@@ -37,6 +37,8 @@ jobs:
         run: npm ci
 
       - name: Build Quartz
+        env:
+          HYVOR_WEBSITE_ID: ${{ vars.HYVOR_WEBSITE_ID }}
         run: npm run build
 
       - name: Verify generated homepage and theme
@@ -46,16 +48,13 @@ jobs:
           grep -q "portfolio-top-nav" public/index.html
           test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
-          grep -q 'class="giscus"' public/index.html
-          grep -q 'data-repo-id="R_kgDOVl2v_A"' public/index.html
-          grep -q 'data-category="Announcements"' public/index.html
-          grep -Eq 'data-category-id="DIC_[^"]+"' public/index.html
-          test -s public/static/giscus/pastel-light.css
-          test -s public/static/giscus/pastel-dark.css
-          if grep -q 'REPLACE_WITH_GISCUS_CATEGORY_ID' quartz.config.yaml; then
-            echo "::error::Enable GitHub Discussions, install the Giscus app, and replace categoryId in quartz.config.yaml before deploying. See GISCUS_SETUP.md."
+          if [ -z "${HYVOR_WEBSITE_ID}" ]; then
+            echo "::error::Set the HYVOR_WEBSITE_ID repository Actions variable before deploying. See HYVOR_SETUP.md."
             exit 1
           fi
+          grep -q '<hyvor-talk-comments' public/index.html
+          grep -q 'website-id="${HYVOR_WEBSITE_ID}"' public/index.html
+          ! grep -qi 'giscus' public/index.html
           grep -R -q --include='*.css' -- '--wiki-red' public
 
       - name: Verify Neocities API token belongs to tawnyflor

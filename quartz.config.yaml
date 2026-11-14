@@ -218,27 +218,6 @@ plugins:
       position: beforeBody
       priority: 5
       condition: not-index
-  - source: "@quartz-community/comments"
-    # Category ID verified from the Giscus categories API for this repository.
-    enabled: true
-    options:
-      provider: giscus
-      options:
-        repo: "floralchai/sunshine"
-        repoId: "R_kgDOVl2v_A"
-        category: "Announcements"
-        categoryId: "DIC_kwDOVl2v_M4DLFyU"
-        mapping: "pathname"
-        strict: true
-        reactionsEnabled: true
-        inputPosition: "bottom"
-        themeUrl: "https://tawnyflor.neocities.org/static/giscus"
-        lightTheme: "pastel-light"
-        darkTheme: "pastel-dark"
-        lang: "en"
-    layout:
-      position: afterBody
-      priority: 10
   - source: "@quartz-community/footer"
     enabled: true
     options:

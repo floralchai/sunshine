@@ -1240,15 +1240,15 @@ h1, h2, h3, h4, h5, h6,
 }
 
 
-/* Giscus comment area: keep the embedded discussion aligned with the article. */
-.giscus {
+/* Hyvor Talk comments: responsive layout; pastel palette is configured in the embed. */
+.hyvor-comments {
   width: 100%;
   max-width: 100%;
   min-width: 0;
   margin-block: 1.5rem;
 }
-
-.giscus iframe.giscus-frame {
+.hyvor-comments hyvor-talk-comments {
+  display: block;
   width: 100%;
   max-width: 100%;
   min-width: 0;

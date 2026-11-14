@@ -1,16 +1,19 @@
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 import { PageTypeDispatcher } from "./quartz/plugins/pageTypes/dispatcher"
 import Header from "./quartz/components/Header"
+import HyvorComments from "./quartz/components/HyvorComments"
 
 const config = await loadQuartzConfig()
 const baseLayout = await loadQuartzLayout()
 
 const header = Header()
+const hyvorComments = HyvorComments()
 
 // Keep the custom banner/navigation in the shared page frame for every page type.
 const defaults = {
   ...baseLayout.defaults,
   header: [header, ...(baseLayout.defaults.header ?? [])],
+  afterBody: [...(baseLayout.defaults.afterBody ?? []), hyvorComments],
 }
 
 // Quartz 5 resolves explicit page-type layouts before shared defaults. Add the
@@ -21,7 +24,7 @@ const byPageType = Object.fromEntries(
     {
       ...pageLayout,
       header: [header, ...(pageLayout.header ?? [])],
-      ...(pageType === "404" ? { afterBody: [] } : {}),
+      afterBody: pageType === "404" ? [] : [...(pageLayout.afterBody ?? []), hyvorComments],
     },
   ]),
 )
