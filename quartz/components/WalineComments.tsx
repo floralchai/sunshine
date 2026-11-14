@@ -127,7 +127,7 @@ function mountWaline() {
         requiredMeta: [],
         commentSorting: "latest",
         pageSize: 10,
-        placeholder: "Leave a kind little note. New comments appear after moderator approval.",
+        placeholder: "Leave a kind little note. Be gentle and keep it friendly ♡",
         emoji: [{
           name: "Tawny Flor Pixel",
           folder: "https://tawnyflor.neocities.org/static/waline-emoji/",
@@ -415,6 +415,22 @@ WalineComments.css = `
   border-radius: 10px;
   background: #fffdfd;
 }
+
+/* Replies use a single soft left rail instead of a full card border. */
+.waline-comments #waline-comments-mount .wl-quote > .wl-card-item > .wl-card {
+  border: 0 !important;
+  border-left: 3px solid #d9c5e8 !important;
+  border-radius: 0 !important;
+  margin: .7rem 0 .7rem .65rem;
+  padding: .25rem .8rem .35rem 1rem;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.waline-comments #waline-comments-mount .wl-quote {
+  margin-top: .6rem;
+  padding-left: .25rem;
+}
+
 .waline-comments #waline-comments-mount .wl-content {
   line-height: 1.7;
 }
