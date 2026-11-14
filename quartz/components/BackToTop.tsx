@@ -5,8 +5,8 @@ function BackToTop({ displayClass }: QuartzComponentProps) {
     <div class={["back-to-top", displayClass].filter(Boolean).join(" ")}>
       <button
         type="button"
-        aria-label="Back to top of page"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Scroll to site header"
+        onClick={() => document.querySelector(".site-header")?.scrollIntoView({ behavior: "smooth", block: "start" })}
       >
         ↑ Back to top
       </button>
