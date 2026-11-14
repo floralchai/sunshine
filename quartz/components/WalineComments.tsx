@@ -90,7 +90,7 @@ function mountWaline() {
           prefix: "tf_",
           type: "svg",
           icon: "flower",
-          items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny"],
+          items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny", "cat", "mushroom", "coffee", "moon", "leaf", "peach"],
         }],
       });
       state.target = target;
@@ -341,18 +341,26 @@ WalineComments.css = `
   min-height: 2.45rem;
   padding: .48rem 1rem;
   border: 2px solid #d9bdd9 !important;
-  border-radius: 8px !important;
+  border-radius: 0 !important;
   background: #f8eaf2 !important;
   color: #76566f !important;
   font-weight: 800;
+  letter-spacing: .01em;
   box-shadow: none !important;
-  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: background-color .12s ease, border-color .12s ease, transform .12s ease;
 }
 .waline-comments #waline-comments-mount .wl-btn:hover,
 .waline-comments #waline-comments-mount .wl-btn.primary:hover {
   border-color: #b9d8c3 !important;
   background: #edf8f0 !important;
   color: #4f725d !important;
+  transform: translate(-1px, -1px);
+}
+.waline-comments #waline-comments-mount .wl-btn:active,
+.waline-comments #waline-comments-mount .wl-btn.primary:active {
+  transform: translate(1px, 1px);
 }
 .waline-comments #waline-comments-mount .wl-btn:focus-visible {
   outline: 3px solid #cbb7e4;
