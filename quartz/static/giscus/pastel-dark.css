@@ -1,0 +1,128 @@
+/*
+ * TawnyFlor pastel dark theme for Giscus.
+ * Giscus custom themes use GitHub Primer CSS variables inside the embedded frame.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap");
+
+main {
+  --color-prettylights-syntax-comment: #b3a9c0;
+  --color-prettylights-syntax-constant: #c5a5dc;
+  --color-prettylights-syntax-entity: #d4b5eb;
+  --color-prettylights-syntax-storage-modifier-import: #e5deeb;
+  --color-prettylights-syntax-entity-tag: #a5cfb4;
+  --color-prettylights-syntax-keyword: #e7a0aa;
+  --color-prettylights-syntax-string: #9fc7e9;
+  --color-prettylights-syntax-variable: #efbd91;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #e7a0aa;
+  --color-prettylights-syntax-invalid-illegal-text: #ffffff;
+  --color-prettylights-syntax-invalid-illegal-bg: #7b3440;
+  --color-prettylights-syntax-carriage-return-text: #ffffff;
+  --color-prettylights-syntax-carriage-return-bg: #7b3440;
+  --color-prettylights-syntax-string-regexp: #a5cfb4;
+  --color-prettylights-syntax-markup-list: #f1d98b;
+  --color-prettylights-syntax-markup-heading: #9fc7e9;
+  --color-prettylights-syntax-markup-italic: #e5deeb;
+  --color-prettylights-syntax-markup-bold: #e5deeb;
+  --color-prettylights-syntax-markup-deleted-text: #ffdbe0;
+  --color-prettylights-syntax-markup-deleted-bg: #592a35;
+  --color-prettylights-syntax-markup-inserted-text: #c7efd3;
+  --color-prettylights-syntax-markup-inserted-bg: #254635;
+  --color-prettylights-syntax-markup-changed-text: #f9dfc5;
+  --color-prettylights-syntax-markup-changed-bg: #59412c;
+  --color-prettylights-syntax-markup-ignored-text: #e5deeb;
+  --color-prettylights-syntax-markup-ignored-bg: #3c3a5e;
+  --color-prettylights-syntax-meta-diff-range: #c5a5dc;
+  --color-prettylights-syntax-brackethighlighter-angle: #b3a9c0;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #746b83;
+  --color-prettylights-syntax-constant-other-reference-link: #9fc7e9;
+
+  --color-btn-text: #e7e1eb;
+  --color-btn-bg: #26232c;
+  --color-btn-border: #4a4153;
+  --color-btn-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #342e3d;
+  --color-btn-hover-border: #87789a;
+  --color-btn-active-bg: #3b3445;
+  --color-btn-active-border: #a99ab8;
+  --color-btn-selected-bg: #3b3445;
+
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #887fbf;
+  --color-btn-primary-border: #887fbf;
+  --color-btn-primary-shadow: 0 1px 0 rgb(0 0 0 / 25%);
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #aaa6df;
+  --color-btn-primary-hover-border: #aaa6df;
+  --color-btn-primary-selected-bg: #aaa6df;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: rgb(255 255 255 / 60%);
+  --color-btn-primary-disabled-bg: #625d88;
+  --color-btn-primary-disabled-border: #625d88;
+
+  --color-action-list-item-default-hover-bg: rgb(197 165 220 / 12%);
+  --color-segmented-control-bg: #24202b;
+  --color-segmented-control-button-bg: #19171e;
+  --color-segmented-control-button-selected-border: #887fbf;
+
+  --color-fg-default: #ece6f0;
+  --color-fg-muted: #c8c0d0;
+  --color-fg-subtle: #a99fb4;
+  --color-canvas-default: #17161c;
+  --color-canvas-overlay: #211e27;
+  --color-canvas-inset: #121117;
+  --color-canvas-subtle: #211e27;
+  --color-border-default: #4b4353;
+  --color-border-muted: #393340;
+  --color-neutral-muted: rgb(197 165 220 / 18%);
+
+  --color-accent-fg: #c5a5dc;
+  --color-accent-emphasis: #aaa6df;
+  --color-accent-muted: rgb(197 165 220 / 42%);
+  --color-accent-subtle: rgb(197 165 220 / 12%);
+  --color-success-fg: #a5cfb4;
+  --color-attention-fg: #efbd91;
+  --color-attention-muted: rgb(239 189 145 / 40%);
+  --color-attention-subtle: rgb(239 189 145 / 12%);
+  --color-danger-fg: #e7a0aa;
+  --color-danger-muted: rgb(231 160 170 / 40%);
+  --color-danger-subtle: rgb(231 160 170 / 12%);
+  --color-primer-shadow-inset: inset 0 1px 0 rgb(255 255 255 / 5%);
+  --color-scale-gray-7: #393340;
+  --color-scale-blue-8: #344c63;
+  --color-social-reaction-bg-hover: #393340;
+  --color-social-reaction-bg-reacted-hover: #344c63;
+}
+
+main {
+  font-family: "Source Serif 4", Georgia, serif;
+}
+
+.gsc-header,
+.gsc-comment-author,
+.gsc-comment-box,
+.gsc-reactions,
+.gsc-comment button,
+.gsc-comment-box button,
+.gsc-comment-box input,
+.gsc-comment-box textarea {
+  font-family: "Nunito", system-ui, sans-serif;
+}
+
+.gsc-comment,
+.gsc-comment-box,
+.gsc-reply-box {
+  border-radius: 14px;
+}
+
+.gsc-header {
+  padding-bottom: 1rem;
+}
+
+.gsc-comment-box {
+  border-color: #4b4353;
+}
+
+.gsc-reactions-count {
+  color: #c5a5dc;
+}
