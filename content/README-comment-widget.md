@@ -10,7 +10,7 @@ description: This guide is not that reliable since it is only a hint for it
 
 
 ``` css
-Date: {{date}}
+Date: 2026-11-14
 Requirements: Old Neocities account or ==account that can pass CORS block==, git, node.js, Obsidian Publish
 ```
 
