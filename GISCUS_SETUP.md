@@ -1,25 +1,29 @@
 # Giscus setup for TawnyFlor
 
-This repository is already configured to use Giscus with custom TawnyFlor pastel light/dark themes. The final activation is deliberately gated because GitHub Discussions is currently disabled for this repository.
+TawnyFlor uses the Quartz `@quartz-community/comments` plugin with Giscus, GitHub sign-in, and custom pastel light/dark themes.
 
 ## One-time GitHub setup
 
-1. Open **Settings → General → Features** in [floralchai/sunshine](https://github.com/floralchai/sunshine/settings) and turn on **Discussions**.
-2. Install the [Giscus GitHub App](https://github.com/apps/giscus/installations/new) and grant it access to **this repository only**.
-3. Open [giscus.app](https://giscus.app/), enter `floralchai/sunshine`, and select the **Announcements** category.
-4. Use **Discussion title contains page pathname** as the mapping.
-5. Copy the generated **Discussion category ID** into `quartz.config.yaml`, replacing `REPLACE_WITH_GISCUS_CATEGORY_ID`.
+1. Enable **Discussions** under [floralchai/sunshine Settings → General → Features](https://github.com/floralchai/sunshine/settings).
+2. Install the [Giscus GitHub App](https://github.com/apps/giscus/installations/new) and grant it access to **this repository**.
+3. Make sure the **Announcements** discussion category exists in the repository's Discussions settings.
 
-The repository ID is already filled in as `R_kgDOVl2v_A`. Do not replace it unless Giscus reports a different value.
+The repository ID is already configured as `R_kgDOVl2v_A`.
+
+## Automatic category ID resolution
+
+GitHub Discussion category IDs are repository-specific. The `prebuild` script therefore calls Giscus' own public category endpoint before each Quartz build, verifies the repository ID, looks up the configured `Announcements` category, and replaces the placeholder in the build workspace. The generated site receives the real category ID; the ID does not need to be manually copied into the repository.
+
+If the Giscus endpoint cannot access the repository, the build stops with an actionable message. Check that Discussions is enabled and that the Giscus GitHub App is installed for this repository with Discussions access.
 
 ## Deploy
 
-The Neocities deployment workflow refuses to deploy while the category ID placeholder remains. Once Discussions and the Giscus App are enabled and the real category ID is saved, merge the Giscus PR. The next push to `main` will build and deploy the pastel Giscus widget.
+The pull-request build checks verify that the generated site contains the resolved Giscus category ID and both custom theme files. The Neocities deploy workflow performs the same checks before it uploads anything.
 
 ## Notes
 
-- Visitors authenticate with GitHub when they comment.
-- Comments are stored as GitHub Discussions in this repository.
-- `pathname` gives each page its own discussion thread.
-- The custom themes live in `quartz/static/giscus/pastel-light.css` and `quartz/static/giscus/pastel-dark.css`.
-- Existing Google Sheets comments are not imported automatically. They remain in the old Sheet; new comments will be stored in GitHub Discussions.
+- Visitors sign in with GitHub to comment.
+- Comments are stored as Discussions in this repository.
+- `pathname` mapping gives each page its own discussion thread.
+- Custom themes are in `quartz/static/giscus/pastel-light.css` and `quartz/static/giscus/pastel-dark.css`.
+- New comments go to GitHub Discussions. Existing Google Sheets comments are not imported automatically and remain in the old spreadsheet.
