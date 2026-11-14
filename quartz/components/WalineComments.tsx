@@ -9,15 +9,19 @@ const clientModuleURL = "https://unpkg.com/@waline/client@v3/dist/waline.js";
 const state = window.__tawnyFlorWaline ?? (window.__tawnyFlorWaline = {
   instance: null,
   target: null,
+  currentPath: null,
   handler: null,
   clientPromise: null,
-  pendingTarget: null,
+  pendingKey: null,
+  mountObserver: null,
+  avatarObserver: null,
+  avatarObserverRoot: null,
 });
 
-// Keep compatibility with a previously initialized state object.
 state.target ??= null;
+state.currentPath ??= null;
 state.clientPromise ??= null;
-state.pendingTarget ??= null;
+state.pendingKey ??= null;
 
 if (!state.feelingHandler) {
   state.feelingHandler = (event) => {
@@ -53,8 +57,6 @@ function applyChiikawaAvatars() {
   const root = document.getElementById("waline-comments-mount");
   if (!root) return;
 
-  // Match Waline v3 avatar markup directly instead of relying on one
-  // particular comment-card wrapper. This includes older comments and replies.
   root.querySelectorAll("img.wl-avatar, .wl-avatar img, .wl-user img").forEach((avatar) => {
     if (!(avatar instanceof HTMLImageElement) || avatar.dataset.chiikawaAvatar === "true") return;
 
@@ -66,7 +68,6 @@ function applyChiikawaAvatars() {
       || avatar.getAttribute("alt")?.trim()
       || "little visitor";
 
-    // Stable pseudo-random assignment: the same nickname keeps the same character.
     let hash = 2166136261;
     for (let i = 0; i < nickname.length; i++) {
       hash ^= nickname.charCodeAt(i);
@@ -84,60 +85,45 @@ function watchChiikawaAvatars() {
   const root = document.getElementById("waline-comments-mount");
   if (!root) return;
 
-  // Reuse the observer while this comment mount remains active.
-  if (state.avatarObserverRoot === root) {
+  if (state.avatarObserverRoot !== root) {
+    state.avatarObserver?.disconnect();
     applyChiikawaAvatars();
+    state.avatarObserver = new MutationObserver(() => applyChiikawaAvatars());
+    state.avatarObserver.observe(root, { childList: true, subtree: true });
+    state.avatarObserverRoot = root;
     return;
   }
-  state.avatarObserver?.disconnect();
   applyChiikawaAvatars();
-  const observer = new MutationObserver(() => applyChiikawaAvatars());
-  observer.observe(root, { childList: true, subtree: true });
-  state.avatarObserver = observer;
-  state.avatarObserverRoot = root;
 }
 
-function watchForWalineMount() {
-  if (state.mountObserver || !document.documentElement) return;
-
-  // Quartz can replace page content during client-side navigation. If the
-  // comment mount is inserted after this script runs, initialize it as soon
-  // as it appears instead of waiting for a manual refresh.
-  state.mountObserver = new MutationObserver(() => {
-    if (!document.getElementById("waline-comments-mount")) return;
-    state.mountObserver.disconnect();
-    state.mountObserver = null;
-    mountWaline();
-  });
-  state.mountObserver.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-  });
+function destroyWaline() {
+  state.avatarObserver?.disconnect();
+  state.avatarObserver = null;
+  state.avatarObserverRoot = null;
+  state.instance?.destroy();
+  state.instance = null;
+  state.target = null;
+  state.currentPath = null;
 }
 
 function mountWaline() {
   const target = document.getElementById("waline-comments-mount");
-
-  if (target && state.mountObserver) {
-    state.mountObserver.disconnect();
-    state.mountObserver = null;
-  }
+  const path = window.location.pathname;
 
   if (!target) {
-    state.instance?.destroy();
-    state.instance = null;
-    state.target = null;
-    state.pendingTarget = null;
-    watchForWalineMount();
+    destroyWaline();
+    state.pendingKey = null;
     return;
   }
 
-  if (state.target === target && state.instance) {
-    state.instance.update({ path: window.location.pathname });
+  // A new page may reuse the same DOM mount. Re-create Waline when its path
+  // changes so the form and comment list immediately belong to the new page.
+  if (state.target === target && state.instance && state.currentPath === path) {
+    watchChiikawaAvatars();
     return;
   }
 
-  if (state.pendingTarget === target) return;
+  if (state.pendingKey === target && state.pendingPath === path) return;
 
   state.clientPromise ??= import(clientModuleURL)
     .then(({ init }) => init)
@@ -146,17 +132,24 @@ function mountWaline() {
       throw error;
     });
 
-  state.pendingTarget = target;
+  state.pendingKey = target;
+  state.pendingPath = path;
+
   state.clientPromise
     .then((init) => {
-      // Ignore a stale page if navigation happened while Waline was loading.
-      if (document.getElementById("waline-comments-mount") !== target) return;
+      // Ignore a stale page if another navigation happened while the module loaded.
+      if (
+        document.getElementById("waline-comments-mount") !== target
+        || window.location.pathname !== path
+        || state.pendingKey !== target
+        || state.pendingPath !== path
+      ) return;
 
-      state.instance?.destroy();
+      destroyWaline();
       state.instance = init({
         el: target,
         serverURL,
-        path: window.location.pathname,
+        path,
         lang: "en",
         dark: false,
         login: "disable",
@@ -175,19 +168,35 @@ function mountWaline() {
         }],
       });
       state.target = target;
+      state.currentPath = path;
       watchChiikawaAvatars();
     })
     .catch((error) => {
       console.error("[Waline] The comment form could not be initialized.", error);
     })
     .finally(() => {
-      if (state.pendingTarget === target) state.pendingTarget = null;
+      if (state.pendingKey === target && state.pendingPath === path) {
+        state.pendingKey = null;
+        state.pendingPath = null;
+      }
     });
 }
 
+// The nav event is Quartz's SPA lifecycle hook. The observer is a fallback for
+// DOM swaps and ensures the comment mount is initialized as soon as it exists.
 if (!state.handler) {
   state.handler = () => mountWaline();
   document.addEventListener("nav", state.handler);
+}
+
+if (!state.mountObserver && document.documentElement) {
+  state.mountObserver = new MutationObserver(() => {
+    const target = document.getElementById("waline-comments-mount");
+    if (target !== state.target || window.location.pathname !== state.currentPath) {
+      mountWaline();
+    }
+  });
+  state.mountObserver.observe(document.documentElement, { childList: true, subtree: true });
 }
 
 mountWaline();`
