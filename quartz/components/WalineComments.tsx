@@ -269,6 +269,72 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-btn.primary {
   border-radius: 6px;
 }
+.waline-comments #waline-comments-mount .wl-panel {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px solid #efdce9 !important;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fffafc 0%, #fbf9ff 58%, #f6fcf8 100%);
+}
+.waline-comments #waline-comments-mount .wl-header {
+  border-bottom: 1px dashed #e8d8e9;
+}
+.waline-comments #waline-comments-mount .wl-input,
+.waline-comments #waline-comments-mount .wl-textarea,
+.waline-comments #waline-comments-mount textarea,
+.waline-comments #waline-comments-mount input {
+  border: 2px solid #ead9e8 !important;
+  border-radius: 8px !important;
+  background: #fffdfd !important;
+  color: #594e60;
+  transition: border-color .18s ease, background-color .18s ease;
+}
+.waline-comments #waline-comments-mount .wl-input:focus,
+.waline-comments #waline-comments-mount .wl-textarea:focus,
+.waline-comments #waline-comments-mount textarea:focus,
+.waline-comments #waline-comments-mount input:focus {
+  border-color: #bd9bcf !important;
+  outline: 2px solid #eadcf2;
+  outline-offset: 1px;
+  background: #ffffff !important;
+}
+.waline-comments #waline-comments-mount textarea {
+  min-height: 120px;
+  padding: .8rem;
+  line-height: 1.65;
+}
+.waline-comments #waline-comments-mount .wl-btn,
+.waline-comments #waline-comments-mount .wl-btn.primary {
+  min-height: 2.45rem;
+  padding: .48rem 1rem;
+  border: 2px solid #d9bdd9 !important;
+  border-radius: 8px !important;
+  background: #f8eaf2 !important;
+  color: #76566f !important;
+  font-weight: 800;
+  box-shadow: none !important;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.waline-comments #waline-comments-mount .wl-btn:hover,
+.waline-comments #waline-comments-mount .wl-btn.primary:hover {
+  border-color: #b9d8c3 !important;
+  background: #edf8f0 !important;
+  color: #4f725d !important;
+}
+.waline-comments #waline-comments-mount .wl-btn:focus-visible {
+  outline: 3px solid #cbb7e4;
+  outline-offset: 2px;
+}
+.waline-comments #waline-comments-mount .wl-card {
+  border-radius: 10px;
+  background: #fffdfd;
+}
+.waline-comments #waline-comments-mount .wl-content {
+  line-height: 1.7;
+}
+.waline-comments #waline-comments-mount .wl-meta {
+  color: #8b7c91;
+}
 .waline-comments #waline-comments-mount .wl-emoji img {
   image-rendering: pixelated;
 }
