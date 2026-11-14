@@ -1427,7 +1427,7 @@ html {
     overflow-y: auto;
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
-    scrollbar-color: #222 transparent;
+    scrollbar-color: #222 #e8e8e8;
     scroll-padding-block: .5rem;
   }
 
@@ -1438,15 +1438,19 @@ html {
   }
 
   #quartz-body > .sidebar.right::-webkit-scrollbar {
-    width: 4px;
+    width: 7px;
   }
 
   #quartz-body > .sidebar.right::-webkit-scrollbar-thumb {
     background: #222;
   }
 
+  #quartz-body > .sidebar.right::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
   #quartz-body > .sidebar.right::-webkit-scrollbar-track {
-    background: transparent;
+    background: #e8e8e8;
   }
 }
 
