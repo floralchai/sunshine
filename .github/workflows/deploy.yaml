@@ -18,6 +18,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      WALINE_SERVER_URL: ${{ vars.WALINE_SERVER_URL }}
 
     steps:
       - name: Checkout repository
@@ -37,16 +39,22 @@ jobs:
       - name: Build Quartz
         run: npm run build
 
-      - name: Verify generated homepage and theme
+      - name: Verify generated homepage and comment system before deployment
         run: |
+          if [ -z "${WALINE_SERVER_URL:-}" ]; then
+            echo "::error::Set the WALINE_SERVER_URL repository Actions variable to your deployed Waline server URL before deploying."
+            exit 1
+          fi
           test -s public/index.html
           grep -q "Welcome to Tawny Flor" public/index.html
           grep -q "portfolio-top-nav" public/index.html
           test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
-          grep -q '<hyvor-talk-comments' public/index.html
-          grep -q 'website-id="16849"' public/index.html
-          ! grep -qi 'giscus' public/index.html
+          grep -q 'class="waline-comments"' public/index.html
+          grep -q 'id="waline-comments-mount"' public/index.html
+          grep -Fq "${WALINE_SERVER_URL%/}" public/index.html
+          ! grep -qi 'hyvor-talk-comments\|giscus' public/index.html
+          test -s public/static/waline-emoji/tf_flower.svg
           grep -R -q --include='*.css' -- '--wiki-red' public
 
       - name: Verify Neocities API token belongs to tawnyflor
