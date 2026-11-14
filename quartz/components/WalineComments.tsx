@@ -40,6 +40,50 @@ if (!state.feelingHandler) {
   document.addEventListener("click", state.feelingHandler);
 }
 
+const chiikawaAvatarFiles = [
+  "chiikawa.svg",
+  "hachiware.svg",
+  "usagi.svg",
+  "momonga.svg",
+  "kurimanju.svg",
+  "shisa.svg",
+];
+
+function applyChiikawaAvatars() {
+  const root = document.getElementById("waline-comments-mount");
+  if (!root) return;
+
+  root.querySelectorAll(".wl-card").forEach((card) => {
+    const avatar = card.querySelector(".wl-avatar img, img.wl-avatar, .wl-user img");
+    if (!(avatar instanceof HTMLImageElement) || avatar.dataset.chiikawaAvatar === "true") return;
+
+    const nickname = card.querySelector(".wl-nick")?.textContent?.trim()
+      || card.querySelector(".wl-user")?.textContent?.trim()
+      || card.textContent?.trim()
+      || "little visitor";
+
+    // Stable pseudo-random assignment: the same nickname keeps the same character.
+    let hash = 2166136261;
+    for (let i = 0; i < nickname.length; i++) {
+      hash ^= nickname.charCodeAt(i);
+      hash = Math.imul(hash, 16777619);
+    }
+    const chosen = chiikawaAvatarFiles[(hash >>> 0) % chiikawaAvatarFiles.length];
+    avatar.dataset.chiikawaAvatar = "true";
+    avatar.src = "https://tawnyflor.neocities.org/static/waline-avatars/" + chosen;
+    avatar.alt = "Cute pixel character profile";
+    avatar.loading = "lazy";
+  });
+}
+
+function watchChiikawaAvatars() {
+  const root = document.getElementById("waline-comments-mount");
+  if (!root || state.avatarObserver) return;
+  applyChiikawaAvatars();
+  state.avatarObserver = new MutationObserver(() => applyChiikawaAvatars());
+  state.avatarObserver.observe(root, { childList: true, subtree: true });
+}
+
 function mountWaline() {
   const target = document.getElementById("waline-comments-mount");
 
@@ -94,6 +138,7 @@ function mountWaline() {
         }],
       });
       state.target = target;
+      watchChiikawaAvatars();
     })
     .catch((error) => {
       console.error("[Waline] The comment form could not be initialized.", error);
@@ -275,7 +320,7 @@ WalineComments.css = `
   --waline-info-bg-color: #f8f5fb;
   --waline-info-color: #8c8195;
   --waline-border: 2px solid var(--waline-border-color);
-  --waline-avatar-radius: 8px;
+  --waline-avatar-radius: 0px;
   --waline-box-shadow: none;
   color: #54595d;
   font-family: "Source Serif 4", Georgia, serif;
@@ -375,6 +420,17 @@ WalineComments.css = `
 }
 .waline-comments #waline-comments-mount .wl-meta {
   color: #8b7c91;
+}
+.waline-comments #waline-comments-mount .wl-card .wl-avatar img,
+.waline-comments #waline-comments-mount .wl-card img.wl-avatar,
+.waline-comments #waline-comments-mount .wl-card .wl-user img {
+  width: 2.7rem;
+  height: 2.7rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border: 2px solid #efdce9;
+  border-radius: 0 !important;
+  background: #fff8fc;
 }
 .waline-comments #waline-comments-mount .wl-emoji img {
   image-rendering: pixelated;
