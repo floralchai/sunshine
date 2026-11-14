@@ -8,11 +8,9 @@ description: This guide is not that reliable since it is only a hint for it
 
 # Obsidian Publish comment widget — installation
 
+>Date: 2026-11-14
+   Requirements: Old Neocities account or ==account that can pass CORS block==, git, node.js, Obsidian Publish
 
-``` css
-Date: 2026-11-14
-Requirements: Old Neocities account or ==account that can pass CORS block==, git, node.js, Obsidian Publish
-```
 
 ## To begin
 
@@ -35,7 +33,7 @@ Open the Markdown note that is set as your Obsidian Publish homepage (for exampl
 <div id="c_widget"></div>
 ```
 
-Do **not** add a `<script>` tag to the note. Obsidian Publish loads `publish.js` globally. The script waits for the widget element and re-initialises when Publish changes the displayed note.
+Do **not** add a `<script>` tag to the note. Obsidian Publish loads `publish.js` globally. The script waits for the widget element and re-initializes when Publish changes the displayed note.
 
 ## Publish the files
 
