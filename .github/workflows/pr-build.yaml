@@ -36,7 +36,9 @@ jobs:
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
           grep -q 'class="giscus"' public/index.html
           grep -q 'data-repo-id="R_kgDOVl2v_A"' public/index.html
-          grep -q 'data-category-id="REPLACE_WITH_GISCUS_CATEGORY_ID"' public/index.html
+          grep -q 'data-category="Announcements"' public/index.html
+          grep -Eq 'data-category-id="DIC_[^"]+"' public/index.html
+          ! grep -q 'REPLACE_WITH_GISCUS_CATEGORY_ID' quartz.config.yaml
           test -s public/static/giscus/pastel-light.css
           test -s public/static/giscus/pastel-dark.css
           grep -R -q --include='*.css' -- '--wiki-red' public
