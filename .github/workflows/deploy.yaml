@@ -46,8 +46,16 @@ jobs:
           grep -q "portfolio-top-nav" public/index.html
           test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
-          grep -q 'id="c_widget"' public/index.html
-          grep -R -q --include='*.js' -- '1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ' public
+          grep -q 'class="giscus"' public/index.html
+          grep -q 'data-repo-id="R_kgDOVl2v_A"' public/index.html
+          grep -q 'data-category="Announcements"' public/index.html
+          grep -Eq 'data-category-id="DIC_[^"]+"' public/index.html
+          test -s public/static/giscus/pastel-light.css
+          test -s public/static/giscus/pastel-dark.css
+          if grep -q 'REPLACE_WITH_GISCUS_CATEGORY_ID' quartz.config.yaml; then
+            echo "::error::Enable GitHub Discussions, install the Giscus app, and replace categoryId in quartz.config.yaml before deploying. See GISCUS_SETUP.md."
+            exit 1
+          fi
           grep -R -q --include='*.css' -- '--wiki-red' public
 
       - name: Verify Neocities API token belongs to tawnyflor

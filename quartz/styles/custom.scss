@@ -1,5 +1,5 @@
 @use "./variables.scss" as *;
-@use "./comment-widget.scss";
+@use "./site-scrollbars.scss";
 /* Tawny Flor — Wikipedia-inspired, always-light pastel rainbow theme */
 :root {
   --wiki-bg:#fff; --wiki-surface:#f8f9fa; --wiki-border:#a2a9b1; --wiki-text:#202122;
@@ -1237,4 +1237,19 @@ h1, h2, h3, h4, h5, h6,
     overflow: visible;
     overscroll-behavior: auto;
   }
+}
+
+
+/* Giscus comment area: keep the embedded discussion aligned with the article. */
+.giscus {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-block: 1.5rem;
+}
+
+.giscus iframe.giscus-frame {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
