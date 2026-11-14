@@ -1,7 +1,7 @@
 import { PageFrame, PageFrameProps } from "./types"
 import HeaderConstructor from "../Header"
 
-const Header = HeaderConstructor()
+const SiteHeader = HeaderConstructor()
 
 /**
  * Full-width page frame — no sidebars. The center content area spans the
@@ -21,15 +21,20 @@ export const FullWidthFrame: PageFrame = {
     afterBody,
     footer,
   }: PageFrameProps) {
+    // quartz.ts already places SiteHeader in the header slot. Use it as the wrapper
+    // instead of nesting a second SiteHeader inside itself.
+    const HeaderComponent = header.find((Component) => Component === SiteHeader) ?? SiteHeader
+    const headerChildren = header.filter((Component) => Component !== SiteHeader)
+
     return (
       <>
         <div class="center full-width">
           <div class="page-header">
-            <Header {...componentData}>
-              {header.map((HeaderComponent) => (
-                <HeaderComponent {...componentData} />
+            <HeaderComponent {...componentData}>
+              {headerChildren.map((ChildComponent) => (
+                <ChildComponent {...componentData} />
               ))}
-            </Header>
+            </HeaderComponent>
             <div class="popover-hint">
               {beforeBody.map((BodyComponent) => (
                 <BodyComponent {...componentData} />
