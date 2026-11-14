@@ -1,5 +1,8 @@
 # Obsidian Publish comment widget — installation
 
+## To begin
+You might want to follow https://virtualobserver.moe/ayano/comment-widget aka Virtual Observer tutorial if you have obsidian publish and an old Neocities acco
+
 ## Required Publish files
 
 Put these two files directly in the **root of the vault** (the same level as your homepage note), not in `assets/`, `.obsidian/`, or a nested folder:
