@@ -1,4 +1,5 @@
 import { QuartzComponent, QuartzComponentConstructor } from "./types"
+// @ts-ignore -- Quartz treats *.inline.ts imports as raw browser scripts.
 import commentWidgetScript from "./scripts/comment-widget.inline"
 
 const CommentWidget: QuartzComponent = () => (
