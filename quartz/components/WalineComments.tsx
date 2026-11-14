@@ -16,6 +16,7 @@ const state = window.__tawnyFlorWaline ?? (window.__tawnyFlorWaline = {
   mountObserver: null,
   avatarObserver: null,
   avatarObserverRoot: null,
+  loadingObserver: null,
 });
 
 state.target ??= null;
@@ -96,7 +97,39 @@ function watchChiikawaAvatars() {
   applyChiikawaAvatars();
 }
 
+function setWalineStatus(target, message, visible = true) {
+  const status = target?.closest(".waline-comments")?.querySelector(".waline-loading-status");
+  if (!status) return;
+  status.textContent = message;
+  status.hidden = !visible;
+}
+
+function watchWalineReady(target) {
+  state.loadingObserver?.disconnect();
+  state.loadingObserver = null;
+  const markReady = () => {
+    if (!target.isConnected) {
+      state.loadingObserver?.disconnect();
+      state.loadingObserver = null;
+      return true;
+    }
+    if (target.querySelector(".wl-panel, .wl-cards, .wl-list")) {
+      setWalineStatus(target, "", false);
+      state.loadingObserver?.disconnect();
+      state.loadingObserver = null;
+      return true;
+    }
+    return false;
+  };
+  if (!markReady()) {
+    state.loadingObserver = new MutationObserver(markReady);
+    state.loadingObserver.observe(target, { childList: true, subtree: true });
+  }
+}
+
 function destroyWaline() {
+  state.loadingObserver?.disconnect();
+  state.loadingObserver = null;
   state.avatarObserver?.disconnect();
   state.avatarObserver = null;
   state.avatarObserverRoot = null;
@@ -124,6 +157,8 @@ function mountWaline() {
   }
 
   if (state.pendingKey === target && state.pendingPath === path) return;
+
+  setWalineStatus(target, "Loading comments… ♡", true);
 
   state.clientPromise ??= import(clientModuleURL)
     .then(({ init }) => init)
@@ -170,8 +205,10 @@ function mountWaline() {
       state.target = target;
       state.currentPath = path;
       watchChiikawaAvatars();
+      watchWalineReady(target);
     })
     .catch((error) => {
+      setWalineStatus(target, "The comments could not load. Please refresh the page to try again.", true);
       console.error("[Waline] The comment form could not be initialized.", error);
     })
     .finally(() => {
@@ -223,6 +260,7 @@ const WalineComments: QuartzComponent = (_props: QuartzComponentProps) => {
       {WALINE_SERVER_URL ? (
         <>
           <link rel="stylesheet" href={WALINE_CLIENT_CSS} />
+          <p class="waline-loading-status" role="status" aria-live="polite">Loading comments… ♡</p>
           <div id="waline-comments-mount" />
         </>
       ) : (
@@ -344,6 +382,18 @@ WalineComments.css = `
   flex: 0 0 auto;
   color: #c77fae;
   font-size: 1.5rem;
+}
+.waline-loading-status {
+  margin: .75rem 0;
+  padding: .65rem .85rem;
+  border: 1px dashed #d9c5e8;
+  background: #fbf8ff;
+  color: #75658a;
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  font-size: .9rem;
+}
+.waline-loading-status[hidden] {
+  display: none !important;
 }
 .waline-comments #waline-comments-mount {
   --waline-font-size: 15px;
