@@ -177,15 +177,22 @@ WalineComments.css = `
   --waline-badge-color: #9fc7e9;
   --waline-info-bg-color: #f8f5fb;
   --waline-info-color: #8c8195;
-  --waline-border: 1px solid var(--waline-border-color);
+  --waline-border: 2px solid var(--waline-border-color);
   --waline-avatar-radius: 8px;
-  --waline-box-shadow: 0 4px 16px rgba(143, 115, 179, .13);
+  --waline-box-shadow: none;
   color: #54595d;
   font-family: "Source Serif 4", Georgia, serif;
 }
 .waline-comments #waline-comments-mount .wl-panel,
 .waline-comments #waline-comments-mount .wl-card {
-  border-radius: 8px;
+  border: 2px solid var(--waline-border-color) !important;
+  box-shadow: none !important;
+}
+
+.waline-comments #waline-comments-mount input,
+.waline-comments #waline-comments-mount textarea {
+  border: 2px solid var(--waline-border-color) !important;
+  box-shadow: none !important;
 }
 .waline-comments #waline-comments-mount button,
 .waline-comments #waline-comments-mount input,
