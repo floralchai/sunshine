@@ -7,6 +7,7 @@ description: This guide is not that reliable since it is only a hint for it
 ---
 
 # Obsidian Publish comment widget — installation
+
 > Date: {{date}}
 > Requirements: Old Neocities account or ==account that can pass CORS block==, git, node.js, Obsidian Publish 
 ## To begin
