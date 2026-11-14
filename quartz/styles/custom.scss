@@ -1253,3 +1253,33 @@ h1, h2, h3, h4, h5, h6,
   max-width: 100%;
   min-width: 0;
 }
+
+
+/* Pastel RSS subscription link in the site footer. */
+footer {
+  opacity: 1;
+}
+
+footer ul a[href$="/index.xml"] {
+  display: inline-flex;
+  align-items: center;
+  padding: .5rem .85rem;
+  border: 2px solid #e7a0aa;
+  background: #fdebf0;
+  color: #75434f !important;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+footer ul a[href$="/index.xml"]:hover {
+  background: #eaf6ee;
+  border-color: #a5cfb4;
+  color: #315c43 !important;
+  text-decoration: none;
+}
+
+footer ul a[href$="/index.xml"]:focus-visible {
+  outline: 2px solid #6756a8;
+  outline-offset: 3px;
+}
