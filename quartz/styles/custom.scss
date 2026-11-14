@@ -1,4 +1,5 @@
 @use "./variables.scss" as *;
+@use "./comment-widget.scss";
 /* Tawny Flor — Wikipedia-inspired, always-light pastel rainbow theme */
 :root {
   --wiki-bg:#fff; --wiki-surface:#f8f9fa; --wiki-border:#a2a9b1; --wiki-text:#202122;
