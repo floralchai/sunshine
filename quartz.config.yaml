@@ -219,7 +219,7 @@ plugins:
       priority: 5
       condition: not-index
   - source: "@quartz-community/comments"
-    # The prebuild script resolves the repository-specific category ID from Giscus.
+    # Category ID verified from the Giscus categories API for this repository.
     enabled: true
     options:
       provider: giscus
@@ -227,7 +227,7 @@ plugins:
         repo: "floralchai/sunshine"
         repoId: "R_kgDOVl2v_A"
         category: "Announcements"
-        categoryId: "REPLACE_WITH_GISCUS_CATEGORY_ID"
+        categoryId: "DIC_kwDOVl2v_M4DLFyU"
         mapping: "pathname"
         strict: true
         reactionsEnabled: true
