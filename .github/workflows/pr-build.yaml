@@ -26,8 +26,6 @@ jobs:
         run: npm ci
 
       - name: Build Quartz
-        env:
-          HYVOR_WEBSITE_ID: ${{ vars.HYVOR_WEBSITE_ID }}
         run: npm run build
 
       - name: Verify homepage, single header, and comment widget
@@ -36,11 +34,7 @@ jobs:
           grep -q "Welcome to Tawny Flor" public/index.html
           test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
           test "$(grep -o 'class="portfolio-top-nav"' public/index.html | wc -l)" -eq 1
+          grep -q '<hyvor-talk-comments' public/index.html
+          grep -q 'website-id="16849"' public/index.html
           ! grep -qi 'giscus' public/index.html
-          if [ -n "${HYVOR_WEBSITE_ID}" ]; then
-            grep -q '<hyvor-talk-comments' public/index.html
-            grep -q 'website-id="${HYVOR_WEBSITE_ID}"' public/index.html
-          else
-            grep -q 'data-hyvor-config-required="true"' public/index.html
-          fi
           grep -R -q --include='*.css' -- '--wiki-red' public
