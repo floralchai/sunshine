@@ -1,5 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
+const HYVOR_WEBSITE_ID = "16849"
+
 const lightPalette = {
   text: "#54595d",
   accent: "#7965aa",
@@ -42,31 +44,22 @@ const settings = JSON.stringify({
 })
 
 const HyvorComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
-  const websiteId = process.env.HYVOR_WEBSITE_ID?.trim()
   const pageId = String(fileData.slug ?? "")
 
   return (
     <section class="hyvor-comments" aria-labelledby="hyvor-comments-title">
       <h2 id="hyvor-comments-title">Comments</h2>
-      {websiteId ? (
-        <>
-          <script
-            async
-            type="module"
-            src="https://talk.hyvor.com/embed/embed.js"
-          />
-          <hyvor-talk-comments
-            website-id={websiteId}
-            page-id={pageId}
-            settings={settings}
-            loading="lazy"
-          />
-        </>
-      ) : (
-        <p class="hyvor-comments-setup" data-hyvor-config-required="true">
-          Comments are being set up. Please check back soon.
-        </p>
-      )}
+      <script
+        async
+        type="module"
+        src="https://talk.hyvor.com/embed/embed.js"
+      />
+      <hyvor-talk-comments
+        website-id={HYVOR_WEBSITE_ID}
+        page-id={pageId}
+        settings={settings}
+        loading="lazy"
+      />
     </section>
   )
 }
@@ -92,14 +85,6 @@ HyvorComments.css = `
   width: 100%;
   max-width: 100%;
   min-width: 0;
-}
-.hyvor-comments-setup {
-  padding: .85rem 1rem;
-  border: 1px solid #ded5e8;
-  border-left: 4px solid #aaa6df;
-  border-radius: 8px;
-  background: #fbf9fd;
-  color: #54595d;
 }
 `
 

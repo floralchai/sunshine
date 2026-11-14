@@ -1,37 +1,26 @@
 # Hyvor Talk setup for TawnyFlor
 
-This repository uses Hyvor Talk for comments. Visitors can post as guests without creating a Hyvor or GitHub account. Guest commenting is enabled by default in Hyvor Talk; keep it enabled in the Hyvor Talk Console.
+This repository embeds Hyvor Talk on each Quartz page.
 
-## 1. Create the Hyvor Talk website
+## Website ID
 
-1. Open [Hyvor Talk](https://talk.hyvor.com/).
-2. Sign in to your Hyvor owner account and create a website for `tawnyflor.neocities.org`.
-3. In the Console, open **Settings → Website** and copy the numeric **Website ID**.
+The Hyvor Talk Console URL supplied for this site is:
 
-The Website ID is a public embed identifier, not a password. Do not put an API key or account password in the repository.
+`https://talk.hyvor.com/console/16849/settings/website`
 
-## 2. Enable anonymous guest commenting
+The Website ID is **16849**. It is a public embed identifier, not an API key or password. It is now configured directly in `quartz/components/HyvorComments.tsx`; you do not need to create a GitHub Actions variable.
 
-In the Hyvor Talk Console, open the website's authentication/comment settings and make sure guest commenting is enabled. Hyvor Talk documents guest commenting as enabled by default. Visitors can submit a display name and optionally an email address; they do not need to sign in.
+## Anonymous guest commenting
 
-## 3. Require approval before comments appear
+Hyvor Talk documents guest commenting as enabled by default. In the Console, confirm guest commenting remains enabled for this website. Guests can comment using a display name without signing in; an email address is optional by default.
 
-In **Console → Settings → Embed → Configuration**, enable **Pre-moderation** site-wide. This holds every new comment in Pending status until a moderator approves it. You can approve comments in **Console → Comments**.
+## Require approval before comments appear
 
-Also check that no trusted-user rule bypasses pre-moderation for users who should remain subject to approval.
+In the Hyvor Talk Console, open **Settings → Embed → Configuration** and enable site-wide **Pre-moderation**. This holds new comments for approval before they become visible. Moderators can review and approve them in **Console → Comments**.
 
-## 4. Add the Website ID to GitHub
+The repository code cannot verify or change these account-level Console settings. Please confirm both guest commenting and pre-moderation in the Hyvor dashboard before considering moderation setup complete.
 
-In the GitHub repository:
-
-1. Open **Settings → Secrets and variables → Actions → Variables**.
-2. Choose **New repository variable**.
-3. Set the name to `HYVOR_WEBSITE_ID`.
-4. Set the value to the Website ID copied from Hyvor Talk.
-
-The ID is read at build time by GitHub Actions. Pull-request builds can still run without it and will show a temporary setup message. The Neocities deployment workflow intentionally stops until the variable is configured, preventing a broken comments embed from being published.
-
-## 5. Theme and page mapping
+## Theme and page mapping
 
 The embed uses TawnyFlor's pastel lavender/pink/blue/mint palette, Source Serif 4 and Nunito typography. Each page uses its Quartz slug as its stable Hyvor Talk page ID, so each note has its own discussion.
 
