@@ -97,14 +97,38 @@ function watchChiikawaAvatars() {
   state.avatarObserverRoot = root;
 }
 
+function watchForWalineMount() {
+  if (state.mountObserver || !document.documentElement) return;
+
+  // Quartz can replace page content during client-side navigation. If the
+  // comment mount is inserted after this script runs, initialize it as soon
+  // as it appears instead of waiting for a manual refresh.
+  state.mountObserver = new MutationObserver(() => {
+    if (!document.getElementById("waline-comments-mount")) return;
+    state.mountObserver.disconnect();
+    state.mountObserver = null;
+    mountWaline();
+  });
+  state.mountObserver.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+}
+
 function mountWaline() {
   const target = document.getElementById("waline-comments-mount");
+
+  if (target && state.mountObserver) {
+    state.mountObserver.disconnect();
+    state.mountObserver = null;
+  }
 
   if (!target) {
     state.instance?.destroy();
     state.instance = null;
     state.target = null;
     state.pendingTarget = null;
+    watchForWalineMount();
     return;
   }
 
