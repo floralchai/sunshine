@@ -193,13 +193,8 @@ if (!state.handler) {
 mountWaline();`
   : ""
 
-const WalineComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
-  // Keep the navigation listener alive on the 404 layout, but do not show a
-  // comment form on the 404 page itself.
-  if (fileData.slug === "404") {
-    return null
-  }
-
+const WalineComments: QuartzComponent = (_props: QuartzComponentProps) => {
+  // Render the comment section on every page type, including the 404 page.
   return (
     <section class="waline-comments" aria-labelledby="waline-comments-title">
       <h2 id="waline-comments-title">Comments</h2>

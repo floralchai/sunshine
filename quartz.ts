@@ -17,8 +17,8 @@ const defaults = {
 }
 
 // Quartz 5 resolves explicit page-type layouts before shared defaults. Add the
-// shared site header to those layouts as well. Waline hides the visible comment
-// box on 404 pages but keeps its small SPA navigation hook active.
+// shared site header and Waline comments to those layouts as well, so the
+// comment section is present across every page type.
 const byPageType = Object.fromEntries(
   Object.entries(baseLayout.byPageType).map(([pageType, pageLayout]) => [
     pageType,
