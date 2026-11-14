@@ -19,6 +19,27 @@ state.target ??= null;
 state.clientPromise ??= null;
 state.pendingTarget ??= null;
 
+if (!state.feelingHandler) {
+  state.feelingHandler = (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button = event.target.closest("[data-waline-feeling]");
+    if (!button) return;
+    const feeling = button.getAttribute("data-waline-feeling");
+    const textarea = document.querySelector("#waline-comments-mount textarea");
+    if (!textarea || !feeling) return;
+    document.querySelectorAll("[data-waline-feeling]").forEach((chip) => {
+      chip.setAttribute("aria-pressed", chip === button ? "true" : "false");
+    });
+    const existing = textarea.value.trim();
+    if (!existing.startsWith(feeling)) {
+      textarea.value = existing ? feeling + " — " + existing : feeling + " — ";
+    }
+    textarea.dispatchEvent(new Event("input", { bubbles: true }));
+    textarea.focus();
+  };
+  document.addEventListener("click", state.feelingHandler);
+}
+
 function mountWaline() {
   const target = document.getElementById("waline-comments-mount");
 
@@ -104,12 +125,12 @@ const WalineComments: QuartzComponent = ({ fileData }: QuartzComponentProps) => 
         A little corner to leave a note, share an idea, or say hello.
       </p>
       <div class="waline-feeling-prompt" aria-label="A few feelings to inspire your comment">
-        <p class="waline-feeling-title">What do you feel about this?</p>
+        <p class="waline-feeling-title">How do you feel about this?</p>
         <div class="waline-feeling-chips">
-          <span class="waline-feeling-chip waline-feeling-pink">♡ Love it</span>
-          <span class="waline-feeling-chip waline-feeling-peach">✿ Enjoyed it</span>
-          <span class="waline-feeling-chip waline-feeling-lilac">✧ Interesting</span>
-          <span class="waline-feeling-chip waline-feeling-mint">☁ Still thinking</span>
+          <button type="button" class="waline-feeling-chip waline-feeling-pink" data-waline-feeling="♡ Love it" aria-pressed="false">♡ Love it</button>
+          <button type="button" class="waline-feeling-chip waline-feeling-peach" data-waline-feeling="✿ Enjoyed it" aria-pressed="false">✿ Enjoyed it</button>
+          <button type="button" class="waline-feeling-chip waline-feeling-lilac" data-waline-feeling="✧ Interesting" aria-pressed="false">✧ Interesting</button>
+          <button type="button" class="waline-feeling-chip waline-feeling-mint" data-waline-feeling="☁ Still thinking" aria-pressed="false">☁ Still thinking</button>
         </div>
         <p class="waline-feeling-hint">Pick a feeling, then tell me what is on your mind.</p>
       </div>
@@ -174,12 +195,14 @@ WalineComments.css = `
   gap: .5rem;
 }
 .waline-feeling-chip {
+  appearance: none;
   display: inline-flex;
   align-items: center;
   gap: .3rem;
   padding: .38rem .72rem;
   border: 1.5px solid currentColor;
-  border-radius: 999px;
+  border-radius: 0;
+  cursor: pointer;
   font-family: "Nunito", "Trebuchet MS", sans-serif;
   font-size: .88rem;
   font-weight: 700;
@@ -199,6 +222,14 @@ WalineComments.css = `
   color: #75629c;
   background: #f4efff;
   border-color: #d8c9ef;
+}
+.waline-feeling-chip[aria-pressed="true"] {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.waline-feeling-chip:focus-visible {
+  outline: 2px solid #8f78b5;
+  outline-offset: 3px;
 }
 .waline-feeling-mint {
   color: #527d68;
@@ -284,7 +315,8 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount textarea,
 .waline-comments #waline-comments-mount input {
   border: 2px solid #ead9e8 !important;
-  border-radius: 8px !important;
+  border-radius: 0 !important;
+  margin: .35rem 0 .8rem !important;
   background: #fffdfd !important;
   color: #594e60;
   transition: border-color .18s ease, background-color .18s ease;
@@ -300,6 +332,7 @@ WalineComments.css = `
 }
 .waline-comments #waline-comments-mount textarea {
   min-height: 120px;
+  margin: .5rem 0 .9rem !important;
   padding: .8rem;
   line-height: 1.65;
 }
