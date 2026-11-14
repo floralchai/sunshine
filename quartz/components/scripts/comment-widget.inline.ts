@@ -12,7 +12,7 @@
 
     REQUIREMENTS
     - The Google Form must have questions titled EXACTLY:
-      Name, Email, Website, Text, Page, Reply
+      Name, Website, Text, Page, Reply
     - The responses Sheet must be shared as "Anyone with the link: Viewer".
 */
 
@@ -22,11 +22,10 @@
     // REQUIRED values - keep them in quotes!
     const s_formId = '1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ';
     const s_nameId = '1043589293';
-    const s_emailId = '1171504669';
-    const s_websiteId = '298311877';
-    const s_textId = '1564989888';
-    const s_pageId = '1321010839';
-    const s_replyId = '765136269';
+    const s_websiteId = '1171504669';
+    const s_textId = '1956474156';
+    const s_pageId = '655547644';
+    const s_replyId = '2137349924';
     const s_sheetId = '1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag';
 
     // Timestamps
@@ -62,9 +61,8 @@
     // Text
     const s_widgetTitle = '<span class="c-titleStar" aria-hidden="true">✦</span> Leave a comment';
     const s_nameFieldLabel = 'Name';
-    const s_emailFieldLabel = 'Email (Optional)';
     const s_websiteFieldLabel = 'Website (Optional)';
-    const s_textFieldLabel = 'Comment';
+    const s_textFieldLabel = 'Message';
     const s_submitButtonLabel = 'Submit';
     const s_loadingText = 'Loading comments...';
     const s_noCommentsText = 'No comments yet';
@@ -102,10 +100,6 @@
                 <div id="c_nameWrapper" class="c-inputWrapper">
                     <label class="c-label c-nameLabel" for="entry.${s_nameId}">${s_nameFieldLabel}</label>
                     <input placeholder="Your name" class="c-input c-nameInput" name="entry.${s_nameId}" id="entry.${s_nameId}" type="text" maxlength="${s_maxLengthName}" autocomplete="name" required>
-                </div>
-                <div id="c_emailWrapper" class="c-inputWrapper">
-                    <label class="c-label c-emailLabel" for="entry.${s_emailId}">${s_emailFieldLabel}</label>
-                    <input placeholder="you@example.com" class="c-input c-emailInput" name="entry.${s_emailId}" id="entry.${s_emailId}" type="email" autocomplete="email">
                 </div>
                 <div id="c_websiteWrapper" class="c-inputWrapper">
                     <label class="c-label c-websiteLabel" for="entry.${s_websiteId}">${s_websiteFieldLabel}</label>
@@ -207,10 +201,9 @@
                 pageInput.value = pagePath;
             }
 
-            // Columns: A Timestamp, B Name, C Email, D Website, E Text, F Page, G Reply.
-            // Email is deliberately not displayed; it is included in the sheet but excluded from public comment output.
+            // Columns: A Timestamp, B Name, C Website, D Text, E Page, F Reply.
             const safePath = pagePath.replace(/'/g, "''");
-            const query = `SELECT A, B, D, E, G WHERE F = '${safePath}'`;
+            const query = `SELECT A, B, C, D, F WHERE E = '${safePath}'`;
             const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:csv&tq=${encodeURIComponent(query)}&headers=1&_=${Date.now()}`;
 
             return getSheet(url).then(function (csvText) {
