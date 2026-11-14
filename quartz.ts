@@ -9,11 +9,17 @@ const baseLayout = await loadQuartzLayout()
 const header = Header()
 const commentWidget = CommentWidget()
 
-// Ensure the custom site header is rendered only once, even if a base layout
-// already contains the same Header component.
+// Ensure the custom site header is rendered only once. Quartz layouts can
+// contain a separately-instantiated Header component, so reference equality
+// alone is not sufficient to detect the duplicate.
+const isSiteHeader = (component) =>
+  component === header ||
+  component?.displayName === "Header" ||
+  component?.name === "Header"
+
 const withSingleSiteHeader = (components = []) => [
   header,
-  ...components.filter((component) => component !== header),
+  ...components.filter((component) => !isSiteHeader(component)),
 ]
 
 // Keep the custom banner/navigation in the shared page frame for every page type.
