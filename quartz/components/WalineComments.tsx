@@ -387,7 +387,7 @@ WalineComments.css = `
   border-radius: 6px;
 }
 .waline-comments #waline-comments-mount .wl-panel {
-  margin-top: 1rem;
+  margin: 0 !important;
   padding: 1rem;
   border: 2px solid #efdce9 !important;
   border-radius: 12px;
