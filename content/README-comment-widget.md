@@ -2,11 +2,13 @@
 tags:
   - "#guide"
   - "#readme"
-title:
+title: Comment widget guide for Obsidian Publish
+description: This guide is not that reliable since it is only a hint for it
 ---
 
 # Obsidian Publish comment widget — installation
 > {{date}}
+> Requirements: 
 ## To begin
 
 You might want to follow https://virtualobserver.moe/ayano/comment-widget a.k.a. Virtual Observer tutorial for a comment widget if you have Obsidian Publish and an old Neocities account before 2022. For me I made my comments using prompts and Waline. My whole site is more complicated than this. You also might want to ask an AI for confused situation in the code, especially `publish.js`. So good luck! 
