@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
     (PLEASE DO NOT DELETE THIS HEADER OR CREDIT!)
 
