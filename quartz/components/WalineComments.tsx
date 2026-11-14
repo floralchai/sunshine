@@ -484,6 +484,7 @@ WalineComments.css = `
   box-sizing: border-box;
 }
 .waline-comments #waline-comments-mount .wl-header {
+  padding: 0 !important;
   display: flex;
   flex-wrap: wrap;
   gap: .75rem;
