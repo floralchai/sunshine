@@ -579,8 +579,35 @@ WalineComments.css = `
   border-radius: 0 !important;
   background: #fff8fc;
 }
-.waline-comments #waline-comments-mount .wl-emoji img {
-  image-rendering: pixelated;
+/* Waline emoji assets are original SVGs with a 24×24 viewBox and
+   crispEdges geometry. Target the image itself (Waline renders .wl-emoji
+   as the <img>, not as a wrapper) so popup, preview and posted emojis stay
+   sharp at every device-pixel ratio. */
+.waline-comments #waline-comments-mount img.wl-emoji,
+.waline-comments #waline-comments-mount img.wl-emoji-preview {
+  display: inline-block;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: auto;
+  vertical-align: middle;
+}
+.waline-comments #waline-comments-mount img.wl-emoji {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.waline-comments #waline-comments-mount img.wl-emoji-preview {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Waline toolbar controls use inline SVG icons, so keep them vector-scaled
+   instead of applying pixel-art raster scaling to the icon artwork. */
+.waline-comments #waline-comments-mount .wl-action svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  max-width: none;
+  shape-rendering: geometricPrecision;
 }
 @media (max-width: 640px) {
   .waline-comments {
