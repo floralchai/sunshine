@@ -7,8 +7,9 @@ title: IRAC applied to the law
 description: Doing this for my assignment
 ---
 ## 2026-11-16
-> Time: 09:08
 
+> Time: 09:08
+> Date: 2026-11-16
 
 ![455](Pasted%20image%2020261116085703.png)
 I – Issue: State the core legal question that must be answered to resolve the dispute or scenario. Always frame it as a specific question rather than a broad statement.
