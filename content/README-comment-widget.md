@@ -20,10 +20,10 @@ You might want to follow https://virtualobserver.moe/ayano/comment-widget a.k.a.
 
 Put these two files directly in the **root of the vault** (the same level as your homepage note), not in `assets/`, `.obsidian/`, or a nested folder:
 
-- `publish.js` — comment form, Google Forms submission, Google Sheets loading, replies, and five-comment pagination.
-- `publish.css` — comment styling and the site-wide scrollbar styling.
+- `comment-widget.js` — comment form, Google Forms submission, Google Sheets loading, replies, and five-comment pagination.
+- `comment-widget.css` — comment styling and the site-wide scrollbar styling.
 
-`publish.js` and `publish.css` are special Obsidian Publish filenames. Publish loads them site-wide when you publish the files. The JavaScript requires your Obsidian Publish site to use a **custom domain**.
+`comment-widget.js` and `comment-widget.css` are special Obsidian Publish filenames. Publish loads them site-wide when you publish the files. The JavaScript requires your Obsidian Publish site to use a **custom domain**.
 
 ## Add the comment section to the homepage
 
