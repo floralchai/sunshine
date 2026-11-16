@@ -10,7 +10,7 @@ tags:
 - Love this because it updated every time I'm typing
 - Not sure implementing this in `.md` files is the nicest way?
 
-### 16 November 2026
+### 2026-11-16
 - Updated some pages and add a comment box
 - Emojis is rendered so it might look bad in some case
 - New article
