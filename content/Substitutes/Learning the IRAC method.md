@@ -1,6 +1,9 @@
 ---
 enableToc: true
 tags:
+  - "#law"
+  - "#deadline"
+title: IRAC applied to the law
 ---
 
 ![](Pasted%20image%2020261116085703.png)
