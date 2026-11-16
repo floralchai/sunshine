@@ -4,7 +4,7 @@ tags:
   - "#law"
   - "#deadline"
 title: IRAC applied to the law
-description:
+description: Doing this for my assignment
 ---
 
 ![455](Pasted%20image%2020261116085703.png)
@@ -12,6 +12,6 @@ I – Issue: State the core legal question that must be answered to resolve the 
 
 R – Rule: Identify the relevant legal principles, statutes, regulations, or case law precedents that govern the issue
 
-A – Application: Connect the legal rules directly to the specific facts of the case. This is where most marks are won or lost. Analyze both size if necessary
+A – Application: Connect the legal rules directly to the specific facts of the case. This is where most marks are won or lost. Analyze both size if necessary.
 
-C – Conclusion
+C – Conclusion: State the final determination or likely outcome for the specifc issue based on the analysis. Who wins or what is the legal remedy?
