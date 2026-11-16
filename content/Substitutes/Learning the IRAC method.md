@@ -14,4 +14,4 @@ R – Rule: Identify the relevant legal principles, statutes, regulations, or ca
 
 A – Application: Connect the legal rules directly to the specific facts of the case. This is where most marks are won or lost. Analyze both size if necessary.
 
-C – Conclusion: State the final determination or likely outcome for the specifc issue based on the analysis. Who wins or what is the legal remedy?
+C – Conclusion: State the final determination or likely outcome for the specific issue based on the analysis. Who wins or what is the legal remedy?
