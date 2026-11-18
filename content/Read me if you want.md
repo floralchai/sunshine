@@ -16,4 +16,6 @@ tags:
 - New article
 
 ### 2026-11-18
-- Added comment box
+- Added comment box every time you visit a page
+- New blog in the "Substitutes" file
+- Continuing with my assignment ϵ( ‘Θ’ )϶
