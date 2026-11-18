@@ -1,5 +1,5 @@
 ---
-title: README
+title: Read me, read me!
 description: Notes, updates and publishing experiments.
 tags:
   - notes
@@ -14,3 +14,6 @@ tags:
 - Updated some pages and add a comment box
 - Emojis is rendered so it might look bad in some case
 - New article
+
+### 2026-11-18
+- Added comment box
