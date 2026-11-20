@@ -20,8 +20,9 @@ Oh and today's night I also enjoyed some songs. Hurt by New Jeans and The singin
 
 Rewind back to 20th November. We had fun and party in Teacher's day but still have to finished the deadlines, so yikes. But in the end I'm very contented with what I did that day. Give cookies and cakes, had a yogurt drink, helping on drawing the board. I won't show ALL the drawings but of course just a little peak for you guys here
 
-![368](teacher-dot.png)
+![247](teacher-dot.png)
 > Yipe, smiley. Happy Teacher's day
 
-![](Pasted%20image%2020261120205230.png)
+So that's the finale. In the end I'm very chill these days but also got to have finish the deadl
 
+![428](Pasted%20image%2020261120205254.png)
