@@ -13,11 +13,15 @@ description: Enjoying life so much with deadlines
 
 ---
 
-![509](Pasted%20image%2020261120204606.png)
+![509](monika-kahl.png)
 > This is Monika Kahl with her accordion
 
 Oh and today's night I also enjoyed some songs. Hurt by New Jeans and The singing in the middle of Pac Bo Forest by Pham Thu Ha. Love learning about culture is how I keen on classical and also modern music? Maybe.
 
 Rewind back to 20th November. We had fun and party in Teacher's day but still have to finished the deadlines, so yikes. But in the end I'm very contented with what I did that day. Give cookies and cakes, had a yogurt drink, helping on drawing the board. I won't show ALL the drawings but of course just a little peak for you guys here
 
-![368](Pasted%20image%2020261120205117.png)
+![368](teacher-dot.png)
+> Yipe, smiley. Happy Teacher's day
+
+![](Pasted%20image%2020261120205230.png)
+
