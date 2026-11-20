@@ -1,5 +1,5 @@
 ---
-title: Read me, read me!
+title: README
 description: Notes, updates and publishing experiments.
 tags:
   - notes
