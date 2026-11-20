@@ -23,7 +23,7 @@ Rewind back to 20th November. We had fun and party in Teacher's day but still ha
 ![247](teacher-dot.png)
 > Yipe, smiley. Happy Teacher's day
 
-So that's the finale. In the end I'm very chill these days but also got to have finish the deadlines. That is so ass by the way :"D But really though, `20:54` in `2026-11-20` is the 
+So that's the finale. In the end I'm very chill these days but also got to have finish the deadlines. That is so ass by the way :"D But really though, `20:54` in `2026-11-20` is when I'm chilling at my home inside my room because I'm a chill person AND ALSO GOT TO FINISHED MY DEADLINES.
 
-![428](Pasted%20image%2020261120205254.png)
+![428](teacher-day.png)
 > Happy Teacher's day by me and bestie group leader
