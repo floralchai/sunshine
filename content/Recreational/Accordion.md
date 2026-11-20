@@ -13,5 +13,7 @@ description: Enjoying life so much with deadlines
 
 ---
 
-![](Pasted%20image%2020261120204606.png)
-> This is her with
+![509](Pasted%20image%2020261120204606.png)
+> This is Monika Kahl with her accordion
+
+Oh and today's night I also enjoyed some songs. Hurt by New Jeans and 
