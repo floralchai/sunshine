@@ -9,5 +9,5 @@ description: Enjoying life so much with deadlines
 # Monika Kahl and Teacher's day
 
 ## 2026-11-20
-[Link is here](https://www.youtube.com/@mstuchli) Woah so I just peak an interest in France and I found their culture is very interesting. So I found few woman played the accordion, which is a famous instrument around Europe and mostly France. There they have famous croissant, red wine, French toast, etc. Very rich culture. And what I mentioned is the famous accordion too. Very impressed on how the girl, Monika, accordingly the youngest accordion in France back then. I very love how she played it so well. 
+[Link is here]([https://www.youtube.com/@mstuchli](https://www.youtube.com/watch?v=w0bAU5SteTQ&t=3s&pp=ygUVbW9uaWthIGthaGwgYWNjb3JkaW9u)) Woah so I just peak an interest in France and I found their culture is very interesting. So I found few woman played the accordion, which is a famous instrument around Europe and mostly France. There they have famous croissant, red wine, French toast, etc. Very rich culture. And what I mentioned is the famous accordion too. Very impressed on how the girl, Monika, accordingly the youngest accordion in France back then. I very love how she played it so well. 
 
