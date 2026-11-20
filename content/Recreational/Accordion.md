@@ -18,3 +18,4 @@ description: Enjoying life so much with deadlines
 
 Oh and today's night I also enjoyed some songs. Hurt by New Jeans and The singing in the middle of Pac Bo Forest by Pham Thu Ha. Love learning about culture is how I keen on classical and also modern music? Maybe.
 
+Rewind back to 20th November. We had fun and party in Teacher's day but still have to finished the deadlines, so yikes. But in the end I'm very contented with what I 
