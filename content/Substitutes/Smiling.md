@@ -13,6 +13,7 @@ navigation:
 description: Just messing around, I'm just guessing
 tags:
   - notes
+  - cry
 ---
 # Thoughts?
 #### `08/11/2026`
