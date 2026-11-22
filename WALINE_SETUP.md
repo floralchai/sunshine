@@ -51,7 +51,7 @@ The GitHub Actions workflows in **floralchai/sunshine** now use the stable produ
 https://waline-comment-floralchai.vercel.app
 ```
 
-No GitHub Actions variable is required for this configured server. The workflows still allow you to override the default later by setting the public repository variable `WALINE_SERVER_URL` under **Settings → Secrets and variables → Actions → Variables**.
+The deployment workflows pin this stable production alias so an old deployment-specific URL cannot silently override it.
 
 Do not put database credentials or Waline server secrets in the website repository. Only the public server URL belongs in the client-side build.
 
