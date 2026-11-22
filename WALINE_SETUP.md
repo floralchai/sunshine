@@ -2,15 +2,17 @@
 
 This repository integrates the Waline v3 comment client into Quartz 5. The widget is styled to match the site's pastel rainbow palette and uses a small set of original pixel-art emoji images hosted with the site.
 
-The site remains static on Neocities. Waline itself runs as a separate server with a database. The current server is hosted at `https://waline-comment-cds2jczdz-floralchai.vercel.app`.
+The site remains static on Neocities. Waline itself runs as a separate server with a database. The stable production server is hosted at `https://waline-comment-floralchai.vercel.app`.
 
 ## 1. Waline server
 
 The existing Waline server is deployed at:
 
-- Server: `https://waline-comment-cds2jczdz-floralchai.vercel.app`
-- Admin dashboard: [Waline admin](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui)
-- Registration: [First administrator registration](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui/register)
+- Server: `https://waline-comment-floralchai.vercel.app`
+- Admin dashboard: [Waline admin](https://waline-comment-floralchai.vercel.app/ui)
+- Registration: [First administrator registration](https://waline-comment-floralchai.vercel.app/ui/register)
+
+Use this stable production alias rather than a deployment-specific `*.vercel.app` preview URL. The alias follows the current production deployment when the server is redeployed.
 
 The v0 project is the design/development reference; the deployed Vercel URL above is the Waline server endpoint used by the website. Keep the Vercel server deployment active.
 
@@ -25,7 +27,7 @@ In the Waline server project's **Settings → Environment Variables**, make sure
 | `SITE_NAME` | `Tawny Flor` |
 | `SITE_URL` | `https://tawnyflor.neocities.org` |
 | `COMMENT_AUDIT` | `false` |
-| `SECURE_DOMAINS` | `tawnyflor.neocities.org,waline-comment-cds2jczdz-floralchai.vercel.app` |
+| `SECURE_DOMAINS` | `tawnyflor.neocities.org,waline-comment-floralchai.vercel.app` |
 
 Do not include `https://` in `SECURE_DOMAINS`. Waline's documentation says to include both the website and server hostnames in this allowlist.
 
@@ -35,18 +37,18 @@ Leave the server's `LOGIN` variable unset (do not set it to `force`). The websit
 
 ## 3. Administrator dashboard
 
-1. Open [Waline registration](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui/register).
+1. Open [Waline registration](https://waline-comment-floralchai.vercel.app/ui/register).
 2. Create your administrator account if you have not already done so. The first registered account is assigned administrator privileges.
-3. Open the [Waline admin dashboard](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui) and sign in.
+3. Open the [Waline admin dashboard](https://waline-comment-floralchai.vercel.app/ui) and sign in.
 
 Do not share administrator credentials with visitors.
 
 ## 4. Connect the Quartz website to Waline
 
-The GitHub Actions workflows in **floralchai/sunshine** now use this Waline server URL by default:
+The GitHub Actions workflows in **floralchai/sunshine** now use the stable production alias by default:
 
 ```text
-https://waline-comment-cds2jczdz-floralchai.vercel.app
+https://waline-comment-floralchai.vercel.app
 ```
 
 No GitHub Actions variable is required for this configured server. The workflows still allow you to override the default later by setting the public repository variable `WALINE_SERVER_URL` under **Settings → Secrets and variables → Actions → Variables**.
@@ -55,7 +57,7 @@ Do not put database credentials or Waline server secrets in the website reposito
 
 ## 5. Moderate comments
 
-1. Open the [Waline admin dashboard](https://waline-comment-cds2jczdz-floralchai.vercel.app/ui).
+1. Open the [Waline admin dashboard](https://waline-comment-floralchai.vercel.app/ui).
 2. Sign in with the administrator account.
 3. Open the comment management view. With instant publishing (`COMMENT_AUDIT=false`), ordinary comments appear immediately; use the dashboard to remove any spam that gets through.
 4. Read each pending comment and choose **Approve** to publish it. Reject or delete spam and unwanted comments.
