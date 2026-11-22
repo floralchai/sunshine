@@ -201,6 +201,23 @@ function mountWaline() {
           icon: "flower",
           items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny", "cat", "mushroom", "coffee", "moon", "leaf", "peach"],
         }],
+        // Reuse the original pixel-art reaction artwork created for Hyvor Talk.
+        // Waline's native article reactions accept custom image URLs (up to 8).
+        reaction: [
+          "https://tawnyflor.neocities.org/static/hyvor-reactions/superb.svg",
+          "https://tawnyflor.neocities.org/static/hyvor-reactions/love.svg",
+          "https://tawnyflor.neocities.org/static/hyvor-reactions/wow.svg",
+          "https://tawnyflor.neocities.org/static/hyvor-reactions/sad.svg",
+          "https://tawnyflor.neocities.org/static/hyvor-reactions/laugh.svg",
+        ],
+        locale: {
+          reactionTitle: "How does this page make you feel?",
+          reaction0: "Superb",
+          reaction1: "Love",
+          reaction2: "Wow",
+          reaction3: "Sad",
+          reaction4: "Laugh",
+        },
       });
       state.target = target;
       state.currentPath = path;
