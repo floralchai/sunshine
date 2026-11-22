@@ -225,7 +225,7 @@ function mountWaline() {
       watchWalineReady(target);
     })
     .catch((error) => {
-      setWalineStatus(target, "The comments could not load. Please refresh the page to try again.", true);
+      setWalineStatus(target, "Comments are temporarily unavailable.", true);
       console.error("[Waline] The comment form could not be initialized.", error);
     })
     .finally(() => {
