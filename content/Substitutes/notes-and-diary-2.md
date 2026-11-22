@@ -9,9 +9,9 @@ enableToc: true
 ---
 ***Week 4***
 ## `2026-11-22`
-- HAAAAA!!
-- Nothing much??
-- Business Law remains as in my to-do list
+- So I'm pretty much doing assignment 
+- Need to finish it because it is very important to me
+- Not gonna loose halfway
 
 ***Week 5***
 
