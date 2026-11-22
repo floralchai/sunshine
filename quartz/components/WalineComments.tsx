@@ -113,12 +113,32 @@ function watchWalineReady(target) {
       state.loadingObserver = null;
       return true;
     }
-    if (target.querySelector(".wl-panel, .wl-cards, .wl-list")) {
+
+    const walineRoot = target.querySelector("[data-waline]");
+    if (!walineRoot) return false;
+
+    // Waline renders this button only when its comment request fails.
+    // Remove only the Refresh retry control; never remove Load More or Submit.
+    const refreshButton = [...walineRoot.querySelectorAll(".wl-operation > .wl-btn")]
+      .find((button) => {
+        const label = button.textContent?.trim().toLowerCase() ?? "";
+        return label === "refresh" || label === "";
+      });
+
+    if (refreshButton) {
+      refreshButton.remove();
+      setWalineStatus(target, "Comments are temporarily unavailable. Please try again later.", true);
+      return false;
+    }
+
+    // A comment card or the empty-state message means the request completed.
+    if (walineRoot.querySelector(".wl-card, .wl-empty")) {
       setWalineStatus(target, "", false);
       state.loadingObserver?.disconnect();
       state.loadingObserver = null;
       return true;
     }
+
     return false;
   };
   if (!markReady()) {
@@ -211,6 +231,8 @@ function mountWaline() {
           "https://tawnyflor.neocities.org/static/hyvor-reactions/laugh.svg",
         ],
         locale: {
+          // Keep the error state quiet; the page-level status handles the message.
+          refresh: "",
           reactionTitle: "How does this page make you feel?",
           reaction0: "Superb",
           reaction1: "Love",
