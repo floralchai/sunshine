@@ -323,31 +323,31 @@ WalineComments.css = `
   margin-block: 2rem 1.5rem;
   padding-top: 1.15rem;
   border-top: 2px solid transparent;
-  border-image: linear-gradient(90deg, #e7a0aa, #efbd91, #f1d98b, #a5cfb4, #9fc7e9, #aaa6df, #c5a5dc) 1;
+  border-image: linear-gradient(90deg, #c7a6ef, #e7a6dc, #f0c4e8, #c9b5f2, #a9a5ee, #bda7ee, #d7a8e8) 1;
 }
 .waline-comments h2 {
   margin: 0 0 .35rem;
   padding-bottom: .45rem;
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, #e7a0aa, #efbd91, #f1d98b, #a5cfb4, #9fc7e9, #aaa6df, #c5a5dc) 1;
+  border-image: linear-gradient(90deg, #c7a6ef, #e7a6dc, #f0c4e8, #c9b5f2, #a9a5ee, #bda7ee, #d7a8e8) 1;
   font-family: "Nunito", "Trebuchet MS", sans-serif;
-  color: #51447d;
+  color: #563a86;
 }
 .waline-comments-intro {
   margin: .25rem 0 1rem;
-  color: #77717f;
+  color: #766b86;
   font-size: .95rem;
 }
 .waline-feeling-prompt {
   margin: 1rem 0 1.15rem;
   padding: 1rem 1.1rem;
-  border: 2px solid #f0dce9;
+  border: 2px solid #e4d5f5;
   border-radius: 12px;
-  background: linear-gradient(125deg, #fff7fa 0%, #fbf8ff 55%, #f4fbf7 100%);
+  background: linear-gradient(125deg, #fbf7ff 0%, #f7f1ff 55%, #f3edff 100%);
 }
 .waline-feeling-title {
   margin: 0 0 .7rem;
-  color: #685276;
+  color: #62458e;
   font-family: "Nunito", "Trebuchet MS", sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
@@ -372,36 +372,36 @@ WalineComments.css = `
   line-height: 1.35;
 }
 .waline-feeling-pink {
-  color: #a95f7b;
-  background: #fff0f5;
-  border-color: #edc2d2;
+  color: #8055a8;
+  background: #f5edff;
+  border-color: #d8c4f0;
 }
 .waline-feeling-peach {
-  color: #986b4d;
-  background: #fff5e9;
-  border-color: #efd4b5;
+  color: #78549b;
+  background: #f8f0ff;
+  border-color: #dfc8f2;
 }
 .waline-feeling-lilac {
-  color: #75629c;
-  background: #f4efff;
-  border-color: #d8c9ef;
+  color: #7250a3;
+  background: #f1eaff;
+  border-color: #cdb9eb;
 }
 .waline-feeling-chip[aria-pressed="true"] {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 .waline-feeling-chip:focus-visible {
-  outline: 2px solid #8f78b5;
+  outline: 2px solid #8054b5;
   outline-offset: 3px;
 }
 .waline-feeling-mint {
-  color: #527d68;
-  background: #eff9f2;
-  border-color: #c5e2ce;
+  color: #7650a0;
+  background: #f5edff;
+  border-color: #d8c7ef;
 }
 .waline-feeling-hint {
   margin: .7rem 0 0;
-  color: #817589;
+  color: #81708f;
   font-size: .82rem;
 }
 .waline-setup-notice {
@@ -409,25 +409,25 @@ WalineComments.css = `
   align-items: center;
   gap: .8rem;
   padding: 1rem 1.1rem;
-  border: 1px dashed #c5a5dc;
+  border: 1px dashed #d7a8e8;
   border-radius: 8px;
-  background: linear-gradient(110deg, #fff8fb, #f8f6ff, #f4fbff);
-  color: #655873;
+  background: linear-gradient(110deg, #fff8fb, #f4edff, #f1eaff);
+  color: #634b83;
 }
 .waline-setup-notice p {
   margin: 0;
 }
 .waline-setup-flower {
   flex: 0 0 auto;
-  color: #c77fae;
+  color: #9564c2;
   font-size: 1.5rem;
 }
 .waline-loading-status {
   margin: .75rem 0;
   padding: .65rem .85rem;
-  border: 1px dashed #d9c5e8;
-  background: #fbf8ff;
-  color: #75658a;
+  border: 1px dashed #cbb5e8;
+  background: #f7f1ff;
+  color: #70548f;
   font-family: "Nunito", "Trebuchet MS", sans-serif;
   font-size: .9rem;
 }
@@ -437,22 +437,22 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount {
   --waline-font-size: 15px;
   --waline-theme-color: #9b83c9;
-  --waline-active-color: #7358aa;
-  --waline-color: #54595d;
-  --waline-bg-color: #ffffff;
-  --waline-bg-color-light: #fbf8fd;
-  --waline-bg-color-hover: #f3edf8;
-  --waline-border-color: #e6dced;
-  --waline-disable-bg-color: #f7f2fa;
-  --waline-disable-color: #ab9fb4;
-  --waline-bq-color: #f5f0fa;
-  --waline-badge-color: #9fc7e9;
-  --waline-info-bg-color: #f8f5fb;
-  --waline-info-color: #8c8195;
+  --waline-active-color: #6941a0;
+  --waline-color: #554b62;
+  --waline-bg-color: #fffaff;
+  --waline-bg-color-light: #f8f3ff;
+  --waline-bg-color-hover: #eee5fa;
+  --waline-border-color: #d9c9ed;
+  --waline-disable-bg-color: #f3edfa;
+  --waline-disable-color: #9b8ba9;
+  --waline-bq-color: #eee6fa;
+  --waline-badge-color: #a9a5ee;
+  --waline-info-bg-color: #f5efff;
+  --waline-info-color: #796b8c;
   --waline-border: 2px solid var(--waline-border-color);
   --waline-avatar-radius: 0px;
   --waline-box-shadow: none;
-  color: #54595d;
+  color: #554b62;
   font-family: "Source Serif 4", Georgia, serif;
 }
 .waline-comments #waline-comments-mount .wl-panel,
@@ -478,9 +478,9 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-panel {
   margin: 0 !important;
   padding: 1rem;
-  border: 2px solid #efdce9 !important;
+  border: 2px solid #e2d2f3 !important;
   border-radius: 12px;
-  background: linear-gradient(145deg, #fffafc 0%, #fbf9ff 58%, #f6fcf8 100%);
+  background: linear-gradient(145deg, #faf6ff 0%, #fbf9ff 58%, #f2edff 100%);
 }
 .waline-comments #waline-comments-mount .wl-header {
   border-bottom: 1px dashed #e8d8e9;
@@ -489,21 +489,21 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-textarea,
 .waline-comments #waline-comments-mount textarea,
 .waline-comments #waline-comments-mount input {
-  border: 2px solid #ead9e8 !important;
+  border: 2px solid #dfd0f0 !important;
   border-radius: 0 !important;
   margin: .35rem 0 .8rem !important;
-  background: #fffdfd !important;
-  color: #594e60;
+  background: #fdfaff !important;
+  color: #58466d;
   transition: border-color .18s ease, background-color .18s ease;
 }
 .waline-comments #waline-comments-mount .wl-input:focus,
 .waline-comments #waline-comments-mount .wl-textarea:focus,
 .waline-comments #waline-comments-mount textarea:focus,
 .waline-comments #waline-comments-mount input:focus {
-  border-color: #bd9bcf !important;
-  outline: 2px solid #eadcf2;
+  border-color: #aa8bd6 !important;
+  outline: 2px solid #e7d9f6;
   outline-offset: 1px;
-  background: #ffffff !important;
+  background: #fffaff !important;
 }
 .waline-comments #waline-comments-mount textarea {
   min-height: 120px;
@@ -514,10 +514,10 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-btn.primary {
   min-height: 2.45rem;
   padding: .48rem 1rem;
-  border: 2px solid #d9bdd9 !important;
+  border: 2px solid #cbb5e8 !important;
   border-radius: 0 !important;
-  background: #f8eaf2 !important;
-  color: #76566f !important;
+  background: #eee5fb !important;
+  color: #684c8a !important;
   font-weight: 800;
   letter-spacing: .01em;
   box-shadow: none !important;
@@ -527,9 +527,9 @@ WalineComments.css = `
 }
 .waline-comments #waline-comments-mount .wl-btn:hover,
 .waline-comments #waline-comments-mount .wl-btn.primary:hover {
-  border-color: #b9d8c3 !important;
-  background: #edf8f0 !important;
-  color: #4f725d !important;
+  border-color: #cbb5e8 !important;
+  background: #f3edff !important;
+  color: #694a91 !important;
   transform: translate(-1px, -1px);
 }
 .waline-comments #waline-comments-mount .wl-btn:active,
@@ -537,18 +537,18 @@ WalineComments.css = `
   transform: translate(1px, 1px);
 }
 .waline-comments #waline-comments-mount .wl-btn:focus-visible {
-  outline: 3px solid #cbb7e4;
+  outline: 3px solid #c7b2eb;
   outline-offset: 2px;
 }
 .waline-comments #waline-comments-mount .wl-card {
   border-radius: 10px;
-  background: #fffdfd;
+  background: #fdfaff;
 }
 
 /* Replies use a single soft left rail instead of a full card border. */
 .waline-comments #waline-comments-mount .wl-quote > .wl-card-item > .wl-card {
   border: 0 !important;
-  border-left: 3px solid #d9c5e8 !important;
+  border-left: 3px solid #cbb5e8 !important;
   border-radius: 0 !important;
   margin: .7rem 0 .7rem .65rem;
   padding: .25rem .8rem .35rem 1rem;
@@ -605,7 +605,7 @@ WalineComments.css = `
   line-height: 1.7;
 }
 .waline-comments #waline-comments-mount .wl-meta {
-  color: #8b7c91;
+  color: #81708f;
 }
 .waline-comments #waline-comments-mount img.wl-avatar,
 .waline-comments #waline-comments-mount .wl-avatar img,
@@ -614,7 +614,7 @@ WalineComments.css = `
   height: 2.7rem;
   object-fit: contain;
   image-rendering: pixelated;
-  border: 2px solid #efdce9;
+  border: 2px solid #e2d2f3;
   border-radius: 0 !important;
   background: #fff8fc;
 }
@@ -648,6 +648,18 @@ WalineComments.css = `
   max-width: none;
   shape-rendering: geometricPrecision;
 }
+
+/* Keep Waline's native reaction layout; soften only the numeric count chips. */
+.waline-comments #waline-comments-mount .wl-reaction .wl-reaction-count,
+.waline-comments #waline-comments-mount .wl-reaction-count,
+.waline-comments #waline-comments-mount .wl-reaction-item .wl-reaction-count,
+.waline-comments #waline-comments-mount .wl-reaction-vote {
+  border-radius: 5px !important;
+  border-color: #cbb5e8 !important;
+  background-color: #f3edff !important;
+  color: #684c8a !important;
+}
+
 @media (max-width: 640px) {
   .waline-comments {
     margin-block: 1.5rem 1rem;
