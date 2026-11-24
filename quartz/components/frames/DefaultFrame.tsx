@@ -12,7 +12,7 @@ export const DefaultFrame: PageFrame = {
 
     return (
       <>
-        <aside class="left sidebar" aria-label="Left sidebar navigation and tools" tabindex="0">
+        <aside class="left sidebar" aria-label="Left sidebar navigation and tools">
           <nav class="portfolio-sidebar-nav" aria-label="Portfolio navigation">
             <h2>Navigation</h2>
             <a href="/">Home</a>

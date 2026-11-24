@@ -379,9 +379,6 @@ WalineComments.css = `
   font-weight: 700;
   line-height: 1.35;
 }
-.waline-feeling-chip:hover {
-  transform: translateY(-1px);
-}
 .waline-feeling-pink {
   color: #a65f83;
   background: #fff0f5;
@@ -663,7 +660,7 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-reaction-count,
 .waline-comments #waline-comments-mount .wl-reaction-item .wl-reaction-count,
 .waline-comments #waline-comments-mount .wl-reaction-vote {
-  border-radius: 5px !important;
+  border-radius: 50% 50%;
   border-color: #cbb5e8 !important;
   background-color: #f3edff !important;
   color: #684c8a !important;
