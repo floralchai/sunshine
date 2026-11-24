@@ -291,8 +291,8 @@ const WalineComments: QuartzComponent = (_props: QuartzComponentProps) => {
         <div class="waline-feeling-chips">
           <button type="button" class="waline-feeling-chip waline-feeling-pink" data-waline-feeling="♡ Love it" aria-pressed="false">♡ Love it</button>
           <button type="button" class="waline-feeling-chip waline-feeling-peach" data-waline-feeling="✿ Enjoyed it" aria-pressed="false">✿ Enjoyed it</button>
-          <button type="button" class="waline-feeling-chip waline-feeling-lilac" data-waline-feeling="✧ Interesting" aria-pressed="false">✧ Interesting</button>
-          <button type="button" class="waline-feeling-chip waline-feeling-mint" data-waline-feeling="☁ Still thinking" aria-pressed="false">☁ Still thinking</button>
+          <button type="button" class="waline-feeling-chip waline-feeling-lilac" data-waline-feeling="☆ Interesting" aria-pressed="false">☆ Interesting</button>
+          <button type="button" class="waline-feeling-chip waline-feeling-mint" data-waline-feeling="↻ Still thinking" aria-pressed="false">↻ Still thinking</button>
         </div>
         <p class="waline-feeling-hint">Pick a feeling, then tell me what is on your mind.</p>
       </div>
