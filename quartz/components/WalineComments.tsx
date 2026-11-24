@@ -503,7 +503,7 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount textarea,
 .waline-comments #waline-comments-mount input {
   border: 2px solid #dfd0f0 !important;
-  border-radius: 0 !important;
+  border-radius: .5rem !important;
   margin: .35rem 0 .8rem !important;
   background: #fdfaff !important;
   color: #58466d;
@@ -738,7 +738,7 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-btn.primary {
   border: 1px solid #d9c9eb !important;
   border-radius: 8px !important;
-  background: linear-gradient(110deg, #f4eaff, #fff0f5 48%, #eaf5ff) !important;
+  background: #fff0f5 !important;
   color: #806493 !important;
   font-family: Georgia, "Times New Roman", serif !important;
   font-weight: 600;
@@ -746,7 +746,7 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-btn:hover,
 .waline-comments #waline-comments-mount .wl-btn.primary:hover {
   border-color: #c8addf !important;
-  background: linear-gradient(110deg, #eedfff, #ffe8f1 48%, #e2f1ff) !important;
+  background: #e2f1ff !important;
   color: #76558f !important;
 }
 .waline-comments #waline-comments-mount .wl-count,
