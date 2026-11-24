@@ -378,7 +378,6 @@ WalineComments.css = `
   font-size: .88rem;
   font-weight: 700;
   line-height: 1.35;
-  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
 }
 .waline-feeling-chip:hover {
   transform: translateY(-1px);
@@ -507,7 +506,6 @@ WalineComments.css = `
   margin: .35rem 0 .8rem !important;
   background: #fdfaff !important;
   color: #58466d;
-  transition: border-color .18s ease, background-color .18s ease;
 }
 .waline-comments #waline-comments-mount .wl-input:focus,
 .waline-comments #waline-comments-mount .wl-textarea:focus,
@@ -536,14 +534,12 @@ WalineComments.css = `
   box-shadow: none !important;
   cursor: pointer;
   image-rendering: pixelated;
-  transition: background-color .12s ease, border-color .12s ease, transform .12s ease;
 }
 .waline-comments #waline-comments-mount .wl-btn:hover,
 .waline-comments #waline-comments-mount .wl-btn.primary:hover {
   border-color: #cbb5e8 !important;
   background: #f3edff !important;
   color: #694a91 !important;
-  transform: translate(-1px, -1px);
 }
 .waline-comments #waline-comments-mount .wl-btn:active,
 .waline-comments #waline-comments-mount .wl-btn.primary:active {
