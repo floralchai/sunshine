@@ -660,7 +660,7 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-reaction-count,
 .waline-comments #waline-comments-mount .wl-reaction-item .wl-reaction-count,
 .waline-comments #waline-comments-mount .wl-reaction-vote {
-  border-radius: 50% 50%;
+  border-radius: 50% !important;
   border-color: #cbb5e8 !important;
   background-color: #f3edff !important;
   color: #684c8a !important;
@@ -765,6 +765,7 @@ WalineComments.css = `
 .waline-comments #waline-comments-mount .wl-card {
   border-color: #e8deed !important;
   background: #fff !important;
+  border-radius: .5rem !important;
 }
 .waline-comments #waline-comments-mount .wl-quote > .wl-card-item > .wl-card {
   border-left-color: #d8c2eb !important;
