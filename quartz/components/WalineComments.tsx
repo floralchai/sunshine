@@ -341,13 +341,21 @@ WalineComments.css = `
 .waline-feeling-prompt {
   margin: 1rem 0 1.15rem;
   padding: 1rem 1.1rem;
-  border: 2px solid #e4d5f5;
-  border-radius: 12px;
-  background: linear-gradient(125deg, #fbf7ff 0%, #f7f1ff 55%, #f3edff 100%);
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background:
+    linear-gradient(120deg, #fff8fb 0%, #fff9f0 17%, #fbfff2 34%, #f1fffb 51%, #f2f7ff 68%, #f8f2ff 84%, #fff4fb 100%) padding-box,
+    linear-gradient(90deg, #f3b8c9, #f7d2a7, #f4e7a6, #c8e7bd, #b9e2e5, #c6c5f1, #e1c1ec) border-box;
+  box-shadow: 0 2px 10px rgba(190, 160, 205, .08);
 }
 .waline-feeling-title {
   margin: 0 0 .7rem;
-  color: #62458e;
+  width: fit-content;
+  color: #8a6a9d;
+  background: linear-gradient(90deg, #d783a7, #d99a65, #b7a34f, #79a978, #68a6ad, #8585c2, #ad7dbb);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Nunito", "Trebuchet MS", sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
@@ -362,46 +370,51 @@ WalineComments.css = `
   display: inline-flex;
   align-items: center;
   gap: .3rem;
-  padding: .38rem .72rem;
+  padding: .4rem .76rem;
   border: 1.5px solid currentColor;
-  border-radius: 0;
+  border-radius: 999px;
   cursor: pointer;
   font-family: "Nunito", "Trebuchet MS", sans-serif;
   font-size: .88rem;
   font-weight: 700;
   line-height: 1.35;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.waline-feeling-chip:hover {
+  transform: translateY(-1px);
 }
 .waline-feeling-pink {
-  color: #8055a8;
-  background: #f5edff;
-  border-color: #d8c4f0;
+  color: #a65f83;
+  background: #fff0f5;
+  border-color: #efbfd0;
 }
 .waline-feeling-peach {
-  color: #78549b;
-  background: #f8f0ff;
-  border-color: #dfc8f2;
+  color: #a8754f;
+  background: #fff4e9;
+  border-color: #f1d0b1;
 }
 .waline-feeling-lilac {
-  color: #7250a3;
-  background: #f1eaff;
-  border-color: #cdb9eb;
+  color: #7765a8;
+  background: #f3efff;
+  border-color: #d2c7f0;
+}
+.waline-feeling-mint {
+  color: #638d78;
+  background: #effaf2;
+  border-color: #c6e5cd;
 }
 .waline-feeling-chip[aria-pressed="true"] {
   outline: 2px solid currentColor;
   outline-offset: 2px;
+  box-shadow: 0 2px 8px rgba(150, 120, 170, .12);
 }
 .waline-feeling-chip:focus-visible {
-  outline: 2px solid #8054b5;
+  outline: 2px solid #9c78b5;
   outline-offset: 3px;
-}
-.waline-feeling-mint {
-  color: #7650a0;
-  background: #f5edff;
-  border-color: #d8c7ef;
 }
 .waline-feeling-hint {
   margin: .7rem 0 0;
-  color: #81708f;
+  color: #8c7d98;
   font-size: .82rem;
 }
 .waline-setup-notice {
