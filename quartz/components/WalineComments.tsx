@@ -537,6 +537,8 @@ WalineComments.css = `
   border-color: #cbb5e8 !important;
   background: #f3edff !important;
   color: #694a91 !important;
+  animation: none;
+  transition: none;
 }
 .waline-comments #waline-comments-mount .wl-btn:active,
 .waline-comments #waline-comments-mount .wl-btn.primary:active {
@@ -741,6 +743,8 @@ WalineComments.css = `
   border-color: #c8addf !important;
   background: #e2f1ff !important;
   color: #76558f !important;
+  animation: none;
+  transition: none;
 }
 .waline-comments #waline-comments-mount .wl-count,
 .waline-comments #waline-comments-mount .wl-meta,
@@ -766,6 +770,7 @@ WalineComments.css = `
   border-color: #e8deed !important;
   background: #fff !important;
   border-radius: .5rem !important;
+  padding: .75rem !important; 
 }
 .waline-comments #waline-comments-mount .wl-quote > .wl-card-item > .wl-card {
   border-left-color: #d8c2eb !important;
