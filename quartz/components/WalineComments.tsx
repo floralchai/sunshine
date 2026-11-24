@@ -660,6 +660,116 @@ WalineComments.css = `
   color: #684c8a !important;
 }
 
+/* Pastel rainbow finish: keep Waline's familiar, compact native form layout,
+   while bringing soft colour into the borders, labels, buttons and text. */
+.waline-comments #waline-comments-mount {
+  --waline-theme-color: #c5a4e8;
+  --waline-active-color: #9874c7;
+  --waline-color: #62566f;
+  --waline-bg-color: #fff;
+  --waline-bg-color-light: #fffafd;
+  --waline-bg-color-hover: #fff4fa;
+  --waline-border-color: #e5d9ed;
+  --waline-disable-bg-color: #faf6fc;
+  --waline-disable-color: #b2a5bc;
+  --waline-bq-color: #f8effa;
+  --waline-badge-color: #c7b2e8;
+  --waline-info-bg-color: #fff8fc;
+  --waline-info-color: #8a7b91;
+  color: #62566f;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.waline-comments #waline-comments-mount .wl-panel {
+  border: 1px solid #ded7e5 !important;
+  border-radius: 14px !important;
+  padding: .65rem !important;
+  background: #fff !important;
+}
+.waline-comments #waline-comments-mount .wl-header {
+  border-bottom: 1px dashed #e7dfe9 !important;
+  gap: .45rem;
+}
+.waline-comments #waline-comments-mount .wl-header-item,
+.waline-comments #waline-comments-mount .wl-header-item label,
+.waline-comments #waline-comments-mount .wl-header-item input,
+.waline-comments #waline-comments-mount .wl-input,
+.waline-comments #waline-comments-mount textarea,
+.waline-comments #waline-comments-mount .wl-textarea {
+  font-family: Georgia, "Times New Roman", serif !important;
+  color: #6d5b7d !important;
+}
+.waline-comments #waline-comments-mount .wl-header-item:nth-child(1) label,
+.waline-comments #waline-comments-mount .wl-header-item:nth-child(1) input {
+  color: #a77fc8 !important;
+}
+.waline-comments #waline-comments-mount .wl-header-item:nth-child(2) label,
+.waline-comments #waline-comments-mount .wl-header-item:nth-child(2) input {
+  color: #d28eae !important;
+}
+.waline-comments #waline-comments-mount .wl-header-item:nth-child(3) label,
+.waline-comments #waline-comments-mount .wl-header-item:nth-child(3) input {
+  color: #8e9fc9 !important;
+}
+.waline-comments #waline-comments-mount .wl-header-item input,
+.waline-comments #waline-comments-mount textarea,
+.waline-comments #waline-comments-mount .wl-textarea {
+  border-color: #e6dce9 !important;
+  background: #fff !important;
+}
+.waline-comments #waline-comments-mount textarea::placeholder,
+.waline-comments #waline-comments-mount input::placeholder {
+  color: #b49ebd !important;
+  opacity: 1;
+}
+.waline-comments #waline-comments-mount .wl-btn,
+.waline-comments #waline-comments-mount .wl-btn.primary {
+  border: 1px solid #d9c9eb !important;
+  border-radius: 8px !important;
+  background: linear-gradient(110deg, #f4eaff, #fff0f5 48%, #eaf5ff) !important;
+  color: #806493 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-weight: 600;
+}
+.waline-comments #waline-comments-mount .wl-btn:hover,
+.waline-comments #waline-comments-mount .wl-btn.primary:hover {
+  border-color: #c8addf !important;
+  background: linear-gradient(110deg, #eedfff, #ffe8f1 48%, #e2f1ff) !important;
+  color: #76558f !important;
+}
+.waline-comments #waline-comments-mount .wl-count,
+.waline-comments #waline-comments-mount .wl-meta,
+.waline-comments #waline-comments-mount .wl-sort {
+  color: #9a87a8 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+.waline-comments #waline-comments-mount .wl-nick {
+  color: #9873b7 !important;
+}
+.waline-comments #waline-comments-mount .wl-content {
+  color: #65576f !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+.waline-comments #waline-comments-mount .wl-reaction-count,
+.waline-comments #waline-comments-mount .wl-reaction-vote {
+  border: 1px solid #e2d3ed !important;
+  border-radius: 6px !important;
+  background: linear-gradient(110deg, #f5edff, #fff0f6, #edf6ff) !important;
+  color: #8a6ca4 !important;
+}
+.waline-comments #waline-comments-mount .wl-card {
+  border-color: #e8deed !important;
+  background: #fff !important;
+}
+.waline-comments #waline-comments-mount .wl-quote > .wl-card-item > .wl-card {
+  border-left-color: #d8c2eb !important;
+}
+.waline-comments #waline-comments-mount .wl-avatar img,
+.waline-comments #waline-comments-mount img.wl-avatar,
+.waline-comments #waline-comments-mount .wl-user img {
+  border-color: #eadced !important;
+  background: linear-gradient(135deg, #fff2f7, #f1edff, #edf7ff) !important;
+}
+
 @media (max-width: 640px) {
   .waline-comments {
     margin-block: 1.5rem 1rem;
