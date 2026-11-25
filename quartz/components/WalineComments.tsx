@@ -782,6 +782,11 @@ WalineComments.css = `
   background: linear-gradient(135deg, #fff2f7, #f1edff, #edf7ff) !important;
 }
 
+/* Keep feeling chips softly rounded despite the site-wide square-corner reset. */
+.waline-comments .waline-feeling-chip {
+  border-radius: .5rem !important;
+}
+
 /* Disable easing and transitions anywhere inside the comment box while hovered. */
 .waline-comments #waline-comments-mount:hover,
 .waline-comments #waline-comments-mount:hover * {
