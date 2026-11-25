@@ -221,14 +221,14 @@ function mountWaline() {
           icon: "flower",
           items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny", "cat", "mushroom", "coffee", "moon", "leaf", "peach"],
         }],
-        // Reuse the original pixel-art reaction artwork created for Hyvor Talk.
-        // Waline's native article reactions accept custom image URLs (up to 8).
+        // Use smooth vector Twemoji artwork instead of the older pixel-art icons.
+        // The pinned SVG assets remain crisp at every display size and DPR.
         reaction: [
-          "https://tawnyflor.neocities.org/static/hyvor-reactions/superb.svg",
-          "https://tawnyflor.neocities.org/static/hyvor-reactions/love.svg",
-          "https://tawnyflor.neocities.org/static/hyvor-reactions/wow.svg",
-          "https://tawnyflor.neocities.org/static/hyvor-reactions/sad.svg",
-          "https://tawnyflor.neocities.org/static/hyvor-reactions/laugh.svg",
+          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f929.svg",
+          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2764.svg",
+          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f62e.svg",
+          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg",
+          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg",
         ],
         locale: {
           // Keep the error state quiet; the page-level status handles the message.
@@ -757,9 +757,10 @@ WalineComments.css = `
   font-family: Georgia, "Times New Roman", serif !important;
 }
 .waline-comments #waline-comments-mount .wl-reaction-count,
-.waline-comments #waline-comments-mount .wl-reaction-vote {
+.waline-comments #waline-comments-mount .wl-reaction-vote,
+.waline-comments #waline-comments-mount .wl-reaction-list .wl-reaction-votes {
   border: 1px solid #e2d3ed !important;
-  border-radius: 6px !important;
+  border-radius: .5rem !important;
   background: linear-gradient(110deg, #f5edff, #fff0f6, #edf6ff) !important;
   color: #8a6ca4 !important;
 }
