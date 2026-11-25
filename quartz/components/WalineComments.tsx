@@ -782,6 +782,13 @@ WalineComments.css = `
   background: linear-gradient(135deg, #fff2f7, #f1edff, #edf7ff) !important;
 }
 
+/* Disable easing and transitions anywhere inside the comment box while hovered. */
+.waline-comments #waline-comments-mount:hover,
+.waline-comments #waline-comments-mount:hover * {
+  transition: none !important;
+  animation: none !important;
+}
+
 @media (max-width: 640px) {
   .waline-comments {
     margin-block: 1.5rem 1rem;
