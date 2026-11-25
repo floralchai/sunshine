@@ -91,7 +91,7 @@ Header.css = `
   width: 100%;
   height: 300px;
   object-fit: cover;
-  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 .site-header-title { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .site-header-title h1 { margin: 0; }

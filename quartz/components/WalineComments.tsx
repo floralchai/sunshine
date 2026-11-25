@@ -530,7 +530,7 @@ WalineComments.css = `
   letter-spacing: .01em;
   box-shadow: none !important;
   cursor: pointer;
-  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 .waline-comments #waline-comments-mount .wl-btn:hover,
 .waline-comments #waline-comments-mount .wl-btn.primary:hover {
@@ -621,7 +621,7 @@ WalineComments.css = `
   width: 2.7rem;
   height: 2.7rem;
   object-fit: contain;
-  image-rendering: pixelated;
+  image-rendering: crisp-edges;
   border: 2px solid #e2d2f3;
   border-radius: 0 !important;
   background: #fff8fc;
