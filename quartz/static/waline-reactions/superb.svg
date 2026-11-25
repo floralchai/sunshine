@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Sparkling happy face">
+<defs><radialGradient id="face" cx="35%" cy="25%"><stop stop-color="#fffef1"/><stop offset="1" stop-color="#ffd978"/></radialGradient><linearGradient id="shine" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff4c8"/></linearGradient></defs>
+<path d="M64 8 72 20 87 14 89 30 105 33 99 48 112 59 100 70 104 86 88 89 83 105 68 98 57 111 47 98 31 103 29 87 13 81 21 66 9 54 23 43 19 27 36 27 44 12 58 21Z" fill="#ffdc78" stroke="#9b684e" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="64" cy="64" r="43" fill="url(#face)" stroke="#8f624d" stroke-width="4"/>
+<path d="m43 52 5-7 5 7-5 7Zm32 0 5-7 5 7-5 7Z" fill="#59434a" stroke="#59434a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M55 75q9 12 18 0" fill="none" stroke="#8e4e54" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="35" cy="69" rx="8" ry="4" fill="#f39a9d" opacity=".8"/><ellipse cx="93" cy="69" rx="8" ry="4" fill="#f39a9d" opacity=".8"/>
+<path d="m24 35 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z M101 24l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="url(#shine)" stroke="#fff" stroke-width="1"/>
+</svg>
