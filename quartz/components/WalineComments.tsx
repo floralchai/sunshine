@@ -530,7 +530,6 @@ WalineComments.css = `
   letter-spacing: .01em;
   box-shadow: none !important;
   cursor: pointer;
-  image-rendering: crisp-edges;
 }
 .waline-comments #waline-comments-mount .wl-btn:hover,
 .waline-comments #waline-comments-mount .wl-btn.primary:hover {
@@ -621,7 +620,6 @@ WalineComments.css = `
   width: 2.7rem;
   height: 2.7rem;
   object-fit: contain;
-  image-rendering: crisp-edges;
   border: 2px solid #e2d2f3;
   border-radius: 0 !important;
   background: #fff8fc;
@@ -635,7 +633,6 @@ WalineComments.css = `
   display: inline-block;
   max-width: none;
   object-fit: contain;
-  image-rendering: auto;
   vertical-align: middle;
 }
 .waline-comments #waline-comments-mount img.wl-emoji {
