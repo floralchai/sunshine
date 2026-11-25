@@ -782,7 +782,10 @@ WalineComments.css = `
   background: linear-gradient(135deg, #fff2f7, #f1edff, #edf7ff) !important;
 }
 
-/* Keep feeling chips softly rounded despite the site-wide square-corner reset. */
+/* Pastel feeling panel and its outline use matching soft corners. */
+.waline-comments .waline-feeling-prompt {
+  border-radius: .5rem !important;
+}
 .waline-comments .waline-feeling-chip {
   border-radius: .5rem !important;
 }
