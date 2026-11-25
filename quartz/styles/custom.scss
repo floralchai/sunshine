@@ -1348,7 +1348,8 @@ footer ul a[href$="/index.xml"]:focus-visible {
   appearance: none;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color .15s ease, border-color .15s ease;
+  transition: none !important;
+  animation: none !important;
 }
 
 .back-to-top button:hover,
