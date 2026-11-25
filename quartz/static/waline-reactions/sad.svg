@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Crying sad face">
+<defs><radialGradient id="face" cx="32%" cy="22%"><stop stop-color="#fffefb"/><stop offset="1" stop-color="#c9e3ff"/></radialGradient><linearGradient id="tear" x2="0" y2="1"><stop stop-color="#a8e7ff"/><stop offset="1" stop-color="#5bb8ee"/></linearGradient></defs>
+<path d="M64 10c-30 0-52 22-52 52s22 55 52 55 52-25 52-55S94 10 64 10Z" fill="url(#face)" stroke="#637f9d" stroke-width="4"/>
+<path d="M34 49q9-8 18 0M76 49q9-8 18 0" fill="none" stroke="#52657c" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="44" cy="62" rx="6" ry="8" fill="#fff" stroke="#52657c" stroke-width="3"/><ellipse cx="84" cy="62" rx="6" ry="8" fill="#fff" stroke="#52657c" stroke-width="3"/><circle cx="44" cy="64" r="3" fill="#52657c"/><circle cx="84" cy="64" r="3" fill="#52657c"/>
+<path d="M39 73c-2 9-7 15-5 22 2 7 12 7 14 0 2-7-4-13-9-22Z M89 73c-2 9-7 15-5 22 2 7 12 7 14 0 2-7-4-13-9-22Z" fill="url(#tear)" stroke="#5a9bc9" stroke-width="2"/>
+<path d="M54 91q10-10 20 0" fill="none" stroke="#815d66" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="27" cy="76" rx="7" ry="4" fill="#f2a9b5"/><ellipse cx="101" cy="76" rx="7" ry="4" fill="#f2a9b5"/>
+</svg>
