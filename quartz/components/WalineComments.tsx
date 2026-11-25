@@ -221,14 +221,13 @@ function mountWaline() {
           icon: "flower",
           items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny", "cat", "mushroom", "coffee", "moon", "leaf", "peach"],
         }],
-        // Original Type F-inspired Japanese mobile-emoji artwork.
-        // Local SVG assets keep the five reactions consistent and crisp.
+        // au by KDDI Type F (2012) reaction artwork.
         reaction: [
-          "https://tawnyflor.neocities.org/static/waline-reactions/superb.svg",
-          "https://tawnyflor.neocities.org/static/waline-reactions/love.svg",
-          "https://tawnyflor.neocities.org/static/waline-reactions/wow.svg",
-          "https://tawnyflor.neocities.org/static/waline-reactions/sad.svg",
-          "https://tawnyflor.neocities.org/static/waline-reactions/laugh.svg",
+          "https://em-content.zobj.net/source/au-kddi/190/sparkles_2728.png",
+          "https://em-content.zobj.net/source/au-kddi/190/heavy-black-heart_2764.png",
+          "https://em-content.zobj.net/source/au-kddi/190/astonished-face_1f632.png",
+          "https://em-content.zobj.net/source/au-kddi/190/crying-face_1f622.png",
+          "https://em-content.zobj.net/source/au-kddi/190/face-with-tears-of-joy_1f602.png",
         ],
         locale: {
           // Keep the error state quiet; the page-level status handles the message.
