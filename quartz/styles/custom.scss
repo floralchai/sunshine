@@ -1512,3 +1512,9 @@ html {
     margin-inline: auto;
   }
 }
+
+
+/* Softly rounded corners for the footer back-to-top control. */
+.back-to-top button {
+  border-radius: .5rem !important;
+}
