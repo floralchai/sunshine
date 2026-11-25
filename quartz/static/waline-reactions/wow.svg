@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Surprised face">
+<defs><radialGradient id="face" cx="32%" cy="22%"><stop stop-color="#fffef4"/><stop offset="1" stop-color="#ffe29b"/></radialGradient></defs>
+<path d="M64 10c-30 0-52 22-52 52s22 55 52 55 52-25 52-55S94 10 64 10Z" fill="url(#face)" stroke="#94684d" stroke-width="4"/>
+<path d="M35 47q8-10 16 0" fill="none" stroke="#684b4a" stroke-width="4" stroke-linecap="round"/><path d="M77 47q8-10 16 0" fill="none" stroke="#684b4a" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="44" cy="61" rx="7" ry="10" fill="#fff" stroke="#62464a" stroke-width="3"/><ellipse cx="84" cy="61" rx="7" ry="10" fill="#fff" stroke="#62464a" stroke-width="3"/><circle cx="45" cy="63" r="3.5" fill="#62464a"/><circle cx="85" cy="63" r="3.5" fill="#62464a"/>
+<ellipse cx="64" cy="84" rx="8" ry="12" fill="#a85f61" stroke="#7c4a4d" stroke-width="3"/>
+<ellipse cx="29" cy="77" rx="8" ry="4" fill="#f3a1a0"/><ellipse cx="99" cy="77" rx="8" ry="4" fill="#f3a1a0"/>
+<path d="m101 23 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" fill="#fff" stroke="#e8b85e" stroke-width="2"/>
+</svg>
