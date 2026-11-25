@@ -221,14 +221,14 @@ function mountWaline() {
           icon: "flower",
           items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny", "cat", "mushroom", "coffee", "moon", "leaf", "peach"],
         }],
-        // Use Google's rounded, colorful Noto Emoji SVGs for a softer,
-        // cuter reaction set. Vector artwork stays crisp at every display size.
+        // Original Type F-inspired Japanese mobile-emoji artwork.
+        // Local SVG assets keep the five reactions consistent and crisp.
         reaction: [
-          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f929/emoji.svg",
-          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/emoji.svg",
-          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f632/emoji.svg",
-          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f97a/emoji.svg",
-          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f923/emoji.svg",
+          "https://tawnyflor.neocities.org/static/waline-reactions/superb.svg",
+          "https://tawnyflor.neocities.org/static/waline-reactions/love.svg",
+          "https://tawnyflor.neocities.org/static/waline-reactions/wow.svg",
+          "https://tawnyflor.neocities.org/static/waline-reactions/sad.svg",
+          "https://tawnyflor.neocities.org/static/waline-reactions/laugh.svg",
         ],
         locale: {
           // Keep the error state quiet; the page-level status handles the message.
