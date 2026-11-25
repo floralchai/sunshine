@@ -22,7 +22,7 @@ BackToTop.afterDOMLoaded = `
 
     event.preventDefault()
     document.querySelector(".site-header")?.scrollIntoView({
-      behavior: "smooth",
+      behavior: "auto",
       block: "start",
     })
   })
