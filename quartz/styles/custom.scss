@@ -1270,7 +1270,8 @@ footer ul a[href$="/index.xml"] {
   color: #75434f !important;
   font-weight: 700;
   text-decoration: none;
-  transition: background-color .15s ease, border-color .15s ease;
+  transition: none !important;
+  animation: none !important;
 }
 
 footer ul a[href$="/index.xml"]:hover {
@@ -1350,11 +1351,15 @@ footer ul a[href$="/index.xml"]:focus-visible {
   transition: background-color .15s ease, border-color .15s ease;
 }
 
-.back-to-top button:hover {
-  background: #fdebf0;
-  border-color: #e7a0aa;
-  color: #75434f !important;
+.back-to-top button:hover,
+.back-to-top button:active {
+  background: #f7f1fc;
+  border-color: #c5a5dc;
+  color: #514477 !important;
   text-decoration: none;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
 }
 
 .back-to-top button:focus-visible {
