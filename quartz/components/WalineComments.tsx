@@ -221,14 +221,14 @@ function mountWaline() {
           icon: "flower",
           items: ["flower", "heart", "star", "sparkle", "rainbow", "bunny", "cat", "mushroom", "coffee", "moon", "leaf", "peach"],
         }],
-        // Use smooth vector Twemoji artwork instead of the older pixel-art icons.
-        // The pinned SVG assets remain crisp at every display size and DPR.
+        // Use Google's rounded, colorful Noto Emoji SVGs for a softer,
+        // cuter reaction set. Vector artwork stays crisp at every display size.
         reaction: [
-          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f929.svg",
-          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2764.svg",
-          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f62e.svg",
-          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg",
-          "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg",
+          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f929/emoji.svg",
+          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/emoji.svg",
+          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f632/emoji.svg",
+          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f97a/emoji.svg",
+          "https://fonts.gstatic.com/s/e/notoemoji/latest/1f923/emoji.svg",
         ],
         locale: {
           // Keep the error state quiet; the page-level status handles the message.
