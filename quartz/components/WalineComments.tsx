@@ -204,7 +204,8 @@ function mountWaline() {
       state.instance = init({
         el: target,
         serverURL,
-        path,
+        // Use one shared Waline thread across every page of tawnyflor.neocities.org.
+        path: "/",
         lang: "en",
         dark: false,
         login: "disable",
