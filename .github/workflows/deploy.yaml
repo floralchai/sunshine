@@ -41,13 +41,20 @@ jobs:
       - name: Build Quartz
         run: npm run build
 
-      - name: Verify generated homepage and comment system before deployment
+      - name: Install Neocities custom 404 page
+        run: |
+          test -s quartz/static/not_found.html
+          cp quartz/static/not_found.html public/not_found.html
+
+      - name: Verify generated homepage, comment system and 404 page before deployment
         run: |
           if [ -z "${WALINE_SERVER_URL:-}" ]; then
             echo "::error::Set WALINE_SERVER_URL under repository Actions Variables or Secrets to your deployed Waline server URL."
             exit 1
           fi
           test -s public/index.html
+          test -s public/not_found.html
+          grep -q "Oh! This page wandered off." public/not_found.html
           grep -q "Welcome to Tawny Flor" public/index.html
           grep -q "portfolio-top-nav" public/index.html
           test "$(grep -o 'class="site-header-banner"' public/index.html | wc -l)" -eq 1
