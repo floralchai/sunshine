@@ -17,4 +17,4 @@ enableToc: true
 
 ---
 
-[⟵ back to week 2 and 3](../notes-and-diary)
+[⟵ back to week 2 and 3](./notes-and-diary)
